@@ -72,6 +72,20 @@ Record each milestone's output here. Do not summarize it from memory.
 |---|---|---|---|---|---:|---|---|---:|---|
 | 2026-09-14 | not fetched | `main` @ `6608bfc2` | UNKNOWN | 0 | 0 | none | none | 0 | BASELINE CUT |
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | terrain branch @ `5b524e18` | 0 | 1 | 37 (all DiofanCAD-native) | none | clean | 0 | TERRAIN PREPARED |
+| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-C @ `5f34f0f1` | 0 | 2 | 55 total — 48 native, **7 in upstream code** (+752/−3) | `src/App`, `tests/src/App`, `cMake/FreeCAD_Helpers` | clean | 1 (U-001) | FIRST UPSTREAM-CODE DIVERGENCE |
+
+### Reading the P0-C row
+
+Seven upstream files, +752/−3 lines. Most of that is two new files
+(`src/App/RecomputeTrace.*`, 451 lines) and a test (235 lines) that exist in
+their own right and can be lifted out as a unit. The part that is genuinely
+entangled with upstream code is **36 lines in `Document.cpp` and 3 lines of
+CMake**, plus a 5-line CMake fix that upstream should want back (U-001).
+
+That distinction is the one worth tracking. A thousand lines of new files
+alongside upstream code costs little to carry; thirty lines inside a hot
+function costs every rebase. The budget below should eventually be expressed
+in the second kind of line, not the first.
 
 ## Divergence budget
 

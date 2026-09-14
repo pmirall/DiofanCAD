@@ -72,7 +72,12 @@ if [ "$CHANGED_UPSTREAM" -eq 0 ]; then
 else
     git diff --name-only "$BASE" "$FORK_REF" \
         | grep -Ev "^($NATIVE_FILTER)" \
-        | awk -F/ '{ if ($1=="src" && NF>2) print $1"/"$2"/"$3; else if (NF>1) print $1"/"$2; else print $1 }' \
+        | awk -F/ '{
+            if ($1=="src" && $2=="Mod" && NF>3) print $1"/"$2"/"$3;
+            else if ($1=="src" && NF>2) print $1"/"$2;
+            else if ($1=="tests" && NF>3) print $1"/"$2"/"$3;
+            else if (NF>1) print $1"/"$2;
+            else print $1 }' \
         | sort | uniq -c | sort -rn | sed 's/^/  /'
 fi
 echo
