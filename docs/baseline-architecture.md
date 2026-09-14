@@ -41,7 +41,7 @@ The `Location` column is the result of repository inspection at the fork baselin
 | Geometry kernel | OCCT, consumed via `src/Mod/Part` | UNKNOWN | version/capability audit | TBD |
 | Document / model object layer | `src/App` (`Document`, `DocumentObject`, `Property*`) | UNKNOWN | read + instrument | TBD |
 | Transactions / undo | `src/App/Transactions.*`, `AutoTransaction.*`, `TransactionalObject.*` | UNKNOWN | read + P0-B/P0-D | TBD |
-| Topological naming / element identity | `src/App/ElementMap.*`, `MappedName.*`, `MappedElement.*`, `ElementNamingUtils.*` | UNKNOWN | read + P0-A | TBD |
+| Topological naming / element identity | `src/App/ElementMap.*`, `MappedName.*`, `MappedElement.*`, `ElementNamingUtils.*` | **MEASURED** (P0-A) | done: 0% silent corruption, 86.7% survival over 6 scenarios | NONE — reused, not replaced (D-010) |
 | Dependency / recompute | `src/App/Document.cpp` (boost adjacency_list + topological sort) | **MEASURED** (P0-C) | done: per-object time + causality, 84.5% attributed | LOW — 36 added lines, all guarded |
 | Persistence | `src/Base/Persistence.*`, `Reader.*`, `Writer.*`, `XMLParser.*`; zipios++ container | UNKNOWN | read + P0-D round-trip | TBD |
 | Sketcher / constraint solving | `src/Mod/Sketcher` (planegcs solver) | UNKNOWN | read + solver benchmark | TBD |
@@ -71,6 +71,21 @@ timing and no record of *why* an object recomputed. That gap is now closed by
 The practical consequence for the roadmap: **recompute does not need a
 rewrite to become diagnosable.** AR-003 ("recompute redesign becomes too
 invasive") is materially reduced — 36 guarded lines were enough.
+
+### What P0-A established about element identity
+
+The identity layer is stronger than the project assumed. Across 60 references
+and 6 change scenarios it never resolved to the wrong face; 86.7% resolved
+correctly and the remaining 13.3% failed visibly. The naming grammar encodes
+provenance directly (`;:M` modified, `;:G` generated, `;:H` tag) and
+`ElementMap::getElementHistory()` makes ancestry queryable.
+
+What it lacks is the other half of V7 §18: candidate matching, confidence,
+repair and diagnostics. A broken reference is marked `?` and essentially
+nothing consumes it.
+
+Consequence for the roadmap: **DiofanCAD does not build a competing reference
+mechanism** (D-010). See `gauntlet/rounds/architecture/round-002-p0a/verdict.md`.
 
 ### How to use this table
 

@@ -96,6 +96,30 @@ Status:
 
 **Revisit trigger:** a proof that genuinely needs geometry (P0-A on real topology, P0-E on a real part) will need `BUILD_PART=ON` and a heavier toolchain.
 
+### D-010 — Do not build a new persistent-reference mechanism; reuse ElementMap
+
+**Decision:** `App::ElementMap` / `MappedName` remain the identity substrate. DiofanCAD does not build a competing persistent-reference scheme.
+
+**Status:** ACTIVE
+
+**Evidence:** Round 002 (P0-A). 60 references across 6 change scenarios: 0 resolved to the wrong face, 86.7% resolved correctly, and all 8 failures were visible rather than silent. A replacement identity scheme has essentially no headroom: it cannot beat 0% corruption, and it would have to re-earn the 86.7%.
+
+**Consequences:** Removes the largest speculative workstream from the roadmap. Work moves up the stack, to what the baseline genuinely lacks.
+
+**Revisit trigger:** ambiguity or silent corruption found on harder geometry (fillets, revolutions, coplanar faces), or on edges and sketch external geometry, none of which round 002 measured.
+
+### D-011 — The wedge is reference REPAIR, not reference survival
+
+**Decision:** The first competitive wedge, set in D-002 as "change resilience", is sharpened to **repair of references after structural change**. D-002 stands; this narrows it.
+
+**Status:** ACTIVE
+
+**Evidence:** Survival is already good (86.7%) and already safe (0% silent corruption). Repair is absent: the baseline marks a broken reference `?` and stops, and almost nothing consumes even that. Every one of the 8 broken references had exactly one matching candidate — the information needed to propose a repair exists and is thrown away.
+
+**Consequences:** `docs/first-wedge-benchmark.md` metrics shift from "surviving references / total" toward repair rate, repair correctness, and — the dangerous one — confidently wrong repairs. A repair layer that proposes a confident wrong answer is worse than today's honest breakage, so the primary metric of the next round is the mis-repair rate, not the repair rate.
+
+**Revisit trigger:** if ambiguity on hard geometry makes confident repair unsafe, the wedge moves again rather than being forced.
+
 ## Pending decisions
 
 - Exact semantic identity serialization model.

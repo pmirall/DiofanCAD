@@ -38,6 +38,25 @@ named, so any future failure list can be diffed against them.
 Not yet investigated, and deliberately not fixed in the same round that
 measured them. Candidates for the upstream backlog once root-caused.
 
+### Measured: `Part_tests_run` (round 002)
+
+| Metric | Value |
+|---|---:|
+| Tests run | 312 |
+| Passed | 182 |
+| **Failed** | **130** |
+
+The 130 failures are an **environment limitation, not defects**: constructing
+a `Part::Box` throws `Material not found` because the material library's
+resources are only present after an install step, and a build-tree-only setup
+has none. Everything that avoids document objects passes — all 90
+`TopoShapeExpansionTest` tests, for instance.
+
+This is worth knowing before anyone reads a red Part suite as a code problem.
+It also means a large fraction of the Part suite is silently untestable
+without installing, and nothing tells you so. Confirming that an installed
+build passes those 130 has not been done.
+
 ## Inventory
 
 Populate from the actual repository:

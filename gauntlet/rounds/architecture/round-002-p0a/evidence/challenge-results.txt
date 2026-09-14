@@ -1,0 +1,34 @@
+[==========] Running 6 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 6 tests from ReferenceResilienceTest
+[ RUN      ] ReferenceResilienceTest.S1_RecomputeWithoutChange
+scenario=S1-recompute-no-change captured=10 correct=10 wrong=0 broken=0 target_gone=0 recoverable_unambiguous=0 recoverable_ambiguous=0
+[       OK ] ReferenceResilienceTest.S1_RecomputeWithoutChange (22 ms)
+[ RUN      ] ReferenceResilienceTest.S2_PocketWidened
+scenario=S2-pocket-widened captured=10 correct=10 wrong=0 broken=0 target_gone=0 recoverable_unambiguous=0 recoverable_ambiguous=0
+[       OK ] ReferenceResilienceTest.S2_PocketWidened (20 ms)
+[ RUN      ] ReferenceResilienceTest.S3_ThroughPocketBecomesBlind
+  S3-through-to-blind: Face5 (outer wall, normal -0,-0,-1) -> broken, candidates=1
+scenario=S3-through-to-blind captured=10 correct=9 wrong=0 broken=1 target_gone=0 recoverable_unambiguous=1 recoverable_ambiguous=0
+[       OK ] ReferenceResilienceTest.S3_ThroughPocketBecomesBlind (18 ms)
+[ RUN      ] ReferenceResilienceTest.S4_ToolReplaced
+  S4-tool-replaced: Face7 (pocket wall, normal -0,1,0) -> broken, candidates=1
+  S4-tool-replaced: Face8 (pocket wall, normal -1,-0,0) -> broken, candidates=1
+  S4-tool-replaced: Face9 (pocket wall, normal 0,-1,-0) -> broken, candidates=1
+  S4-tool-replaced: Face10 (pocket wall, normal 1,0,-0) -> broken, candidates=1
+scenario=S4-tool-replaced captured=10 correct=6 wrong=0 broken=4 target_gone=0 recoverable_unambiguous=4 recoverable_ambiguous=0
+[       OK ] ReferenceResilienceTest.S4_ToolReplaced (24 ms)
+[ RUN      ] ReferenceResilienceTest.S5_UpstreamFeatureInserted
+  S5-upstream-feature-inserted: Face1 (outer wall, normal -1,-0,0) -> broken, candidates=1
+  S5-upstream-feature-inserted: Face2 (outer wall, normal 0,-1,-0) -> broken, candidates=1
+  S5-upstream-feature-inserted: Face5 (outer wall, normal -0,-0,-1) -> broken, candidates=1
+scenario=S5-upstream-feature-inserted captured=10 correct=7 wrong=0 broken=3 target_gone=0 recoverable_unambiguous=3 recoverable_ambiguous=0
+[       OK ] ReferenceResilienceTest.S5_UpstreamFeatureInserted (31 ms)
+[ RUN      ] ReferenceResilienceTest.S6_BaseResized
+scenario=S6-base-resized captured=10 correct=10 wrong=0 broken=0 target_gone=0 recoverable_unambiguous=0 recoverable_ambiguous=0
+[       OK ] ReferenceResilienceTest.S6_BaseResized (20 ms)
+[----------] 6 tests from ReferenceResilienceTest (137 ms total)
+
+[----------] Global test environment tear-down
+[==========] 6 tests from 1 test suite ran. (203 ms total)
+[  PASSED  ] 6 tests.

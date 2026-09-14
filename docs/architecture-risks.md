@@ -18,7 +18,7 @@
 | ID | Risk | Why it matters | Evidence needed | Initial severity | Mitigation |
 |---|---|---|---|---|---|
 | AR-001 | Semantic layer becomes a second source of truth | Creates duplication and permanent divergence | architecture proof P0-B | Critical | explicit ownership boundary |
-| AR-002 | Persistent references fail on ambiguous topology changes | Core product wedge depends on robust identity | P0-A + realistic change tests | Critical | confidence + diagnostics + transactional repair |
+| AR-002 | Persistent references fail on ambiguous topology changes | Core product wedge depends on robust identity | P0-A + realistic change tests | **Reduced: Medium** (P0-A) | confidence + diagnostics + transactional repair |
 | AR-003 | Recompute redesign becomes too invasive | Could destabilize existing FreeCAD behavior | dependency map + P0-C | **Reduced: High** (P0-C) | instrument first; rewrite only with evidence |
 | AR-004 | Assembly/configuration state explodes combinatorially | Cross-domain semantics can multiply state | model/provenance prototype | High | explicit configuration scope / inheritance |
 | AR-005 | Native file compatibility breaks | Undermines user ownership and ecosystem | compatibility suite | Critical | round-trip tests + migration strategy |
@@ -39,6 +39,19 @@ AR-003 was that understanding recompute would require rewriting it. It did not.
 
 It is reduced, not closed: making recompute *diagnosable* is not the same as
 making it *faster* or *deterministic*, and neither of those has been attempted.
+
+### AR-002 — reduced from Critical to Medium on 2026-09-14
+
+The risk assumed persistent references fail *ambiguously* under topology
+change. Measured across 60 references and 6 scenarios: they never resolved to
+the wrong face, and every one that broke had exactly one matching descriptor
+candidate. The failure mode is visible, not ambiguous.
+
+It is reduced, not closed, for one reason: the measurement used axis-aligned
+boxes, where unambiguous identity is close to guaranteed. Fillets, revolved
+faces and coplanar faces are exactly where ambiguity would appear, and they
+have not been measured. If round 003 finds ambiguity there, this risk goes
+back up.
 
 ### AR-010 note
 

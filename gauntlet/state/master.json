@@ -6,15 +6,18 @@
   "phase": "PHASE_0_REALITY_MAP",
   "status": "IN_PROGRESS",
   "rule": "PROVE -> MEASURE -> DECIDE -> SCALE",
-  "wedge": "change_resilience_through_engineering_semantics",
+  "wedge": "reference_repair_after_structural_change",
   "baseline_commit": "6608bfc249f460efd5f99765304d0ee9b5d06658",
   "last_verified_commit": "bdda49d5",
-  "active_workstream": "architecture/P0-C",
+  "active_workstream": "architecture/P0-A",
   "architecture_proofs": [
     {
       "id": "P0-A",
       "name": "persistent-reference prototype",
-      "status": "NOT_STARTED"
+      "status": "PASS",
+      "round": "gauntlet/rounds/architecture/round-002-p0a",
+      "verdict": "PASS on the bar; hypothesis reframed from survival to repair",
+      "evidence": "E-0010, E-0011, E-0012"
     },
     {
       "id": "P0-B",
@@ -60,8 +63,9 @@
   "workflows": [],
   "competitive_claims": [],
   "critical_failures": [],
-  "largest_gap": "15.5% of recompute wall-clock is not attributed to any named object, so a slow recompute can still end in \"the framework did it\".",
+  "largest_gap": "when a reference breaks, nothing proposes the single face that still matches it - the information needed for repair exists and is discarded.",
   "last_decision": "D-005",
   "evidence_status": "UNKNOWN",
-  "notes": "P0-C PASS. Recompute is now observable per object with causality. P0-A, P0-B, P0-D, P0-E remain unproven. No superiority claim established."
+  "notes": "P0-C and P0-A PASS. Recompute is observable per object with causality; element identity measured as safe under change. Decision: do not build a new persistent reference mechanism. P0-B, P0-D, P0-E remain unproven. No superiority claim.",
+  "wedge_note": "Reframed in round 002: reference SURVIVAL is already good (86.7%) and, more importantly, already safe (0% silent corruption). REPAIR is absent."
 }

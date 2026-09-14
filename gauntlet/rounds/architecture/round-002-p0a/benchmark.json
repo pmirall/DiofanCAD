@@ -1,0 +1,43 @@
+{
+  "round": "architecture/round-002-p0a",
+  "proof": "P0-A",
+  "date": "2026-09-14",
+  "environment": {
+    "cpu": "Intel(R) Xeon(R) @ 2.10GHz, 4 cores",
+    "compiler": "gcc 13.3.0",
+    "build_type": "Release",
+    "occt": "7.6.3",
+    "configuration": "BUILD_GUI=OFF, BUILD_PART=ON, BUILD_MATERIAL=ON, ENABLE_DEVELOPER_TESTS=ON",
+    "level": "TopoShape, as in upstream's own toponaming tests; a modelling operation is re-run with changed operands under the same tags"
+  },
+  "ground_truth": {
+    "definition": "outward normal + whether the face lies on the solid's bounding box (outer wall vs pocket wall)",
+    "rationale": "Position is deliberately excluded: a parameter change is supposed to move faces, and a positional identity would report correct behaviour as corruption.",
+    "correction_during_the_round": "The first implementation required the face plane to match exactly. It reported 4 of 10 references in S2 as silently wrong. Those were pocket walls that had legitimately moved. The defect was in the measurement, not in FreeCAD."
+  },
+  "scenarios": [
+    {"id": "S1", "name": "recompute without change", "captured": 10, "correct": 10, "wrong": 0, "broken": 0, "recoverable_unambiguous": 0},
+    {"id": "S2", "name": "pocket widened", "captured": 10, "correct": 10, "wrong": 0, "broken": 0, "recoverable_unambiguous": 0},
+    {"id": "S3", "name": "through pocket becomes blind", "captured": 10, "correct": 9, "wrong": 0, "broken": 1, "recoverable_unambiguous": 1,
+     "broken_detail": "Face5, the -Z outer face, which lost its hole and is topologically a different face"},
+    {"id": "S4", "name": "tool replaced", "captured": 10, "correct": 6, "wrong": 0, "broken": 4, "recoverable_unambiguous": 4,
+     "broken_detail": "Face7-Face10, all four pocket walls, whose generating tool no longer exists"},
+    {"id": "S5", "name": "upstream feature inserted", "captured": 10, "correct": 7, "wrong": 0, "broken": 3, "recoverable_unambiguous": 3,
+     "broken_detail": "Face1, Face2, Face5: the three outer faces the inserted notch cuts into"},
+    {"id": "S6", "name": "base resized", "captured": 10, "correct": 10, "wrong": 0, "broken": 0, "recoverable_unambiguous": 0}
+  ],
+  "totals": {
+    "references": 60,
+    "resolved_correct": 52,
+    "resolved_wrong": 0,
+    "broken": 8,
+    "survival_rate": 0.867,
+    "silent_corruption_rate": 0.0,
+    "broken_with_exactly_one_descriptor_candidate": 8
+  },
+  "caveats": [
+    "Six scenarios on axis-aligned boxes with rectangular pockets. Not a general claim about all geometry.",
+    "The candidate counter uses the same predicate as the ground truth, so 'exactly one candidate' is partly unambiguous by construction on these shapes. It is a necessary condition for unambiguous repair, not a sufficient one. On fillets, revolved faces or many coplanar faces, ambiguity would rise and must be measured separately.",
+    "TopoShape level, not document level: the document-object path could not run because Part::Box needs the material library, which a minimal build does not install."
+  ]
+}
