@@ -1,0 +1,53 @@
+{
+  "round": "architecture/round-003-repair",
+  "question": "On geometry where features resemble each other, does descriptor-based repair propose confident wrong answers?",
+  "date": "2026-09-14",
+  "environment": {
+    "cpu": "Intel(R) Xeon(R) @ 2.10GHz, 4 cores",
+    "compiler": "gcc 13.3.0",
+    "occt": "7.6.3",
+    "configuration": "BUILD_GUI=OFF, BUILD_PART=ON, BUILD_MATERIAL=ON, ENABLE_DEVELOPER_TESTS=ON",
+    "level": "TopoShape"
+  },
+  "independence": {
+    "ground_truth": "absolute-coordinate predicates written by hand per scenario",
+    "matcher": "scenario-blind; surface type, axis, area, bounding-box-relative position, radius",
+    "negative_control": "N1 deliberately mislabels the intended face and requires the harness to report resolved_WRONG=1. It does, so the zeros elsewhere in this round are meaningful."
+  },
+  "baseline_behaviour": {
+    "references_tracked": 8,
+    "resolved_correct": 8,
+    "resolved_wrong": 0,
+    "broken": 0,
+    "note": "Across two similar pockets with the block lengthened, four identical holes with the block lengthened and one hole deleted, and a fillet whose radius changed and whose base was resized, every reference resolved to the intended face. The repair path was never reached."
+  },
+  "scenarios": [
+    {"id": "H0", "name": "control, identical rebuild", "tracked": 1, "resolved_correct": 1, "resolved_wrong": 0, "broken": 0},
+    {"id": "H1", "name": "two similar pockets; one widened, block lengthened", "tracked": 3, "resolved_correct": 3, "resolved_wrong": 0, "broken": 0},
+    {"id": "H2", "name": "four identical holes; block lengthened, one hole deleted", "tracked": 2, "resolved_correct": 2, "resolved_wrong": 0, "broken": 0},
+    {"id": "H3", "name": "fillet radius changed, then base resized", "tracked": 2, "resolved_correct": 2, "resolved_wrong": 0, "broken": 0},
+    {"id": "N1", "name": "negative control: ground truth deliberately wrong", "tracked": 1, "resolved_wrong": 1, "verdict": "harness detects it"},
+    {"id": "H4", "name": "hole deleted and re-created, block lengthened", "tracked": 1, "broken": 1, "repair_correct": 0, "repair_wrong": 0, "abstained": 1}
+  ],
+  "h4_decisive_result": {
+    "situation": "The reference broke because its generator was replaced, so repair was the only route left.",
+    "matcher_top_candidate": "Face9, the hole at x=12",
+    "matcher_top_score": 1.0,
+    "intended_face": "Face8, the hole at x=8",
+    "margin_to_runner_up": 0.042339,
+    "abstention_threshold_used": 0.05,
+    "outcome": "abstained",
+    "interpretation": "The matcher's best answer was WRONG and scored PERFECTLY. Only an arbitrarily chosen margin threshold (0.05 against a measured 0.042) prevented a confident mis-repair. Score is not confidence; the margin is - and here the margin is too thin to carry a decision."
+  },
+  "tests": {
+    "part_suite_ran": 319,
+    "passed": 194,
+    "failed": 125,
+    "note": "The 125 failures are the pre-existing 'Material not found' environment limitation recorded in round 002, unchanged. No new failures."
+  },
+  "caveats": [
+    "Eight tracked references across six scenarios. Small, and still box-and-cylinder geometry.",
+    "Only one scenario forced an actual break, so the repair path has one data point. It is a decisive one, but it is one.",
+    "Edges and vertices remain unmeasured, as do sketch external geometry and document-level recompute."
+  ]
+}

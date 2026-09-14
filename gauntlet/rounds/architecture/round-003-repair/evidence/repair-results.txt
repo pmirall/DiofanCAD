@@ -1,0 +1,30 @@
+[==========] Running 6 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 6 tests from ReferenceRepairTest
+[ RUN      ] ReferenceRepairTest.H0_Control
+scenario=H0-control tracked=1 resolved_correct=1 resolved_WRONG=0 repair_correct=0 repair_WRONG=0 abstained=0
+[       OK ] ReferenceRepairTest.H0_Control (21 ms)
+[ RUN      ] ReferenceRepairTest.H1_TwoSimilarPockets
+scenario=H1-two-similar-pockets tracked=3 resolved_correct=3 resolved_WRONG=0 repair_correct=0 repair_WRONG=0 abstained=0
+[       OK ] ReferenceRepairTest.H1_TwoSimilarPockets (31 ms)
+[ RUN      ] ReferenceRepairTest.H2_IdenticalHolePattern
+scenario=H2-identical-hole-pattern tracked=2 resolved_correct=2 resolved_WRONG=0 repair_correct=0 repair_WRONG=0 abstained=0
+[       OK ] ReferenceRepairTest.H2_IdenticalHolePattern (33 ms)
+[ RUN      ] ReferenceRepairTest.H3_FilletRadiusChanged
+scenario=H3-fillet-radius-changed tracked=1 resolved_correct=1 resolved_WRONG=0 repair_correct=0 repair_WRONG=0 abstained=0
+scenario=H3b-fillet-base-resized tracked=1 resolved_correct=1 resolved_WRONG=0 repair_correct=0 repair_WRONG=0 abstained=0
+[       OK ] ReferenceRepairTest.H3_FilletRadiusChanged (8 ms)
+[ RUN      ] ReferenceRepairTest.N1_HarnessDetectsWrongResolution
+  N1-negative-control: far wall, mislabelled -> BASELINE RESOLVED WRONG (got Face8, intended Face10)
+scenario=N1-negative-control tracked=1 resolved_correct=0 resolved_WRONG=1 repair_correct=0 repair_WRONG=0 abstained=0
+[       OK ] ReferenceRepairTest.N1_HarnessDetectsWrongResolution (20 ms)
+[ RUN      ] ReferenceRepairTest.H4_HoleRecreatedAfterResize
+  H4 matcher: top face=Face9 (x=12) score=1 margin=0.042339 confident=0 | intended=Face8 (x=8)
+  H4-hole-recreated-after-resize: hole@x=8 re-created -> broken, ABSTAINED (score=1 margin=0.042339)
+scenario=H4-hole-recreated-after-resize tracked=1 resolved_correct=0 resolved_WRONG=0 repair_correct=0 repair_WRONG=0 abstained=1
+[       OK ] ReferenceRepairTest.H4_HoleRecreatedAfterResize (38 ms)
+[----------] 6 tests from ReferenceRepairTest (154 ms total)
+
+[----------] Global test environment tear-down
+[==========] 6 tests from 1 test suite ran. (220 ms total)
+[  PASSED  ] 6 tests.

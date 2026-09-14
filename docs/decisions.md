@@ -120,6 +120,35 @@ Status:
 
 **Revisit trigger:** if ambiguity on hard geometry makes confident repair unsafe, the wedge moves again rather than being forced.
 
+### D-012 — Repair is never automatic; it proposes and the engineer confirms
+
+**Decision:** A reference repair layer may diagnose, rank candidates and state its ambiguity. It may not apply a fix on its own.
+
+**Status:** ACTIVE. Constrains D-011.
+
+**Evidence:** Round 003, H4. With a hole deleted and re-created and the block lengthened, a scenario-blind geometric matcher proposed the **wrong hole with a perfect score of 1.0**; the intended one scored 0.958. A mis-repair was prevented only by a margin threshold of 0.05 against a measured margin of 0.042 — a number chosen with no principled basis.
+
+**Consequences:**
+- **Score is not confidence; the margin is.** Any confidence a repair reports must be the distance to the runner-up, never the match quality. A match quality of 1.0 was wrong.
+- The 0.042 margin is an information problem, not a tuning problem: position, area and radius all agree with the wrong answer, so no reweighting fixes it.
+- Repair is needed only when a generator changes, which is exactly when a geometric descriptor is least able to disambiguate. The cases that need repair are the cases where repair is least reliable.
+
+**Revisit trigger:** if provenance (the naming grammar's tags and `ElementMap::getElementHistory()`) is shown to disambiguate what geometry cannot, automatic repair could be reconsidered for the cases provenance resolves — and only those.
+
+### D-013 — The differentiation is diagnosis, not survival
+
+**Decision:** The product claim moves from "preserves engineering intent through change better than the benchmark" toward "explains what broke and why, and offers candidates you confirm."
+
+**Status:** PROVISIONAL — recorded because the evidence points here, not because the product direction has been decided.
+
+**Evidence:** Across rounds 002 and 003, 68 tracked references: 60 resolved correctly, 8 broke visibly, **0 ever resolved to the wrong face**. On the hard geometry of round 003 the figure was 8/8 correct. The baseline already preserves intent well; there is little headroom in surviving more, and none in safety.
+
+What the baseline does not do is explain. A broken reference is marked `?` and almost nothing consumes even that.
+
+**Consequences:** This points at Model Doctor (V7 §19) as the wedge's product surface rather than a repair engine. `docs/first-wedge-benchmark.md` and the competitive framing need rework before any claim is made.
+
+**Revisit trigger:** measurement on edges, sketch external geometry, or document-level recompute finding materially worse survival than faces showed.
+
 ## Pending decisions
 
 - Exact semantic identity serialization model.

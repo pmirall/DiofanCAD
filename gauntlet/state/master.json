@@ -6,10 +6,10 @@
   "phase": "PHASE_0_REALITY_MAP",
   "status": "IN_PROGRESS",
   "rule": "PROVE -> MEASURE -> DECIDE -> SCALE",
-  "wedge": "reference_repair_after_structural_change",
+  "wedge": "reference_diagnosis_and_human_confirmed_repair",
   "baseline_commit": "6608bfc249f460efd5f99765304d0ee9b5d06658",
   "last_verified_commit": "bdda49d5",
-  "active_workstream": "architecture/P0-A",
+  "active_workstream": "architecture/repair-feasibility",
   "architecture_proofs": [
     {
       "id": "P0-A",
@@ -63,9 +63,14 @@
   "workflows": [],
   "competitive_claims": [],
   "critical_failures": [],
-  "largest_gap": "when a reference breaks, nothing proposes the single face that still matches it - the information needed for repair exists and is discarded.",
+  "largest_gap": "a geometric descriptor cannot distinguish repeated features after a resize, so the only safe repair is one a human confirms - and nothing yet measures how often an engineer would accept the proposal.",
   "last_decision": "D-005",
   "evidence_status": "UNKNOWN",
-  "notes": "P0-C and P0-A PASS. Recompute is observable per object with causality; element identity measured as safe under change. Decision: do not build a new persistent reference mechanism. P0-B, P0-D, P0-E remain unproven. No superiority claim.",
-  "wedge_note": "Reframed in round 002: reference SURVIVAL is already good (86.7%) and, more importantly, already safe (0% silent corruption). REPAIR is absent."
+  "notes": "P0-C and P0-A PASS. Baseline element identity measured as strong on hard geometry (8/8 correct). Repair prototype measured as unsafe if automatic. P0-B, P0-D, P0-E remain unproven. No superiority claim.",
+  "wedge_note": "Constrained in round 003: automatic repair is unsafe. A geometric matcher scored 1.0 on the WRONG hole; only an arbitrary margin threshold prevented a confident mis-repair. Repair = diagnosis + ranked candidates + explicit ambiguity, confirmed by the engineer.",
+  "rounds": [
+    "round-001-p0c: recompute instrumentation (PASS)",
+    "round-002-p0a: reference resilience (PASS, wedge reframed)",
+    "round-003-repair: repair on hard geometry (PASS, repair constrained to human-confirmed)"
+  ]
 }

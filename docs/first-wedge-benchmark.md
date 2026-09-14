@@ -9,6 +9,13 @@
 > The metric that decides the wedge is not the repair rate. It is the
 > **mis-repair rate** — a confident wrong repair is worse than the honest
 > breakage the baseline gives today.
+>
+> **Constrained again on 2026-09-14 by round 003 (D-012).** A geometric matcher
+> scored 1.0 on the *wrong* feature after a resize, saved from mis-repairing
+> only by an arbitrary margin threshold. Repair may therefore never be
+> automatic: it diagnoses, ranks candidates, states its ambiguity, and the
+> engineer confirms. Any confidence it reports must be the **margin** to the
+> runner-up, never the match score.
 
 ## Hipótesis
 
@@ -29,6 +36,9 @@ Create part
 ## Métricas
 
 - **mis-repair rate: repairs proposed confidently that point at the wrong face (primary; must be ~0)**
+- **margin between the top candidate and the runner-up (this, not the score, is the confidence)**
+- abstention rate: how often ambiguity is correctly declared instead of guessed
+- acceptance rate: how often an engineer accepts a proposed candidate (unmeasured; the current largest gap)
 - repair rate: broken references for which a single correct candidate is proposed
 - candidate ambiguity: how many faces match the stored descriptor
 - surviving references / total references
