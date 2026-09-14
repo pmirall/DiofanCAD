@@ -75,6 +75,8 @@ Record each milestone's output here. Do not summarize it from memory.
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-C @ `5f34f0f1` | 0 | 2 | 55 total — 48 native, **7 in upstream code** (+752/−3) | `src/App`, `tests/src/App`, `cMake/FreeCAD_Helpers` | clean | 1 (U-001) | FIRST UPSTREAM-CODE DIVERGENCE |
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-A @ `b5f87409` | 0 | 4 | 65 total — 56 native, **9 in upstream code** (+1156/−4) | `src/App`, `tests/src/App`, `tests/src/Mod/Part`, `cMake/FreeCAD_Helpers` | clean | 1 (U-001) | P0-A ADDED TESTS ONLY |
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 003 @ `a95bb784` | 0 | 6 | 74 total — 64 native, **10 in upstream code** (+1867/−3) | unchanged set | clean | 1 (U-001) | ROUND 003 ADDED TESTS ONLY |
+| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 004 @ `03830bdc` | 0 | 8 | 83 total — 72 native, **11
+line in upstream code** (+2518/-3) | unchanged set | clean | 1 (U-001) | ROUND 004 ADDED TESTS ONLY |
 
 ### Reading the P0-C row
 
