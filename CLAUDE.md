@@ -112,9 +112,15 @@ reformats and the diff becomes useless.
 
 **A build tree cannot run its own tests** until
 `tools/diofancad/setup-test-resources.sh <build-dir>` creates
-`<build>/share/Mod/Material/Resources` and `<build>/tests/brepfiles`. Without
-them 125 of 331 Part tests fail in ways that look like code defects. Queued
-upstream as U-003.
+`<build>/share/Mod/Material/Resources`, `<build>/tests/brepfiles` and
+`<build>/tests/TestModels`. Without them 125 of 331 Part tests fail in ways that
+look like code defects. Queued upstream as U-003.
+
+**PartDesign does not work in this console configuration.** 0 of 20 tests pass:
+the 16 that create a `PartDesign::Body` all throw a non-`std` exception in
+`SetUp()`, and `BackwardCompatibilityTest` segfaults opening a saved model.
+Cause unknown — do not assume it is another resource path without measuring.
+Any round needing a `Sketch → Pad` chain is blocked on this.
 
 **Build configuration:** `BUILD_GUI=OFF` needs the `SetupQt.cmake` fix (U-001,
 already applied here). `BUILD_PART=ON` requires `BUILD_MATERIAL=ON`. OCCT needs
