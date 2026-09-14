@@ -73,6 +73,7 @@ Record each milestone's output here. Do not summarize it from memory.
 | 2026-09-14 | not fetched | `main` @ `6608bfc2` | UNKNOWN | 0 | 0 | none | none | 0 | BASELINE CUT |
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | terrain branch @ `5b524e18` | 0 | 1 | 37 (all DiofanCAD-native) | none | clean | 0 | TERRAIN PREPARED |
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-C @ `5f34f0f1` | 0 | 2 | 55 total — 48 native, **7 in upstream code** (+752/−3) | `src/App`, `tests/src/App`, `cMake/FreeCAD_Helpers` | clean | 1 (U-001) | FIRST UPSTREAM-CODE DIVERGENCE |
+| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-A @ `b5f87409` | 0 | 4 | 65 total — 56 native, **9 in upstream code** (+1156/−4) | `src/App`, `tests/src/App`, `tests/src/Mod/Part`, `cMake/FreeCAD_Helpers` | clean | 1 (U-001) | P0-A ADDED TESTS ONLY |
 
 ### Reading the P0-C row
 
