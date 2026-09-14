@@ -1,0 +1,40 @@
+{
+  "round": "architecture/round-010-population",
+  "question": "When does a reference actually hold a mapped name?",
+  "date": "2026-09-14",
+  "question_corrected_before_measuring": "Round 009 framed this as a population RATE. Reading PropertyLinkBase::_updateElementReference shows the fraction of populated references in any model is a function of what that model references, so a rate would describe the fixture. The measurable thing is the rule.",
+  "prediction_from_source_before_measuring": "A reference holds a mapped name iff the feature it points at has an element map that resolves the subname. Population follows the target, not the consumer.",
+  "prediction_outcome": "Confirmed exactly, in both directions, on all three target kinds.",
+  "observations": [
+    {"target": "Part::Box (primitive)", "has_map": false, "map_size": 0, "populated": false, "mapped": "", "old": "Face2"},
+    {"target": "Part::Cut (boolean)", "has_map": true, "map_size": 50, "populated": true, "mapped": ";Face2;:H1073,F.Face6", "old": "Face6"},
+    {"target": "Part::Fillet (dress-up)", "has_map": true, "map_size": 56, "populated": true, "mapped": ";Face2;:H1073,F;:H1075,F.Face7", "old": "Face7"}
+  ],
+  "durability": {
+    "after_first_recompute": ";Face2;:Hc67,F.Face6",
+    "after_idle_recompute": ";Face2;:Hc67,F.Face6",
+    "after_parameter_change": ";Face2;:Hc67,F.Face6",
+    "verdict": "durable - not transient state that a change wipes"
+  },
+  "fallback_for_unmapped_target": {
+    "what_is_stored": "the index name alone (old='Face2'), with an empty mapped name",
+    "classification": "SILENT - the reference works and nothing marks it as resting on a weaker identity. The '?' missing marker appears only when a reference BREAKS, not when it is stored without a map."
+  },
+  "controls": {
+    "positive": "populated names observed in the same run (Cut, Fillet), so the emptiness reported for Box is a measurement and not an untested probe",
+    "negative": "N5 asserts the deliberately wrong expectation that a Cut reference is empty; reported as false, so the harness distinguishes the two states",
+    "exercised": "references_walked=3 targets_inspected=3"
+  },
+  "verification_pass": [
+    "Cut map_size=50 matches round 007's corrected probe exactly - independent reproduction, different harness.",
+    "Fillet map_size 56 here vs 32 in round 007 is explained by the fixture: round 007 filleted a Box, this round fillets a Cut.",
+    "The hash segment varies between tests but is identical across three readings inside one document, consistent with it encoding the object tag. Stated as the plausible reading, not proven.",
+    "The fillet's mapped name chains two hashes, corroborating round 004's reading that the naming grammar encodes the generator."
+  ],
+  "not_reportable": "Any population rate. The fixture chooses the targets, so a rate would measure the fixture.",
+  "caveats": [
+    "Part workbench only; PartDesign still cannot be run here.",
+    "Three targets, one reference each.",
+    "Cross-session stability of the hash segment is untested - within one document it is stable, and round 007's M3 saw a fillet survive saveAs/reopen, but that is not the same measurement."
+  ]
+}

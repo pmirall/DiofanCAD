@@ -50,6 +50,9 @@ REGRESSED
 | E-0029 | exactly two features store sub-element references as raw indices | whole tree, 614 headers scanned | n/a — first survey | class axis + behaviour axis + what `Save()` persists | `gauntlet/rounds/architecture/round-009-consumers/` | reproducible by grep | PASS | 2026-09-14 |
 | E-0030 | the mapped-name storage family is used by 48 headers across 7 workbenches | same | same | class survey, per workbench | same round | reproducible by grep | PASS | 2026-09-14 |
 | E-0031 | PartDesign dress-up features use the mapped-name path, unlike their Part equivalents | `PartDesign::DressUp` declares `App::PropertyLinkSub Base` | `Part::FilletBase` declares `PropertyFilletEdges` | source reading; PartDesign cannot be run here | same round | reproducible by reading | PASS (source only) | 2026-09-14 |
+| E-0032 | a reference holds a mapped name iff its target's element map resolves the subname | 3 targets: primitive, boolean, dress-up | source-derived prediction from `_updateElementReference` | correlation asserted in both directions, with positive and negative controls | `gauntlet/rounds/architecture/round-010-population/` | NOT YET | PASS | 2026-09-14 |
+| E-0033 | a populated mapped name is durable across recompute and parameter change | same | the name before the change | byte comparison across three recomputes | same round, M3 | NOT YET | PASS | 2026-09-14 |
+| E-0034 | the fallback for an unmapped target is silent | reference to a `Part::Box` face | a reference to a mapped feature | stored as a bare index with an empty mapped name and no marker | same round | NOT YET | PASS | 2026-09-14 |
 
 ## Verification status
 

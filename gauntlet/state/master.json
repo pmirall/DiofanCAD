@@ -9,7 +9,7 @@
   "wedge": "reference_diagnosis_and_human_confirmed_repair",
   "baseline_commit": "6608bfc249f460efd5f99765304d0ee9b5d06658",
   "last_verified_commit": "bdda49d5",
-  "active_workstream": "architecture/mapped-name-population",
+  "active_workstream": "product/first-golden-workflow-or-kill-decision",
   "architecture_proofs": [
     {
       "id": "P0-A",
@@ -70,10 +70,10 @@
   "workflows": [],
   "competitive_claims": [],
   "critical_failures": [],
-  "largest_gap": "capability is not population - 48 headers CAN store mapped names, and nobody has measured how often they actually hold one in a real model.",
+  "largest_gap": "the programme has spent ten rounds characterising a mechanism and has yet to measure anything a user would notice. No golden workflow has been run and no competitive claim exists.",
   "last_decision": "D-005",
   "evidence_status": "UNKNOWN",
-  "notes": "P0-A, P0-C, P0-D, P0-E PASS. P0-B needs restatement. Round 009 closes the consumer-coverage question: only Part::Fillet and Part::Chamfer store raw indices, and PartDesign successors use mapped names. No superiority claim.",
+  "notes": "P0-A, P0-C, P0-D, P0-E PASS. The identity layer is now well characterised. The competitive half of V7 - golden workflows, Fusion benchmark, human testing - has not been started. No superiority claim.",
   "wedge_note": "Rounds 002-004: references rarely break; when they do, the best strategy (geometry + exclusion by surviving references) proposes a correct candidate about half the time and a wrong one never, and abstains the rest. A real but modest feature. Differentiation points at diagnosis (D-013).",
   "rounds": [
     "round-001-p0c: recompute instrumentation (PASS)",
@@ -84,6 +84,7 @@
     "round-006-unblock: cleared the 125 Part failures with two symlinks; suite is 331/331",
     "round-007-p0e: document-level change challenge (PASS; headline RETRACTED - see round-007-p0e/CORRECTION.md)",
     "round-008-coverage: BLOCKED - PartDesign does not run in this configuration",
-    "round-009-consumers: consumer inventory (PASS; exactly 2 raw-index features, both legacy Part)"
+    "round-009-consumers: consumer inventory (PASS; exactly 2 raw-index features, both legacy Part)",
+    "round-010-population: population follows the target, exactly (PASS)"
   ]
 }

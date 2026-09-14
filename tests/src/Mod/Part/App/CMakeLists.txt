@@ -27,6 +27,7 @@ add_executable(Part_tests_run
         PreviewExtension.cpp
         PropertyTopoShape.cpp
         ReferencePersistence.cpp
+        ReferencePopulation.cpp
         ReferenceProvenance.cpp
         ReferenceRepair.cpp
         ReferenceResilience.cpp
