@@ -25,6 +25,7 @@ add_executable(Part_tests_run
         PartTestHelpers.cpp
         PreviewExtension.cpp
         PropertyTopoShape.cpp
+        ReferenceProvenance.cpp
         ReferenceRepair.cpp
         ReferenceResilience.cpp
         TopoDS_Shape.cpp

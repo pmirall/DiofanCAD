@@ -149,6 +149,20 @@ What the baseline does not do is explain. A broken reference is marked `?` and a
 
 **Revisit trigger:** measurement on edges, sketch external geometry, or document-level recompute finding materially worse survival than faces showed.
 
+### D-014 — Exclusion by surviving references is the disambiguator; provenance is not
+
+**Decision:** If a repair feature is built, it ranks candidates geometrically and then removes any face already claimed by a reference that still resolves. It does **not** filter candidates by originating tag.
+
+**Status:** ACTIVE
+
+**Evidence:** Round 004, 7 breaks across 5 scenarios, three strategies on identical inputs. Geometry alone repaired 3 correctly; geometry plus exclusion, 4; geometry plus a provenance filter, 1. No strategy ever mis-repaired.
+
+Provenance lost both cases that geometry alone got right, because a replaced tool's tag no longer exists and the filter rejects every candidate. The generalisable reason: **provenance is not independent information about the broken case** — when the tag survives, the reference usually survives too; when the reference breaks because its generator changed, the tag has broken with it.
+
+**Consequences:** Exclusion is free — no name parsing, no new persistent data, no change to `ElementMap`. But its power is borrowed from the document: R5 showed that with a single reference it degrades exactly to geometry alone. Any benchmark of a repair feature must therefore state how many references the model carried, or the number means nothing.
+
+**Revisit trigger:** a case where an originating tag survives alongside genuine geometric ambiguity, which none of these scenarios produced. Provenance as a score bonus — rather than a filter — is untested and would be inert here.
+
 ## Pending decisions
 
 - Exact semantic identity serialization model.
@@ -156,3 +170,4 @@ What the baseline does not do is explain. A broken reference is marked `?` and a
 - Exact divergence budgets (`docs/upstream-sync.md` budget table is deliberately unset until real divergence data exists).
 - Exact milestone numeric performance bars.
 - Exact benchmark participant protocol.
+- **Principled abstention thresholds.** Every repair result in rounds 003-004 is conditional on `score >= 0.50` and `margin >= 0.05`, both chosen rather than derived. This is the current largest gap.

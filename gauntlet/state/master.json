@@ -63,14 +63,15 @@
   "workflows": [],
   "competitive_claims": [],
   "critical_failures": [],
-  "largest_gap": "a geometric descriptor cannot distinguish repeated features after a resize, so the only safe repair is one a human confirms - and nothing yet measures how often an engineer would accept the proposal.",
+  "largest_gap": "the abstention thresholds decide every result in rounds 003-004, and nobody has a principled basis for them.",
   "last_decision": "D-005",
   "evidence_status": "UNKNOWN",
-  "notes": "P0-C and P0-A PASS. Baseline element identity measured as strong on hard geometry (8/8 correct). Repair prototype measured as unsafe if automatic. P0-B, P0-D, P0-E remain unproven. No superiority claim.",
-  "wedge_note": "Constrained in round 003: automatic repair is unsafe. A geometric matcher scored 1.0 on the WRONG hole; only an arbitrary margin threshold prevented a confident mis-repair. Repair = diagnosis + ranked candidates + explicit ambiguity, confirmed by the engineer.",
+  "notes": "P0-C and P0-A PASS. Repair measured across rounds 003-004: 0 mis-repairs in 21 strategy-decisions, but conditional on unprincipled thresholds. P0-B, P0-D, P0-E remain unproven. No superiority claim.",
+  "wedge_note": "Rounds 002-004: references rarely break; when they do, the best strategy (geometry + exclusion by surviving references) proposes a correct candidate about half the time and a wrong one never, and abstains the rest. A real but modest feature. Differentiation points at diagnosis (D-013).",
   "rounds": [
     "round-001-p0c: recompute instrumentation (PASS)",
     "round-002-p0a: reference resilience (PASS, wedge reframed)",
-    "round-003-repair: repair on hard geometry (PASS, repair constrained to human-confirmed)"
+    "round-003-repair: repair on hard geometry (PASS, repair constrained to human-confirmed)",
+    "round-004-provenance: provenance vs exclusion (PASS, exclusion adopted, provenance rejected as filter)"
   ]
 }

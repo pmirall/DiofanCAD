@@ -1,0 +1,66 @@
+[==========] Running 6 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 6 tests from ReferenceProvenanceTest
+[ RUN      ] ReferenceProvenanceTest.R1_OneHoleRecreated
+  R1-one-hole-recreated G   hole@x=8 -> top=Face9 score=1 margin=0.042339 abstain (intended Face8)
+  R1-one-hole-recreated G+E hole@x=8 -> top=Face8 score=0.957661 margin=0.957661 CORRECT (intended Face8)
+  R1-one-hole-recreated G+P hole@x=8 -> top=Face0 score=0 margin=0 abstain (intended Face8)
+scenario=R1-one-hole-recreated tracked=4 resolved_correct=3 resolved_WRONG=0 broken=1
+    G   repair_correct=0 repair_WRONG=0 abstained=1
+    G+E repair_correct=1 repair_WRONG=0 abstained=0
+    G+P repair_correct=0 repair_WRONG=0 abstained=1
+[       OK ] ReferenceProvenanceTest.R1_OneHoleRecreated (51 ms)
+[ RUN      ] ReferenceProvenanceTest.R2_TwoHolesRecreated
+  R2-two-holes-recreated G   hole@x=8 -> top=Face9 score=1 margin=0.042339 abstain (intended Face8)
+  R2-two-holes-recreated G+E hole@x=8 -> top=Face9 score=1 margin=0.042339 abstain (intended Face8)
+  R2-two-holes-recreated G+P hole@x=8 -> top=Face0 score=0 margin=0 abstain (intended Face8)
+  R2-two-holes-recreated G   hole@x=12 -> top=Face10 score=0.97883 margin=0.042339 abstain (intended Face9)
+  R2-two-holes-recreated G+E hole@x=12 -> top=Face9 score=0.936491 margin=0.042339 abstain (intended Face9)
+  R2-two-holes-recreated G+P hole@x=12 -> top=Face0 score=0 margin=0 abstain (intended Face9)
+scenario=R2-two-holes-recreated tracked=4 resolved_correct=2 resolved_WRONG=0 broken=2
+    G   repair_correct=0 repair_WRONG=0 abstained=2
+    G+E repair_correct=0 repair_WRONG=0 abstained=2
+    G+P repair_correct=0 repair_WRONG=0 abstained=2
+[       OK ] ReferenceProvenanceTest.R2_TwoHolesRecreated (52 ms)
+[ RUN      ] ReferenceProvenanceTest.R3_UpstreamFeatureInserted
+  R3-upstream-feature-inserted G   outer -X face -> top=Face1 score=0.982515 margin=0.243655 CORRECT (intended Face1)
+  R3-upstream-feature-inserted G+E outer -X face -> top=Face1 score=0.982515 margin=0.243655 CORRECT (intended Face1)
+  R3-upstream-feature-inserted G+P outer -X face -> top=Face1 score=0.982515 margin=0.243655 CORRECT (intended Face1)
+scenario=R3-upstream-feature-inserted tracked=2 resolved_correct=1 resolved_WRONG=0 broken=1
+    G   repair_correct=1 repair_WRONG=0 abstained=0
+    G+E repair_correct=1 repair_WRONG=0 abstained=0
+    G+P repair_correct=1 repair_WRONG=0 abstained=0
+[       OK ] ReferenceProvenanceTest.R3_UpstreamFeatureInserted (33 ms)
+[ RUN      ] ReferenceProvenanceTest.R4_ToolReplaced
+  R4-tool-replaced G   pocket near wall -> top=Face10 score=0.90079 margin=0.320701 CORRECT (intended Face10)
+  R4-tool-replaced G+E pocket near wall -> top=Face10 score=0.90079 margin=0.320701 CORRECT (intended Face10)
+  R4-tool-replaced G+P pocket near wall -> top=Face0 score=0 margin=0 abstain (intended Face10)
+  R4-tool-replaced G   pocket far wall -> top=Face8 score=0.90079 margin=0.161929 CORRECT (intended Face8)
+  R4-tool-replaced G+E pocket far wall -> top=Face8 score=0.90079 margin=0.161929 CORRECT (intended Face8)
+  R4-tool-replaced G+P pocket far wall -> top=Face0 score=0 margin=0 abstain (intended Face8)
+scenario=R4-tool-replaced tracked=2 resolved_correct=0 resolved_WRONG=0 broken=2
+    G   repair_correct=2 repair_WRONG=0 abstained=0
+    G+E repair_correct=2 repair_WRONG=0 abstained=0
+    G+P repair_correct=0 repair_WRONG=0 abstained=2
+[       OK ] ReferenceProvenanceTest.R4_ToolReplaced (23 ms)
+[ RUN      ] ReferenceProvenanceTest.R5_LoneReference
+  R5-lone-reference G   hole@x=8 (alone) -> top=Face9 score=1 margin=0.042339 abstain (intended Face8)
+  R5-lone-reference G+E hole@x=8 (alone) -> top=Face9 score=1 margin=0.042339 abstain (intended Face8)
+  R5-lone-reference G+P hole@x=8 (alone) -> top=Face0 score=0 margin=0 abstain (intended Face8)
+scenario=R5-lone-reference tracked=1 resolved_correct=0 resolved_WRONG=0 broken=1
+    G   repair_correct=0 repair_WRONG=0 abstained=1
+    G+E repair_correct=0 repair_WRONG=0 abstained=1
+    G+P repair_correct=0 repair_WRONG=0 abstained=1
+[       OK ] ReferenceProvenanceTest.R5_LoneReference (38 ms)
+[ RUN      ] ReferenceProvenanceTest.N2_HarnessDetectsWrongResolution
+  N2-negative-control: far wall, mislabelled -> BASELINE RESOLVED WRONG
+scenario=N2-negative-control tracked=1 resolved_correct=0 resolved_WRONG=1 broken=0
+    G   repair_correct=0 repair_WRONG=0 abstained=0
+    G+E repair_correct=0 repair_WRONG=0 abstained=0
+    G+P repair_correct=0 repair_WRONG=0 abstained=0
+[       OK ] ReferenceProvenanceTest.N2_HarnessDetectsWrongResolution (19 ms)
+[----------] 6 tests from ReferenceProvenanceTest (219 ms total)
+
+[----------] Global test environment tear-down
+[==========] 6 tests from 1 test suite ran. (286 ms total)
+[  PASSED  ] 6 tests.

@@ -34,12 +34,17 @@ REGRESSED
 | E-0013 | element references survive hard geometry: similar pockets, identical hole patterns, fillets | 8 refs, 6 scenarios | n/a — first measurement | absolute-coordinate ground truth, independent of the matcher | `gauntlet/rounds/architecture/round-003-repair/` | NOT YET | PASS | 2026-09-14 |
 | E-0014 | the harness can detect a wrong resolution | negative control N1 | n/a | ground truth deliberately mislabelled; harness must report it | same round | reproducible by anyone | PASS | 2026-09-14 |
 | E-0015 | a geometric matcher scores 1.0 on the WRONG feature after a resize | H4, repeated holes | the intended face scored 0.958 | scenario-blind matcher vs analytic ground truth | same round, `benchmark.json` → `h4_decisive_result` | NOT YET | PASS (the finding is the risk) | 2026-09-14 |
+| E-0016 | exclusion by surviving references disambiguates where geometry cannot | 7 breaks, 5 scenarios | geometry-only matcher on the same breaks | three strategies, identical inputs, independent ground truth | `gauntlet/rounds/architecture/round-004-provenance/` | NOT YET | PASS | 2026-09-14 |
+| E-0017 | provenance as a hard filter is harmful, not merely unhelpful | same | geometry-only on the same breaks | same | same round | NOT YET | PASS (negative result) | 2026-09-14 |
+| E-0018 | exclusion's benefit depends on the document holding other references | R5 vs R1 | R1 with four references | same change, one reference | same round | NOT YET | PASS | 2026-09-14 |
 
 ## Verification status
 
 Every row above is marked `NOT YET` for independent verification, and that is not a formality. All of it was measured by one operator, in one session, on one shared cloud container with roughly 18% cross-run timing variance. Rule 3 below is satisfied only when someone who did not write `RecomputeTrace` reruns `reproduce.sh` on a quiet machine.
 
 The claims that are robust to the environment are the structural ones (E-0005, E-0006, E-0009, E-0010, E-0011): they do not depend on timing.
+
+E-0016 to E-0018 are conditional on abstention thresholds (score 0.50, margin 0.05) that were chosen, not derived. That is round 004's largest gap, and it means these entries should be read as *directional* rather than as rates.
 
 E-0013 and E-0015 come from round 003, which exists because E-0012's caveat was real: its candidate counter shared a predicate with its ground truth. Round 003 separated them and added a negative control (E-0014), without which none of its zeros would be interpretable.
 

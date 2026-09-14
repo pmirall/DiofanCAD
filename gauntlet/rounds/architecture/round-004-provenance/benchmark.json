@@ -1,0 +1,49 @@
+{
+  "round": "architecture/round-004-provenance",
+  "question": "Does provenance disambiguate what geometry cannot?",
+  "date": "2026-09-14",
+  "prediction_made_before_measuring": "Provenance alone will not disambiguate R1; exclusion by surviving references will.",
+  "prediction_outcome": "Confirmed, and exceeded: provenance as a hard filter is not merely unhelpful, it is harmful.",
+  "environment": {
+    "cpu": "Intel(R) Xeon(R) @ 2.10GHz, 4 cores",
+    "compiler": "gcc 13.3.0",
+    "occt": "7.6.3",
+    "level": "TopoShape"
+  },
+  "strategies": {
+    "G": "geometry only (round 003's matcher, unchanged)",
+    "G+E": "geometry, minus candidates already claimed by a reference that still resolves",
+    "G+P": "geometry, filtered to candidates whose originating tag equals the stored one"
+  },
+  "scenarios": [
+    {"id": "R1", "name": "one hole re-created, block lengthened", "tracked": 4, "resolved_correct": 3, "resolved_wrong": 0, "broken": 1,
+     "G": {"correct": 0, "wrong": 0, "abstain": 1}, "G+E": {"correct": 1, "wrong": 0, "abstain": 0}, "G+P": {"correct": 0, "wrong": 0, "abstain": 1}},
+    {"id": "R2", "name": "two holes re-created, block lengthened", "tracked": 4, "resolved_correct": 2, "resolved_wrong": 0, "broken": 2,
+     "G": {"correct": 0, "wrong": 0, "abstain": 2}, "G+E": {"correct": 0, "wrong": 0, "abstain": 2}, "G+P": {"correct": 0, "wrong": 0, "abstain": 2}},
+    {"id": "R3", "name": "upstream feature inserted", "tracked": 2, "resolved_correct": 1, "resolved_wrong": 0, "broken": 1,
+     "G": {"correct": 1, "wrong": 0, "abstain": 0}, "G+E": {"correct": 1, "wrong": 0, "abstain": 0}, "G+P": {"correct": 1, "wrong": 0, "abstain": 0}},
+    {"id": "R4", "name": "cutting tool replaced", "tracked": 2, "resolved_correct": 0, "resolved_wrong": 0, "broken": 2,
+     "G": {"correct": 2, "wrong": 0, "abstain": 0}, "G+E": {"correct": 2, "wrong": 0, "abstain": 0}, "G+P": {"correct": 0, "wrong": 0, "abstain": 2}},
+    {"id": "R5", "name": "lone reference, same change as R1", "tracked": 1, "resolved_correct": 0, "resolved_wrong": 0, "broken": 1,
+     "G": {"correct": 0, "wrong": 0, "abstain": 1}, "G+E": {"correct": 0, "wrong": 0, "abstain": 1}, "G+P": {"correct": 0, "wrong": 0, "abstain": 1}},
+    {"id": "N2", "name": "negative control, ground truth deliberately wrong", "tracked": 1, "resolved_wrong": 1, "verdict": "harness detects it"}
+  ],
+  "totals_over_7_breaks": {
+    "G":   {"correct": 3, "wrong": 0, "abstain": 4},
+    "G+E": {"correct": 4, "wrong": 0, "abstain": 3},
+    "G+P": {"correct": 1, "wrong": 0, "abstain": 6},
+    "mis_repairs_across_21_strategy_decisions": 0
+  },
+  "findings": {
+    "exclusion_strictly_better": "G+E matched or beat G on every break and was never worse. 4 of 7 correct against 3 of 7.",
+    "provenance_harmful_as_filter": "G+P lost both R4 cases that geometry alone got right, because the replaced tool's tag no longer exists and the filter rejects every candidate.",
+    "why_provenance_fails": "Provenance is not independent information about the broken case. When the originating tag survives, the reference itself usually survives too, so provenance adds nothing; when the reference breaks because the generator changed, the tag has broken with it. G+P's single success was R3, the one case where the tag survived - and there geometry already worked.",
+    "exclusion_depends_on_document_richness": "R5 is R1 with a single reference instead of four. G+E degrades exactly to G and abstains. Exclusion's power comes entirely from the document holding other references that still resolve.",
+    "abstention_is_the_common_outcome": "3 of 7 breaks end in abstention even with the best strategy. Safe, but not a fix."
+  },
+  "caveats": [
+    "Provenance was tested as a HARD FILTER. As a score bonus it would be inert on these scenarios: in every broken case no candidate carries the stored tag, so the bonus is zero for all candidates and the ranking is identical to G. Never harmful, never helpful here - but untested where a tag survives alongside genuine geometric ambiguity.",
+    "Seven breaks across five scenarios, box-and-cylinder geometry, faces only.",
+    "The abstention thresholds (score 0.50, margin 0.05) are still unprincipled, carried over from round 003."
+  ]
+}
