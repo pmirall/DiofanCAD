@@ -77,6 +77,8 @@ Record each milestone's output here. Do not summarize it from memory.
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 003 @ `a95bb784` | 0 | 6 | 74 total — 64 native, **10 in upstream code** (+1867/−3) | unchanged set | clean | 1 (U-001) | ROUND 003 ADDED TESTS ONLY |
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 004 @ `03830bdc` | 0 | 8 | 83 total — 72 native, **11
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-D @ `bda3217a` | 0 | 10 | 91 total — 79 native, **12
+| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 006 @ `5379356b` | 0 | 12 | 96 total — 84 native, **12
+line in upstream code** (+2922/-3) | unchanged set | clean | 2 (U-001, U-003) | ROUND 006 ADDED NO CODE |
 line in upstream code** (+2922/-3) | unchanged set | clean | 1 (U-001) | P0-D ADDED TESTS ONLY |
 line in upstream code** (+2518/-3) | unchanged set | clean | 1 (U-001) | ROUND 004 ADDED TESTS ONLY |
 
