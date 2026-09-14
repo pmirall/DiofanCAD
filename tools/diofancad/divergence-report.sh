@@ -20,7 +20,7 @@ FORK_REF=${2:-HEAD}
 
 # Paths that are DiofanCAD-native by design. Changes here are program overhead,
 # not divergence from upstream code, and are reported separately.
-NATIVE='docs/ gauntlet/ tools/diofancad/ DIOFANCAD.md'
+NATIVE='docs/ gauntlet/ tools/diofancad/ DIOFANCAD.md CLAUDE.md'
 
 if ! git rev-parse --verify --quiet "$UPSTREAM_REF" >/dev/null; then
     echo "error: cannot resolve '$UPSTREAM_REF'." >&2
@@ -62,7 +62,7 @@ CHANGED_NATIVE=$(git diff --name-only "$BASE" "$FORK_REF" | grep -Ec "^($NATIVE_
 CHANGED_UPSTREAM=$((CHANGED_ALL - CHANGED_NATIVE))
 
 echo "files changed:  $CHANGED_ALL total"
-echo "                $CHANGED_NATIVE DiofanCAD-native (docs/gauntlet/tools/charter)"
+echo "                $CHANGED_NATIVE DiofanCAD-native (docs/gauntlet/tools/charter/agreement)"
 echo "                $CHANGED_UPSTREAM in upstream code  <-- this is the divergence that costs"
 echo
 

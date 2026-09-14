@@ -56,7 +56,7 @@ Status:
 
 ### D-006 — DiofanCAD content is confined to native paths
 
-**Decision:** DiofanCAD-native content lives only in `docs/`, `gauntlet/`, `tools/diofancad/` and `DIOFANCAD.md`. Upstream files are left untouched at the fork baseline, including the root `README.md`, which keeps FreeCAD's content.
+**Decision:** DiofanCAD-native content lives only in `docs/`, `gauntlet/`, `tools/diofancad/`, `DIOFANCAD.md` and `CLAUDE.md`. Upstream files are left untouched at the fork baseline, including the root `README.md`, which keeps FreeCAD's content.
 
 **Status:** ACTIVE
 
@@ -210,6 +210,20 @@ Each error pointed towards a *more* dramatic conclusion than the truth. None poi
 **Why the existing rules did not catch it:** D-015 requires a measurement to report whether it was *exercised*, and this one genuinely ran. Negative controls (round 003 onward) prove a harness can report a *difference*; they say nothing about whether it can see a *mechanism*. This is the missing third control.
 
 **Consequences:** Three controls now, and they answer different questions — can the harness report a difference (negative control), did the mechanism run (exercised check), and can the probe see the mechanism at all (positive control).
+
+### D-019 — Two independent routes before any headline claim
+
+**Decision:** No headline claim is written down until it has been established twice, by routes that could not fail the same way. Route 1 is the harness; route 2 must be structurally different — reading the source that implements it, computing the expected value by hand, measuring an independent quantity that must move with the claim, or inverting the test so the opposite result is what gets asserted.
+
+**Status:** ACTIVE. This is the methodology change made after round 007's retraction.
+
+**Evidence:** Eight rounds, four wrong results, all defects in this project's instrument and all biased towards a more dramatic conclusion. The controls added after each one were reactive: the negative control (after 003) proves a harness can report a difference, the exercised check (after 005) proves the mechanism ran, the positive control (after 007) proves the probe can see the mechanism. Each closed the previous error's class and the next error opened a new one.
+
+What actually caught all four was the same thing every time, and it was never a control: physical reasoning (003), an independent quantity (005), hand arithmetic (007 M2), source reading (007 P1). Each was an independent route, and each was taken *after* the write-up rather than before.
+
+**Consequences:** Rounds cost more. `gauntlet/protocols/round-template.md` now carries a pre-flight checklist covering all three controls plus the second route, and a round that cannot name its second route is not ready to run. Scrutiny is explicitly asymmetric (D-017): a result that favours the programme needs the second route and a written "what would make this wrong?"; a result that says the baseline is fine needs less, because that is the direction the errors do not go.
+
+**Revisit trigger:** a fifth measurement error of the same shape would mean this rule is also insufficient, and the next step would be an independent reviewer rather than another self-applied control.
 
 ## Pending decisions
 

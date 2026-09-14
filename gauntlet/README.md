@@ -50,6 +50,13 @@ gauntlet/
 
 ## Running a round
 
+Complete the pre-flight checklist in `protocols/round-template.md` first. It
+exists because eight rounds produced four wrong results, every one a defect in
+this project's own instrument and every one biased towards a more dramatic
+conclusion. `CLAUDE.md` §1 has the rules; the short version is that a headline
+claim needs **two independent routes** and three controls, and none of it is
+optional for a result that would flatter the programme.
+
 1. Read the bar in `workflows/` — or write it first, before building anything.
 2. Create `rounds/<workstream>/round-XXX/` from `protocols/round-template.md`.
 3. Record the baseline before the change, not after.
