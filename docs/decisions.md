@@ -225,6 +225,18 @@ What actually caught all four was the same thing every time, and it was never a 
 
 **Revisit trigger:** a fifth measurement error of the same shape would mean this rule is also insufficient, and the next step would be an independent reviewer rather than another self-applied control.
 
+### D-020 — Consumer coverage is not a programme target
+
+**Decision:** The raw-index reference storage found in round 007 is not pursued as a DiofanCAD workstream. It is offered upstream instead, if at all.
+
+**Status:** ACTIVE. Closes the consumer-coverage reading of D-013.
+
+**Evidence:** Round 009 surveyed the whole tree by two independent axes. Exactly **two** features store sub-element references as raw indices — `Part::Fillet` and `Part::Chamfer`, both deriving from `Part::FilletBase` — against 48 headers using the mapped-name family across seven workbenches. Both fragile features have a PartDesign successor that uses `App::PropertyLinkSub`.
+
+**Consequences:** Making `Part::Fillet` and `Part::Chamfer` store mapped names like their PartDesign counterparts is a plausible small upstream contribution, not a differentiator. It is not queued as an upstream candidate yet, because nothing here has measured what breaks for a user as a result.
+
+**Revisit trigger:** evidence that the two legacy features are widely used in a way that makes their fragility matter, or the discovery of a reference-storing mechanism this survey missed.
+
 ## Pending decisions
 
 - Exact semantic identity serialization model.

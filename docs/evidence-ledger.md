@@ -47,6 +47,9 @@ REGRESSED
 | E-0026 | derived Part features carry element maps; primitives do not | `Part::Box` 0, `Part::Cut` 50, `Part::Fillet` 32 | n/a | `getShape().hasElementMap()`, both accessors compared | round 007 probe P1, corrected | NOT YET | PASS | 2026-09-14 |
 | E-0027 | `PropertyLinkSub` stores a mapped name against a mapped feature | reference to a `Part::Cut` face | round 007's primitive case | shadow inspected: `;Face2;:H346,F.Face6` | round 007 probe P2 | NOT YET | PASS | 2026-09-14 |
 | E-0028 | `Part::Fillet` stores raw edge indices, not mapped names | `FilletElement { int edgeid; double r1, r2; }` | — | source reading, independent of any probe | `src/Mod/Part/App/PropertyTopoShape.h:213` | reproducible by reading | PASS | 2026-09-14 |
+| E-0029 | exactly two features store sub-element references as raw indices | whole tree, 614 headers scanned | n/a — first survey | class axis + behaviour axis + what `Save()` persists | `gauntlet/rounds/architecture/round-009-consumers/` | reproducible by grep | PASS | 2026-09-14 |
+| E-0030 | the mapped-name storage family is used by 48 headers across 7 workbenches | same | same | class survey, per workbench | same round | reproducible by grep | PASS | 2026-09-14 |
+| E-0031 | PartDesign dress-up features use the mapped-name path, unlike their Part equivalents | `PartDesign::DressUp` declares `App::PropertyLinkSub Base` | `Part::FilletBase` declares `PropertyFilletEdges` | source reading; PartDesign cannot be run here | same round | reproducible by reading | PASS (source only) | 2026-09-14 |
 
 ## Verification status
 

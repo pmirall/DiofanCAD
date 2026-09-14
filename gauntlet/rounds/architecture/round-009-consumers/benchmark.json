@@ -1,0 +1,39 @@
+{
+  "round": "architecture/round-009-consumers",
+  "question": "How many FreeCAD features store sub-element references as raw indices rather than mapped names?",
+  "date": "2026-09-14",
+  "method": "source survey, no build required",
+  "scan_scope": {
+    "headers_under_src_App_dirs": 614,
+    "behaviour_axis_cpp_files_touching_subnames": 51,
+    "note": "reported per D-015: a survey that scanned nothing also finds nothing"
+  },
+  "classes": {
+    "mapped_name_capable": ["PropertyLinkSub", "PropertyLinkSubList", "PropertyXLinkSub", "PropertyXLinkSubList", "and their Child/Global/Hidden variants"],
+    "raw_index": ["Part::PropertyFilletEdges"]
+  },
+  "class_uses": {"PropertyLinkSub": 35, "PropertyLinkSubList": 19, "PropertyXLinkSub": 0, "PropertyXLinkSubList": 1, "PropertyFilletEdges": 1},
+  "mapped_name_family_by_workbench": {"Part": 12, "PartDesign": 11, "Measure": 8, "Fem": 6, "Surface": 6, "TechDraw": 4, "Sketcher": 1, "total_mod_headers": 48},
+  "raw_index_consumers": {
+    "count": 2,
+    "features": ["Part::Fillet", "Part::Chamfer"],
+    "both_derive_from": "Part::FilletBase, which declares PropertyFilletEdges Edges",
+    "modern_equivalent": "PartDesign::DressUp uses App::PropertyLinkSub Base - the mapped-name path"
+  },
+  "route_2_independent_confirmations": [
+    {"item": "what the raw-index class persists", "finding": "PropertyFilletEdges::SaveDocFile writes `it.edgeid << it.radius1 << it.radius2` - an integer, no name. Read from the persistence path, not from the struct declaration."},
+    {"item": "empirical, robust side", "finding": "P2 probe in the working Part build: shadow mapped name ';Face2;:Hce7,F.Face6' against a Part::Cut"},
+    {"item": "completeness by a different axis", "finding": "51 .cpp files manipulate subnames, same order as the 55 class-uses. The only sub-element members outside the class list are Part::Attacher::subnames (populated from AttachmentSupport, a PropertyLinkSubList, and carrying shadowSubs) and Sketcher::ExternalToAdd::subname (a transient argument struct). No missed storage mechanism."}
+  ],
+  "controls": {
+    "negative": "the method separates Part::Fillet (raw index, via SaveDocFile) from PartDesign::DressUp (PropertyLinkSub) - two cases known from round 007",
+    "positive": "P2 shows a non-empty mapped name where one is known to exist",
+    "exercised": "scan totals reported above"
+  },
+  "coherence": "55 class-uses across ~48 Mod headers plus src/App; behaviour axis finds 51 files - same order. FilletBase has exactly 2 derivatives, matching the 2 raw-index features.",
+  "caveats": [
+    "PartDesign classified by source reading only: it cannot be run in this configuration (0 of 20 tests pass).",
+    "Capability is not population: 48 headers CAN store mapped names. Whether they DO in a real model is not measured here, and round 007 found one case storing an empty one because the referenced feature was a primitive.",
+    "Expressions, spreadsheet references and the GUI layer are out of scope. So is Sketcher external geometry."
+  ]
+}
