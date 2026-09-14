@@ -1,5 +1,16 @@
 # Round 007 — P0-E at Document Level — Verdict
 
+> ## ⚠ PARTIALLY RETRACTED
+>
+> **The headline of this verdict is wrong.** The probe used
+> `Shape.getValue()`, which constructs a fresh `TopoShape` and drops the
+> element map, so it reported maps as absent when they are present.
+> `Part::Cut` carries 50 entries and `Part::Fillet` 32, and
+> `PropertyLinkSub` does store mapped names against a mapped feature.
+>
+> See [`CORRECTION.md`](CORRECTION.md). M1, M2 and M3 stand; the element-map
+> coverage claim and the "survived by stable indexing" reading do not.
+
 ## PASS on the transfer test. And the transfer test found that there was nothing to transfer.
 
 | # | Requirement | Result |

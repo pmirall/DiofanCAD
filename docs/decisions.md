@@ -181,9 +181,9 @@ Provenance lost both cases that geometry alone got right, because a replaced too
 
 **Status:** ACTIVE
 
-**Evidence:** Round 007. Four rounds measured `ElementMap` in detail — survival rates, silent-corruption rates, disambiguation strategies, persistence. Round 007 then found that in a Part-workbench document built from primitives, **no feature carries an element map at all**, and both document consumers survived change by stable indexing instead. `Part::Box::execute` assigns a raw `TopoDS_Shape`; booleans propagate maps from inputs, so the chain starts empty.
+**Evidence:** Round 007 set out to check coverage and got the answer wrong, which makes the case for the decision rather than against it. Its probe reported no feature carrying an element map; corrected, `Part::Cut` carries 50 entries and `Part::Fillet` 32, while primitives carry none. Coverage varies by feature, it was never established, and four rounds of detailed measurement ran without anyone knowing it.
 
-**Consequences:** Rounds 002–005 are not invalidated — they measured the mechanism correctly. What is unknown is their relationship to a user's experience. A three-line probe (`hasElementMap()`, `getElementMapSize()`) would have established that in round 002 for almost no cost, and it is now the programme's largest gap.
+**Consequences:** A coverage probe belongs at the start of any round that measures a mechanism's quality — and per D-018 it must be able to prove it can see the mechanism when present.
 
 **Revisit trigger:** none; this is a floor. The cost of asking "is this thing on?" is three lines, and the cost of not asking was four rounds of ambiguous relevance.
 
@@ -198,6 +198,18 @@ Provenance lost both cases that geometry alone got right, because a replaced too
 Each error pointed towards a *more* dramatic conclusion than the truth. None pointed the other way.
 
 **Consequences:** The negative control (does the harness fire?) and the exercised check (did the mechanism run?) are both mandatory, and neither is sufficient — all three errors above passed one or the other. The remaining defence is suspicion proportional to how good the result would be for the programme.
+
+### D-018 — A probe reporting absence must first prove it can detect presence
+
+**Decision:** When a measurement concludes that a mechanism is absent, missing, empty or zero, it must include a **positive control**: the same probe applied to a case where the mechanism is known to be present, showing a non-zero result.
+
+**Status:** ACTIVE
+
+**Evidence:** Round 007's coverage probe reported `hasElementMap()` false for every feature and was believed, committed, pushed and reported. It was measuring a temporary `TopoShape` constructed from `Shape.getValue()`, which drops the element map. A positive control — any shape known to carry a map — would have shown zero as well and exposed the probe immediately.
+
+**Why the existing rules did not catch it:** D-015 requires a measurement to report whether it was *exercised*, and this one genuinely ran. Negative controls (round 003 onward) prove a harness can report a *difference*; they say nothing about whether it can see a *mechanism*. This is the missing third control.
+
+**Consequences:** Three controls now, and they answer different questions — can the harness report a difference (negative control), did the mechanism run (exercised check), and can the probe see the mechanism at all (positive control).
 
 ## Pending decisions
 

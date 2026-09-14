@@ -9,7 +9,7 @@
   "wedge": "reference_diagnosis_and_human_confirmed_repair",
   "baseline_commit": "6608bfc249f460efd5f99765304d0ee9b5d06658",
   "last_verified_commit": "bdda49d5",
-  "active_workstream": "architecture/element-map-coverage",
+  "active_workstream": "architecture/consumer-coverage",
   "architecture_proofs": [
     {
       "id": "P0-A",
@@ -70,10 +70,10 @@
   "workflows": [],
   "competitive_claims": [],
   "critical_failures": [],
-  "largest_gap": "nobody has established where element maps are actually active, so four rounds of measurement have an unknown relationship to what a user experiences.",
+  "largest_gap": "features that consume references by raw index - Part::Fillet stores FilletElement { int edgeid; } - cannot benefit from the identity layer, and nobody has surveyed how many consumers are built that way.",
   "last_decision": "D-005",
   "evidence_status": "UNKNOWN",
-  "notes": "P0-A, P0-C, P0-D, P0-E PASS. P0-B needs restatement. Round 007 found no element map on any document-level Part feature in this configuration, which reframes what rounds 002-005 mean. No superiority claim.",
+  "notes": "P0-A, P0-C, P0-D, P0-E PASS. P0-B needs restatement. Round 007 published a wrong claim that element maps were absent from documents; retracted after a harness bug was found (getValue drops the map). Derived features DO carry maps. No superiority claim.",
   "wedge_note": "Rounds 002-004: references rarely break; when they do, the best strategy (geometry + exclusion by surviving references) proposes a correct candidate about half the time and a wrong one never, and abstains the rest. A real but modest feature. Differentiation points at diagnosis (D-013).",
   "rounds": [
     "round-001-p0c: recompute instrumentation (PASS)",
@@ -82,6 +82,6 @@
     "round-004-provenance: provenance vs exclusion (PASS, exclusion adopted, provenance rejected as filter)",
     "round-005-p0d: save/reload (PASS; downstream naming deterministic across reload; string-table case not exercised)",
     "round-006-unblock: cleared the 125 Part failures with two symlinks; suite is 331/331",
-    "round-007-p0e: document-level change challenge (PASS; no document feature carried an element map)"
+    "round-007-p0e: document-level change challenge (PASS; headline RETRACTED - see round-007-p0e/CORRECTION.md)"
   ]
 }

@@ -87,17 +87,24 @@ nothing consumes it.
 Consequence for the roadmap: **DiofanCAD does not build a competing reference
 mechanism** (D-010). See `gauntlet/rounds/architecture/round-002-p0a/verdict.md`.
 
-**Round 007 added a caveat that outweighs the rest.** In a Part-workbench
-document built from primitives, no feature carried an element map at all —
-`Part::Box`, `Part::Cut` and `Part::Fillet` all report `hasElementMap()` false.
-`Part::Box::execute` assigns a raw `TopoDS_Shape`, and booleans propagate maps
-from their inputs, so the chain starts empty and stays empty. Both document
-consumers tested survived change by **stable indexing**, not by identity.
+**Round 007 measured element-map coverage in documents, and its first answer
+was wrong.** The corrected result (round 007 `CORRECTION.md`):
 
-Whether PartDesign chains starting from a Sketch are mapped is untested and is
-the programme's current largest gap. Until it is answered, everything above
-about element-map robustness describes a component, not necessarily the
-product.
+| Feature | element map |
+|---|---:|
+| `Part::Box` (primitive) | none — `execute()` assigns a raw `TopoDS_Shape` |
+| `Part::Cut` | 50 entries |
+| `Part::Fillet` | 32 entries |
+
+So derived features carry maps and primitives do not, and `PropertyLinkSub`
+stores a real mapped name (`;Face2;:H346,F.Face6`) when it references a mapped
+feature. The identity layer is active in Part documents and does reach
+consumers.
+
+One consumer-side fragility survives, and it rests on source reading rather
+than measurement: `Part::Fillet` stores `FilletElement { int edgeid; }` — a raw
+index, no name, no shadow — so it cannot benefit from the identity layer
+however good that layer is.
 
 ### How to use this table
 

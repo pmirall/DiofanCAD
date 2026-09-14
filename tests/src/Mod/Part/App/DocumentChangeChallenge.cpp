@@ -380,7 +380,70 @@ TEST_F(DocumentChangeChallengeTest, P1_WhichFeaturesCarryElementMaps)  // NOLINT
                   << " element_map_size=" << shape.getElementMapSize(false)
                   << " faces=" << shape.countSubShapes(TopAbs_FACE) << std::endl;
     };
+    // getValue() returns a TopoDS_Shape; binding that to a TopoShape parameter
+    // CONSTRUCTS a fresh TopoShape and drops the element map. getShape() returns
+    // the real TopoShape. Report both, because the difference is the difference
+    // between a finding and a bug in this harness.
+    std::cout << "P1 --- via getValue() (constructs a new TopoShape) ---" << std::endl;
     report("Part::Box  ", base->Shape.getValue());
     report("Part::Cut  ", cut->Shape.getValue());
     report("Part::Fillet", fillet->Shape.getValue());
+    std::cout << "P1 --- via getShape() (the stored TopoShape) ---" << std::endl;
+    report("Part::Box  ", base->Shape.getShape());
+    report("Part::Cut  ", cut->Shape.getShape());
+    report("Part::Fillet", fillet->Shape.getShape());
+}
+
+// P2: round 007 measured the consumer side against a Part::Box, which
+// genuinely has no element map. Re-measure against a Part::Cut, which does.
+TEST_F(DocumentChangeChallengeTest, P2_ConsumerAgainstAMappedFeature)  // NOLINT
+{
+    auto* base = doc()->addObject<Part::Box>("Base");
+    base->Length.setValue(20);
+    base->Width.setValue(10);
+    base->Height.setValue(10);
+    auto* tool = doc()->addObject<Part::Box>("Tool");
+    tool->Length.setValue(4);
+    tool->Width.setValue(4);
+    tool->Height.setValue(20);
+    Base::Placement placement;
+    placement.setPosition(Base::Vector3d(3, 3, -5));
+    tool->Placement.setValue(placement);
+    auto* cut = doc()->addObject<Part::Cut>("Cut");
+    cut->Base.setValue(base);
+    cut->Tool.setValue(tool);
+    doc()->recompute();
+
+    const Part::TopoShape& cutShape = cut->Shape.getShape();
+    std::cout << "P2 cut_has_element_map=" << cutShape.hasElementMap()
+              << " size=" << cutShape.getElementMapSize(false) << std::endl;
+
+    // Reference the +X outer face of the cut result.
+    int target = 0;
+    for (unsigned long i = 1; i <= cutShape.countSubShapes(TopAbs_FACE); ++i) {
+        const auto index = static_cast<int>(i);
+        if (near(centreOf(cutShape.getSubShape(TopAbs_FACE, index), false).x, 20)) {
+            target = index;
+        }
+    }
+    ASSERT_GT(target, 0);
+
+    auto* consumer = doc()->addObject<App::FeatureTest>("Consumer");
+    consumer->LinkSub.setValue(cut, std::vector<std::string> {"Face" + std::to_string(target)});
+    doc()->recompute();
+
+    const auto shadow = consumer->LinkSub.getShadowSubs();
+    std::cout << "P2 subname=Face" << target << " shadow_entries=" << shadow.size();
+    if (!shadow.empty()) {
+        std::cout << " mapped='" << shadow.front().newName << "'"
+                  << " old='" << shadow.front().oldName << "'";
+    }
+    std::cout << std::endl;
+    if (shadow.empty() || shadow.front().newName.empty()) {
+        std::cout << "P2 the consumer stored NO mapped name even against a mapped feature"
+                  << std::endl;
+    }
+    else {
+        std::cout << "P2 the consumer DID store a mapped name" << std::endl;
+    }
 }

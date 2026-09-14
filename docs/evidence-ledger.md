@@ -42,8 +42,11 @@ REGRESSED
 | E-0021 | behaviour when the string table is lost | partial restore | — | attempted twice; the construction path creates no StringIDs | same round, M4/M5 | — | **UNKNOWN — not exercised** | 2026-09-14 |
 | E-0022 | the Part test suite passes completely; the 125 failures were a resource layout | `Part_tests_run`, 331 tests | the same suite before the fix, 206/331 | two symlinks under the build root; each removed individually to confirm | `gauntlet/rounds/architecture/round-006-unblock/` | reproducible by anyone from a clean checkout | PASS | 2026-09-14 |
 | E-0023 | document references survive a parameter change and a real .FCStd round-trip | `Part::Fillet` + `PropertyLinkSub`, box lengthened 20→30 | n/a — first document-level measurement | physical ground truth: which corner, which face | `gauntlet/rounds/architecture/round-007-p0e/` | NOT YET | PASS | 2026-09-14 |
-| E-0024 | **no document-level Part feature carried an element map** | `Part::Box`, `Part::Cut`, `Part::Fillet` | n/a | `hasElementMap()` / `getElementMapSize()` after recompute | same round, probe P1 | NOT YET | PASS (scoped: this configuration, Part workbench, chain from primitives) | 2026-09-14 |
-| E-0025 | both document references survived by stable indexing, not by the element map | same | — | `PropertyLinkSub` shadow mapped name was empty; `Part::Fillet` stores a raw index by design | same round | NOT YET | PASS | 2026-09-14 |
+| E-0024 | ~~no document-level Part feature carried an element map~~ | — | — | probe used `getValue()`, which drops the map | round 007 `CORRECTION.md` | — | **RETRACTED — measurement error** | 2026-09-14 |
+| E-0025 | ~~both document references survived by stable indexing~~ | — | — | the empty shadow was a property of the referenced primitive, not of the consumer | round 007 `CORRECTION.md` | — | **RETRACTED — measurement error** | 2026-09-14 |
+| E-0026 | derived Part features carry element maps; primitives do not | `Part::Box` 0, `Part::Cut` 50, `Part::Fillet` 32 | n/a | `getShape().hasElementMap()`, both accessors compared | round 007 probe P1, corrected | NOT YET | PASS | 2026-09-14 |
+| E-0027 | `PropertyLinkSub` stores a mapped name against a mapped feature | reference to a `Part::Cut` face | round 007's primitive case | shadow inspected: `;Face2;:H346,F.Face6` | round 007 probe P2 | NOT YET | PASS | 2026-09-14 |
+| E-0028 | `Part::Fillet` stores raw edge indices, not mapped names | `FilletElement { int edgeid; double r1, r2; }` | — | source reading, independent of any probe | `src/Mod/Part/App/PropertyTopoShape.h:213` | reproducible by reading | PASS | 2026-09-14 |
 
 ## Verification status
 
@@ -57,17 +60,21 @@ E-0013 and E-0015 come from round 003, which exists because E-0012's caveat was 
 
 E-0012 carries a caveat that matters more than its status: the candidate counter shares a predicate with the ground truth, so "exactly one candidate" is partly true by construction on axis-aligned boxes. It is a necessary condition for unambiguous repair, never a sufficient one, and it must be re-measured on fillets and coplanar faces before anything is built on it. The timing claims (E-0004, E-0007, E-0008) should be treated as order-of-magnitude until reproduced.
 
-## A warning about E-0024
+## E-0024 and E-0025 are retracted
 
-E-0024 is the most consequential entry in this ledger and the most easily
-over-read. It says that in **one configuration** (`BUILD_GUI=OFF`, default
-parameters, Part workbench, a chain starting from primitives) no feature
-carried an element map. It does **not** say element maps are absent in FreeCAD.
-PartDesign chains starting from a Sketch — where the toponaming work is aimed —
-were not tested, because Sketcher and PartDesign are not built here.
+Both were produced by a probe that dropped the element map before looking for
+it (`getValue()` instead of `getShape()`). They claimed element maps were
+absent from document features and that references survived by stable indexing.
+Neither is true: derived features carry substantial maps (E-0026) and
+`PropertyLinkSub` stores mapped names against them (E-0027).
 
-Until that is measured, E-0011 through E-0021 should be read as describing
-`ElementMap`'s behaviour rather than a user's experience.
+They are left in the table struck through rather than deleted, because rule 4
+below says a failed result stays in the ledger. A retracted one has more reason
+to stay: it is the only record that this project published a wrong claim about
+FreeCAD and then found it itself.
+
+The one consumer-side concern that survives is E-0028, and it rests on reading
+the source rather than on any measurement here.
 
 ## Rules
 
