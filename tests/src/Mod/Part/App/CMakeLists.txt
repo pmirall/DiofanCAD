@@ -9,6 +9,7 @@ add_executable(Part_tests_run
         FeatureChamfer.cpp
         FeatureCompound.cpp
         FeatureExtrusion.cpp
+        DocumentChangeChallenge.cpp
         FeatureFillet.cpp
         FeatureMirroring.cpp
         FeatureOffset.cpp

@@ -1,0 +1,30 @@
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from DocumentChangeChallengeTest
+[ RUN      ] DocumentChangeChallengeTest.M2_FilletStaysOnTheSameCorner
+M2 edge_index=7 corner_before=(19.2732,9.27324)
+M2 corner_after=(29.2732,9.27324) expected=(30,10)
+M2 nearest_corner_before=(20,10) nearest_corner_after=(30,10) expected_after=(30,10)
+[       OK ] DocumentChangeChallengeTest.M2_FilletStaysOnTheSameCorner (116 ms)
+[ RUN      ] DocumentChangeChallengeTest.M1_LinkSubReferenceSurvivesChange
+M1 box_element_map_size=0 has_element_map=0
+M1 subname=Face2 shadow_entries=1 mapped=''
+M1 NOT EXERCISED: no shadow mapped name was stored, so this measures the index path, not the element map
+M1 sub_after=Face2 centre_x=30 expected=30
+[       OK ] DocumentChangeChallengeTest.M1_LinkSubReferenceSurvivesChange (2 ms)
+[ RUN      ] DocumentChangeChallengeTest.M3_ReferencesSurviveSaveAndReopen
+M3 reopened=1 fillet_present=1 corner_before=(19.2732,9.27324) corner_after=(19.2732,9.27324)
+[       OK ] DocumentChangeChallengeTest.M3_ReferencesSurviveSaveAndReopen (9 ms)
+[ RUN      ] DocumentChangeChallengeTest.N4_ComparisonDetectsAMovedCorner
+N4 corner=(0.72676,0.72676) at_far_corner=0 (must be 0)
+[       OK ] DocumentChangeChallengeTest.N4_ComparisonDetectsAMovedCorner (4 ms)
+[ RUN      ] DocumentChangeChallengeTest.P1_WhichFeaturesCarryElementMaps
+P1 Part::Box   has_element_map=0 element_map_size=0 faces=6
+P1 Part::Cut   has_element_map=0 element_map_size=0 faces=10
+P1 Part::Fillet has_element_map=0 element_map_size=0 faces=7
+[       OK ] DocumentChangeChallengeTest.P1_WhichFeaturesCarryElementMaps (18 ms)
+[----------] 5 tests from DocumentChangeChallengeTest (152 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (215 ms total)
+[  PASSED  ] 5 tests.

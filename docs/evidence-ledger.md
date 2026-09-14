@@ -41,6 +41,9 @@ REGRESSED
 | E-0020 | downstream naming is deterministic across a reload | same change applied to reloaded vs never-saved shape | never-saved shape | byte comparison of 14 mapped names | same round | NOT YET | PASS | 2026-09-14 |
 | E-0021 | behaviour when the string table is lost | partial restore | — | attempted twice; the construction path creates no StringIDs | same round, M4/M5 | — | **UNKNOWN — not exercised** | 2026-09-14 |
 | E-0022 | the Part test suite passes completely; the 125 failures were a resource layout | `Part_tests_run`, 331 tests | the same suite before the fix, 206/331 | two symlinks under the build root; each removed individually to confirm | `gauntlet/rounds/architecture/round-006-unblock/` | reproducible by anyone from a clean checkout | PASS | 2026-09-14 |
+| E-0023 | document references survive a parameter change and a real .FCStd round-trip | `Part::Fillet` + `PropertyLinkSub`, box lengthened 20→30 | n/a — first document-level measurement | physical ground truth: which corner, which face | `gauntlet/rounds/architecture/round-007-p0e/` | NOT YET | PASS | 2026-09-14 |
+| E-0024 | **no document-level Part feature carried an element map** | `Part::Box`, `Part::Cut`, `Part::Fillet` | n/a | `hasElementMap()` / `getElementMapSize()` after recompute | same round, probe P1 | NOT YET | PASS (scoped: this configuration, Part workbench, chain from primitives) | 2026-09-14 |
+| E-0025 | both document references survived by stable indexing, not by the element map | same | — | `PropertyLinkSub` shadow mapped name was empty; `Part::Fillet` stores a raw index by design | same round | NOT YET | PASS | 2026-09-14 |
 
 ## Verification status
 
@@ -53,6 +56,18 @@ E-0016 to E-0018 are conditional on abstention thresholds (score 0.50, margin 0.
 E-0013 and E-0015 come from round 003, which exists because E-0012's caveat was real: its candidate counter shared a predicate with its ground truth. Round 003 separated them and added a negative control (E-0014), without which none of its zeros would be interpretable.
 
 E-0012 carries a caveat that matters more than its status: the candidate counter shares a predicate with the ground truth, so "exactly one candidate" is partly true by construction on axis-aligned boxes. It is a necessary condition for unambiguous repair, never a sufficient one, and it must be re-measured on fillets and coplanar faces before anything is built on it. The timing claims (E-0004, E-0007, E-0008) should be treated as order-of-magnitude until reproduced.
+
+## A warning about E-0024
+
+E-0024 is the most consequential entry in this ledger and the most easily
+over-read. It says that in **one configuration** (`BUILD_GUI=OFF`, default
+parameters, Part workbench, a chain starting from primitives) no feature
+carried an element map. It does **not** say element maps are absent in FreeCAD.
+PartDesign chains starting from a Sketch — where the toponaming work is aimed —
+were not tested, because Sketcher and PartDesign are not built here.
+
+Until that is measured, E-0011 through E-0021 should be read as describing
+`ElementMap`'s behaviour rather than a user's experience.
 
 ## Rules
 

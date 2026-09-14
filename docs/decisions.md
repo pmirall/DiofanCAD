@@ -175,6 +175,30 @@ Provenance lost both cases that geometry alone got right, because a replaced too
 
 **Revisit trigger:** none expected; this is a floor, not a trade-off.
 
+### D-016 — Establish where a mechanism is active before measuring how well it works
+
+**Decision:** Before any further measurement of the element map, establish which document features and workbenches actually populate one. No round may characterise a mechanism's quality until its coverage is known.
+
+**Status:** ACTIVE
+
+**Evidence:** Round 007. Four rounds measured `ElementMap` in detail — survival rates, silent-corruption rates, disambiguation strategies, persistence. Round 007 then found that in a Part-workbench document built from primitives, **no feature carries an element map at all**, and both document consumers survived change by stable indexing instead. `Part::Box::execute` assigns a raw `TopoDS_Shape`; booleans propagate maps from inputs, so the chain starts empty.
+
+**Consequences:** Rounds 002–005 are not invalidated — they measured the mechanism correctly. What is unknown is their relationship to a user's experience. A three-line probe (`hasElementMap()`, `getElementMapSize()`) would have established that in round 002 for almost no cost, and it is now the programme's largest gap.
+
+**Revisit trigger:** none; this is a floor. The cost of asking "is this thing on?" is three lines, and the cost of not asking was four rounds of ambiguous relevance.
+
+### D-017 — A measurement error is more likely to manufacture a finding than to hide one
+
+**Decision:** Treat any measurement that produces a dramatic result as suspect until the instrument has been checked, and check it before writing the result up.
+
+**Status:** ACTIVE
+
+**Evidence:** Three instances in seven rounds, all biased the same way. Round 003's ground truth scored legitimately moved faces as silent corruption — a serious FreeCAD defect that did not exist. Round 005's M4 reported a clean string-table loss that had never been exercised. Round 007's M2 reported a fillet jumping to a different corner when it had followed correctly, because the expectation compared a cylindrical face centre against corner coordinates.
+
+Each error pointed towards a *more* dramatic conclusion than the truth. None pointed the other way.
+
+**Consequences:** The negative control (does the harness fire?) and the exercised check (did the mechanism run?) are both mandatory, and neither is sufficient — all three errors above passed one or the other. The remaining defence is suspicion proportional to how good the result would be for the programme.
+
 ## Pending decisions
 
 - Exact semantic identity serialization model.

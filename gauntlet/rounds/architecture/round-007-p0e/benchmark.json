@@ -1,0 +1,37 @@
+{
+  "round": "architecture/round-007-p0e",
+  "proof": "P0-E",
+  "question": "Do rounds 002-005's findings transfer from TopoShape to a real document?",
+  "date": "2026-09-14",
+  "environment": {
+    "configuration": "BUILD_GUI=OFF, BUILD_PART=ON, default parameters, no user preferences",
+    "level": "App::Document with Part::Box, Part::Cut, Part::Fillet and a real recompute()"
+  },
+  "measurements": [
+    {"id": "M1", "name": "PropertyLinkSub reference across a parameter change", "result": "resolved to the correct physical face (centre_x=30)",
+     "exercised": false,
+     "why_not_exercised": "shadow_entries=1 but the mapped name was EMPTY, so the reference resolved through stable indexing, not the element map"},
+    {"id": "M2", "name": "Part::Fillet stays on the same physical corner", "edge_index": 7,
+     "nearest_corner_before": [20, 10], "nearest_corner_after": [30, 10], "expected_after": [30, 10], "verdict": "PASS"},
+    {"id": "M3", "name": "real saveAs -> close -> openDocument round-trip", "fillet_present_after_reload": true,
+     "corner_before": [19.2732, 9.27324], "corner_after": [19.2732, 9.27324], "verdict": "PASS - closes round 005's document-level gap"},
+    {"id": "N4", "name": "negative control: can the comparison distinguish two corners", "verdict": "fires"},
+    {"id": "P1", "name": "which document features carry an element map",
+     "Part::Box": {"has_element_map": false, "size": 0, "faces": 6},
+     "Part::Cut": {"has_element_map": false, "size": 0, "faces": 10},
+     "Part::Fillet": {"has_element_map": false, "size": 0, "faces": 7},
+     "verdict": "NONE OF THEM"}
+  ],
+  "headline": {
+    "finding": "In this configuration no document-level Part feature carried an element map, so the identity layer measured across rounds 002-005 reached no consumer.",
+    "source_confirmed_mechanism": "Part::Box::execute assigns a raw TopoDS_Shape (this->Shape.setValue(ResultShape, false)); Part::Cut::execute does use makeElementShape, but booleans propagate maps from their inputs, so an unmapped input yields an unmapped result.",
+    "consumer_side": "PropertyLinkSub stored an empty mapped name and fell back to a raw index. Part::Fillet stores FilletElement { int edgeid; } - a raw index by design, with no name and no shadow."
+  },
+  "what_still_worked": "Both consumers survived the change and the save/reload anyway, because Part::Box's face and edge numbering is stable under a length change. The everyday path held - by stable indexing, not by the element map.",
+  "scope_limits": [
+    "BUILD_GUI=OFF with default parameters and no user preferences. A GUI build with default preferences was not tested.",
+    "Part workbench only, with a chain starting from primitives. Sketcher and PartDesign are not built, and a chain starting from a Sketch was not tested - that is the obvious next question.",
+    "One change type (a length increase) on one shape family."
+  ],
+  "measurement_error_found_and_corrected": "M2 first reported the fillet moving to a different corner. It had not: a fillet's cylindrical face centre sits inside its corner by a radius-dependent offset, and the expectation compared the face centre against the corner coordinates. The third such error in seven rounds."
+}

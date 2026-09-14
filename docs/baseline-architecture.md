@@ -87,6 +87,18 @@ nothing consumes it.
 Consequence for the roadmap: **DiofanCAD does not build a competing reference
 mechanism** (D-010). See `gauntlet/rounds/architecture/round-002-p0a/verdict.md`.
 
+**Round 007 added a caveat that outweighs the rest.** In a Part-workbench
+document built from primitives, no feature carried an element map at all —
+`Part::Box`, `Part::Cut` and `Part::Fillet` all report `hasElementMap()` false.
+`Part::Box::execute` assigns a raw `TopoDS_Shape`, and booleans propagate maps
+from their inputs, so the chain starts empty and stays empty. Both document
+consumers tested survived change by **stable indexing**, not by identity.
+
+Whether PartDesign chains starting from a Sketch are mapped is untested and is
+the programme's current largest gap. Until it is answered, everything above
+about element-map robustness describes a component, not necessarily the
+product.
+
 ### How to use this table
 
 An `UNKNOWN` in `Behaviour status` is a research task, not a claim of absence. A located subsystem may already implement a capability the program is tempted to rebuild; V7 §76 requires an explicit REUSE / BUILD / INTEGRATE / DEFER decision against these locations before any implementation starts.
