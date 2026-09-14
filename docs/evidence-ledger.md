@@ -37,6 +37,9 @@ REGRESSED
 | E-0016 | exclusion by surviving references disambiguates where geometry cannot | 7 breaks, 5 scenarios | geometry-only matcher on the same breaks | three strategies, identical inputs, independent ground truth | `gauntlet/rounds/architecture/round-004-provenance/` | NOT YET | PASS | 2026-09-14 |
 | E-0017 | provenance as a hard filter is harmful, not merely unhelpful | same | geometry-only on the same breaks | same | same round | NOT YET | PASS (negative result) | 2026-09-14 |
 | E-0018 | exclusion's benefit depends on the document holding other references | R5 vs R1 | R1 with four references | same change, one reference | same round | NOT YET | PASS | 2026-09-14 |
+| E-0019 | element identity survives the save/restore boundary unchanged | 10 faces, box with pocket | n/a — first measurement | real `ElementMap::save`/`restore` path | `gauntlet/rounds/architecture/round-005-p0d/` | NOT YET | PASS | 2026-09-14 |
+| E-0020 | downstream naming is deterministic across a reload | same change applied to reloaded vs never-saved shape | never-saved shape | byte comparison of 14 mapped names | same round | NOT YET | PASS | 2026-09-14 |
+| E-0021 | behaviour when the string table is lost | partial restore | — | attempted twice; the construction path creates no StringIDs | same round, M4/M5 | — | **UNKNOWN — not exercised** | 2026-09-14 |
 
 ## Verification status
 

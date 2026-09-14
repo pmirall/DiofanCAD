@@ -9,7 +9,7 @@
   "wedge": "reference_diagnosis_and_human_confirmed_repair",
   "baseline_commit": "6608bfc249f460efd5f99765304d0ee9b5d06658",
   "last_verified_commit": "bdda49d5",
-  "active_workstream": "architecture/repair-feasibility",
+  "active_workstream": "phase0/unblock-document-level-testing",
   "architecture_proofs": [
     {
       "id": "P0-A",
@@ -35,7 +35,10 @@
     {
       "id": "P0-D",
       "name": "save/reload prototype",
-      "status": "NOT_STARTED"
+      "status": "PASS",
+      "round": "gauntlet/rounds/architecture/round-005-p0d",
+      "verdict": "PASS on M1-M3; string-table dependency UNCLASSIFIED, not exercised",
+      "evidence": "E-0019, E-0020"
     },
     {
       "id": "P0-E",
@@ -63,15 +66,16 @@
   "workflows": [],
   "competitive_claims": [],
   "critical_failures": [],
-  "largest_gap": "the abstention thresholds decide every result in rounds 003-004, and nobody has a principled basis for them.",
+  "largest_gap": "the programme cannot test document-level persistence at all, because a build-tree-only setup cannot construct a Part::Box - and that one blocker now gates the string-table question, P0-E, and 125 Part tests.",
   "last_decision": "D-005",
   "evidence_status": "UNKNOWN",
-  "notes": "P0-C and P0-A PASS. Repair measured across rounds 003-004: 0 mis-repairs in 21 strategy-decisions, but conditional on unprincipled thresholds. P0-B, P0-D, P0-E remain unproven. No superiority claim.",
+  "notes": "P0-A, P0-C, P0-D PASS. P0-B and P0-E unproven. Phase 0 cannot exit. Next action is an installed build, which unblocks document-level testing. No superiority claim.",
   "wedge_note": "Rounds 002-004: references rarely break; when they do, the best strategy (geometry + exclusion by surviving references) proposes a correct candidate about half the time and a wrong one never, and abstains the rest. A real but modest feature. Differentiation points at diagnosis (D-013).",
   "rounds": [
     "round-001-p0c: recompute instrumentation (PASS)",
     "round-002-p0a: reference resilience (PASS, wedge reframed)",
     "round-003-repair: repair on hard geometry (PASS, repair constrained to human-confirmed)",
-    "round-004-provenance: provenance vs exclusion (PASS, exclusion adopted, provenance rejected as filter)"
+    "round-004-provenance: provenance vs exclusion (PASS, exclusion adopted, provenance rejected as filter)",
+    "round-005-p0d: save/reload (PASS; downstream naming deterministic across reload; string-table case not exercised)"
   ]
 }

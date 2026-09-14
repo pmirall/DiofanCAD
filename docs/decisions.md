@@ -163,6 +163,18 @@ Provenance lost both cases that geometry alone got right, because a replaced too
 
 **Revisit trigger:** a case where an originating tag survives alongside genuine geometric ambiguity, which none of these scenarios produced. Provenance as a score bonus — rather than a filter — is untested and would be inert here.
 
+### D-015 — Every measurement must report whether it was exercised
+
+**Decision:** A harness reports not only what it found but whether the mechanism under test was actually invoked. A clean result from a measurement that never fired is recorded as `NOT EXERCISED`, never as a pass.
+
+**Status:** ACTIVE
+
+**Evidence:** Two rounds in three produced a clean result that meant nothing. Round 003's first ground truth scored legitimately moved faces as silent corruption and would have reported a serious FreeCAD defect. Round 005's M4 returned a perfect score on a string-table loss that never happened, because the save stored no string IDs — caught only by printing `hasher_entries_at_save`.
+
+**Consequences:** Negative controls (round 003's N1 onward) prove the harness *can* fire. This adds the complement: proof that it *did*. Both are cheap and both have already changed a conclusion.
+
+**Revisit trigger:** none expected; this is a floor, not a trade-off.
+
 ## Pending decisions
 
 - Exact semantic identity serialization model.

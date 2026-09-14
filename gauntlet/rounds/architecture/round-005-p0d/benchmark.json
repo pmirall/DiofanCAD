@@ -1,0 +1,33 @@
+{
+  "round": "architecture/round-005-p0d",
+  "proof": "P0-D",
+  "question": "Does identity survive the persistence boundary, and do rounds 002-004's findings still hold after a save/reload cycle?",
+  "date": "2026-09-14",
+  "prediction_made_before_measuring": "M1-M3 will hold; M4 will lose information because mapped names reference string IDs held by the hasher.",
+  "prediction_outcome": "M1-M3 held. M4 was NOT REFUTED AND NOT CONFIRMED - it could not be exercised at this level, which the round records rather than scoring as a pass.",
+  "environment": {
+    "cpu": "Intel(R) Xeon(R) @ 2.10GHz, 4 cores",
+    "occt": "7.6.3",
+    "level": "TopoShape, via the real ElementMap::save/restore path"
+  },
+  "measurements": [
+    {"id": "M1", "name": "mapped names survive save -> restore", "faces": 10, "identical": 10, "differing": 0, "missing": 0, "verdict": "PASS"},
+    {"id": "M2", "name": "a stored reference resolves after reload", "stored": "Face8", "resolved": "Face8", "centre_x": 7, "verdict": "PASS"},
+    {"id": "M3", "name": "downstream naming is deterministic after a reload", "faces_fresh": 14, "faces_via_reload": 14, "identical": 14, "differing": 0, "verdict": "PASS",
+     "why_it_matters": "The same change applied to a reloaded shape produced byte-identical mapped names to the same change applied to a never-saved one. References captured before a save are therefore not at risk after one."},
+    {"id": "M4", "name": "restore with a fresh hasher", "hasher_entries_at_save": 0, "verdict": "NOT EXERCISED",
+     "reason": "The shapes carried no StringHasher, so the save stored no string IDs and a fresh hasher was indistinguishable from the real one. The clean result means nothing."},
+    {"id": "M5", "name": "M4 retried with a shared hasher and a five-deep boolean chain", "chain_faces": 26, "hasher_entries_at_save": 0, "verdict": "STILL NOT EXERCISED",
+     "reason": "ElementMap::beforeSave only MARKS StringIDs already attached to mapped names; it does not create them. The names produced by this construction path carry none, so the string table stays empty."},
+    {"id": "N3", "name": "negative control: the name comparison must detect a difference", "differing": 4, "verdict": "fires"}
+  ],
+  "compatibility_classification_52_5": {
+    "save_restore_with_correct_hasher": "no loss measured",
+    "save_restore_with_lost_string_table": "UNCLASSIFIED - could not be exercised at TopoShape level"
+  },
+  "caveats": [
+    "TopoShape-level persistence, not a document .FCStd round-trip. The latter is blocked by the material-library limitation recorded in round 002.",
+    "The string-table dependency is real in the code and unreachable from this level. It is the round's largest gap, not a resolved question.",
+    "One shape family (box with pockets), faces only."
+  ]
+}

@@ -55,7 +55,13 @@ has none. Everything that avoids document objects passes — all 90
 This is worth knowing before anyone reads a red Part suite as a code problem.
 It also means a large fraction of the Part suite is silently untestable
 without installing, and nothing tells you so. Confirming that an installed
-build passes those 130 has not been done.
+build passes those 125 has not been done.
+
+**Promoted to the programme's largest gap on 2026-09-14 (round 005).** What
+looked like an aside now gates everything left: document-level persistence
+(round 005's `UNCLASSIFIED` string-table case), P0-E's change challenge, the
+§52.5 round-trip matrix, and the health of 125 tests. It is also the cheapest
+item on the list — an install step, not a design problem.
 
 ## Inventory
 
