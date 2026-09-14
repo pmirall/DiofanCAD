@@ -22,6 +22,18 @@ REGRESSED
 | E-0001 | V7 architecture hypothesis is viable | semantic/reference proof | current FreeCAD baseline | architecture proof gate | TO CREATE | TO CREATE | UNKNOWN |  |
 | E-0002 | DiofanCAD preserves intent better under a defined change challenge | Slice A | benchmark baseline | blind/controlled workflow | TO CREATE | TO CREATE | UNKNOWN |  |
 | E-0003 | performance regression remains within policy | affected subsystem | recorded baseline | repeatable benchmark | TO CREATE | TO CREATE | UNKNOWN |  |
+| E-0004 | recompute time can be attributed per object | `Document::recompute`, 2000-object chain | `TimeTracker` gives 3 run-level checkpoints and nothing per object | `App::RecomputeTrace` + gtest; median of 7, interleaved | `gauntlet/rounds/architecture/round-001-p0c/` | NOT YET — single operator, single machine | PASS | 2026-09-14 |
+| E-0005 | recompute causality can be attributed per object | same | baseline records errors only (`_RecomputeLog`) | propagation edges observed in-run; 0 unknown causes in a 3- and 2000-object chain | same round, `evidence/example-trace.json.txt` | NOT YET | PASS | 2026-09-14 |
+| E-0006 | the instrumentation does not perturb recompute | same | uninstrumented build of the same commit | semantics test + cross-build timing | same round, `benchmark.json` | NOT YET | PASS | 2026-09-14 |
+| E-0007 | 84.5% of recompute wall-clock is attributable; 15.5% is not | same | n/a — first measurement | sum of per-object times vs run total | same round | NOT YET | PASS | 2026-09-14 |
+| E-0008 | enabled trace costs ~1.09 µs per object | same | trace-off in the same process | within-process interleaved comparison, 5 samples | same round | NOT YET | PASS | 2026-09-14 |
+| E-0009 | `BUILD_GUI=OFF` cannot configure at the fork baseline | `cMake/FreeCAD_Helpers/SetupQt.cmake` | n/a — defect report | configure at baseline commit and observe the failure | round 001 `changes.md` | reproducible by anyone from a clean checkout | PASS (defect confirmed, fixed) | 2026-09-14 |
+
+## Verification status
+
+Every row above is marked `NOT YET` for independent verification, and that is not a formality. All of it was measured by one operator, in one session, on one shared cloud container with roughly 18% cross-run timing variance. Rule 3 below is satisfied only when someone who did not write `RecomputeTrace` reruns `reproduce.sh` on a quiet machine.
+
+The claims that are robust to the environment are the structural ones (E-0005, E-0006, E-0009): they do not depend on timing. The timing claims (E-0004, E-0007, E-0008) should be treated as order-of-magnitude until reproduced.
 
 ## Rules
 

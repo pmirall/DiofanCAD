@@ -1,0 +1,23 @@
+--- trace ---
+{
+  "run": 1,
+  "document": "tracetest",
+  "force": false,
+  "options": 0,
+  "complete": true,
+  "planned": 3,
+  "recomputed": 3,
+  "total_seconds": 0.000060216,
+  "attributed_seconds": 0.000030006,
+  "plan": ["tracetest#A", "tracetest#B", "tracetest#C"],
+  "objects": [
+    {"name": "tracetest#A", "order": 0, "recomputed": true, "seconds": 0.000009705, "result": 0, "cause": "pre-touched"},
+    {"name": "tracetest#B", "order": 1, "recomputed": true, "seconds": 0.000008207, "result": 0, "cause": "propagated", "cause_source": "tracetest#A", "cause_property": "Link"},
+    {"name": "tracetest#C", "order": 2, "recomputed": true, "seconds": 0.000012094, "result": 0, "cause": "propagated", "cause_source": "tracetest#B", "cause_property": "Link"}
+  ],
+  "edges": [
+    {"from": "tracetest#A", "to": "tracetest#B", "property": "Link"},
+    {"from": "tracetest#B", "to": "tracetest#C", "property": "Link"}
+  ]
+}
+-------------

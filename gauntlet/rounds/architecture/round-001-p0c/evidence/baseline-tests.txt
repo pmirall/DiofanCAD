@@ -1,0 +1,1252 @@
+Running main() from gmock_main.cc
+[==========] Running 553 tests from 37 test suites.
+[----------] Global test environment set-up.
+[----------] 2 tests from AsyncRecomputeTest
+[ RUN      ] AsyncRecomputeTest.CloseDocumentWaitsForInFlightAsyncRecompute
+[       OK ] AsyncRecomputeTest.CloseDocumentWaitsForInFlightAsyncRecompute (52 ms)
+[ RUN      ] AsyncRecomputeTest.WorkerSafetyIsCheckedFromRequest
+[       OK ] AsyncRecomputeTest.WorkerSafetyIsCheckedFromRequest (0 ms)
+[----------] 2 tests from AsyncRecomputeTest (53 ms total)
+
+[----------] 6 tests from ApplicationTest
+[ RUN      ] ApplicationTest.fCustomSyntaxLookup
+[       OK ] ApplicationTest.fCustomSyntaxLookup (0 ms)
+[ RUN      ] ApplicationTest.fCustomSyntaxMac
+[       OK ] ApplicationTest.fCustomSyntaxMac (0 ms)
+[ RUN      ] ApplicationTest.fCustomSyntaxWidgetCount
+[       OK ] ApplicationTest.fCustomSyntaxWidgetCount (0 ms)
+[ RUN      ] ApplicationTest.fCustomSyntaxNotFound
+[       OK ] ApplicationTest.fCustomSyntaxNotFound (0 ms)
+[ RUN      ] ApplicationTest.fCustomSyntaxAmpersand
+[       OK ] ApplicationTest.fCustomSyntaxAmpersand (0 ms)
+[ RUN      ] ApplicationTest.fCustomSyntaxEmptyIn
+[       OK ] ApplicationTest.fCustomSyntaxEmptyIn (0 ms)
+[----------] 6 tests from ApplicationTest (0 ms total)
+
+[----------] 58 tests from ApplicationDirectoriesTest
+[ RUN      ] ApplicationDirectoriesTest.usingCurrentVersionConfigTrueWhenDirMatchesVersion
+[       OK ] ApplicationDirectoriesTest.usingCurrentVersionConfigTrueWhenDirMatchesVersion (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.usingCurrentVersionConfigFalseWhenDirDoesntMatchVersion
+[       OK ] ApplicationDirectoriesTest.usingCurrentVersionConfigFalseWhenDirDoesntMatchVersion (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.isVersionedPathMatchesCurrentMajorAndMinor
+[       OK ] ApplicationDirectoriesTest.isVersionedPathMatchesCurrentMajorAndMinor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.isVersionedPathMatchesLowerMinorSameMajor
+[       OK ] ApplicationDirectoriesTest.isVersionedPathMatchesLowerMinorSameMajor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.isVersionedPathMatchesLowerMajorAnyMinor
+[       OK ] ApplicationDirectoriesTest.isVersionedPathMatchesLowerMajorAnyMinor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.isVersionedPathMatchesZeroMinorSameMajor
+[       OK ] ApplicationDirectoriesTest.isVersionedPathMatchesZeroMinorSameMajor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.isVersionedPathDoesNotMatchHigherMinorSameMajor
+[       OK ] ApplicationDirectoriesTest.isVersionedPathDoesNotMatchHigherMinorSameMajor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.isVersionedPathDoesNotMatchHigherMajorOrRandomName
+[       OK ] ApplicationDirectoriesTest.isVersionedPathDoesNotMatchHigherMajorOrRandomName (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentAvailReturnsExactCurrentVersionIfDirectoryExists
+[       OK ] ApplicationDirectoriesTest.mostRecentAvailReturnsExactCurrentVersionIfDirectoryExists (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentAvailPrefersSameMajorAndPicksHighestLowerMinor
+[       OK ] ApplicationDirectoriesTest.mostRecentAvailPrefersSameMajorAndPicksHighestLowerMinor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentAvailForLowerMajorPicksHighestAvailableMinor
+[       OK ] ApplicationDirectoriesTest.mostRecentAvailForLowerMajorPicksHighestAvailableMinor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentAvailSkipsFilesAndFallsBackToNextDirectory
+[       OK ] ApplicationDirectoriesTest.mostRecentAvailSkipsFilesAndFallsBackToNextDirectory (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentAvailIgnoresHigherMinorThanCurrentInSameMajor
+[       OK ] ApplicationDirectoriesTest.mostRecentAvailIgnoresHigherMinorThanCurrentInSameMajor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentAvailReturnsEmptyStringWhenNoVersionsPresent
+[       OK ] ApplicationDirectoriesTest.mostRecentAvailReturnsEmptyStringWhenNoVersionsPresent (1 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentConfigReturnsCurrentVersionDirectoryIfPresent
+[       OK ] ApplicationDirectoriesTest.mostRecentConfigReturnsCurrentVersionDirectoryIfPresent (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentConfigFallsBackToMostRecentInSameMajorWhenCurrentMissing
+[       OK ] ApplicationDirectoriesTest.mostRecentConfigFallsBackToMostRecentInSameMajorWhenCurrentMissing (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentConfigSkipsFileAtCurrentVersionAndFallsBack
+[       OK ] ApplicationDirectoriesTest.mostRecentConfigSkipsFileAtCurrentVersionAndFallsBack (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentConfigFallsBackToHighestVersionInLowerMajors
+[       OK ] ApplicationDirectoriesTest.mostRecentConfigFallsBackToHighestVersionInLowerMajors (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.mostRecentConfigReturnsStartingPathWhenNoVersionedConfigExists
+[       OK ] ApplicationDirectoriesTest.mostRecentConfigReturnsStartingPathWhenNoVersionedConfigExists (1 ms)
+[ RUN      ] ApplicationDirectoriesTest.usingCurrentVersionExactVersionDir
+[       OK ] ApplicationDirectoriesTest.usingCurrentVersionExactVersionDir (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.usingCurrentVersionVersionDirWithTrailingSlash
+[       OK ] ApplicationDirectoriesTest.usingCurrentVersionVersionDirWithTrailingSlash (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.usingCurrentVersionFileInsideVersionDirIsFalse
+[       OK ] ApplicationDirectoriesTest.usingCurrentVersionFileInsideVersionDirIsFalse (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.usingCurrentVersionLowerVersionDirIsFalse
+[       OK ] ApplicationDirectoriesTest.usingCurrentVersionLowerVersionDirIsFalse (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.usingCurrentVersionHigherVersionDirIsFalse
+[       OK ] ApplicationDirectoriesTest.usingCurrentVersionHigherVersionDirIsFalse (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.usingCurrentVersionNonVersionDirIsFalse
+[       OK ] ApplicationDirectoriesTest.usingCurrentVersionNonVersionDirIsFalse (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateConfigCreatesDestinationAndCopiesFiles
+[       OK ] ApplicationDirectoriesTest.migrateConfigCreatesDestinationAndCopiesFiles (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateConfigSkipsSelfWhenNewIsSubdirectoryOfOld
+[       OK ] ApplicationDirectoriesTest.migrateConfigSkipsSelfWhenNewIsSubdirectoryOfOld (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateConfigEmptyOldPathJustCreatesDestination
+[       OK ] ApplicationDirectoriesTest.migrateConfigEmptyOldPathJustCreatesDestination (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateConfigRecursivelyCopiesDirectoriesAndFiles
+[       OK ] ApplicationDirectoriesTest.migrateConfigRecursivelyCopiesDirectoriesAndFiles (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateConfigNewPathSubdirRecursivelyCopiesAndSkipsSelf
+[       OK ] ApplicationDirectoriesTest.migrateConfigNewPathSubdirRecursivelyCopiesAndSkipsSelf (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateAllPathsVersionedInputChoosesParentPlusCurrent
+[       OK ] ApplicationDirectoriesTest.migrateAllPathsVersionedInputChoosesParentPlusCurrent (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateAllPathsNonVersionedInputAppendsCurrent
+[       OK ] ApplicationDirectoriesTest.migrateAllPathsNonVersionedInputAppendsCurrent (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateAllPathsIgnoresIfDestinationAlreadyExists_NonVersioned
+[       OK ] ApplicationDirectoriesTest.migrateAllPathsIgnoresIfDestinationAlreadyExists_NonVersioned (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateConfigSkipsBrokenSymlink
+[       OK ] ApplicationDirectoriesTest.migrateConfigSkipsBrokenSymlink (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateConfigCopiesValidSymlink
+[       OK ] ApplicationDirectoriesTest.migrateConfigCopiesValidSymlink (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateAllPathsReturnsSkippedPaths
+[       OK ] ApplicationDirectoriesTest.migrateAllPathsReturnsSkippedPaths (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.migrateAllPathsProcessesMultipleInputs
+[       OK ] ApplicationDirectoriesTest.migrateAllPathsProcessesMultipleInputs (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendVecAlreadyVersionedBails
+[       OK ] ApplicationDirectoriesTest.appendVecAlreadyVersionedBails (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendVecBaseExistsAppendsCurrentWhenPresent
+[       OK ] ApplicationDirectoriesTest.appendVecBaseExistsAppendsCurrentWhenPresent (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendVecPicksHighestLowerMinorInSameMajor
+[       OK ] ApplicationDirectoriesTest.appendVecPicksHighestLowerMinorInSameMajor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendVecFallsBackToLowerMajor
+[       OK ] ApplicationDirectoriesTest.appendVecFallsBackToLowerMajor (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendVecNoVersionedChildrenLeavesVectorUnchanged
+[       OK ] ApplicationDirectoriesTest.appendVecNoVersionedChildrenLeavesVectorUnchanged (1 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendVecBaseMissingAppendsCurrentSuffix
+[       OK ] ApplicationDirectoriesTest.appendVecBaseMissingAppendsCurrentSuffix (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.extractVersionSucceedsWithPlainIntegers
+[       OK ] ApplicationDirectoriesTest.extractVersionSucceedsWithPlainIntegers (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.extractVersionSucceedsWithWhitespace
+[       OK ] ApplicationDirectoriesTest.extractVersionSucceedsWithWhitespace (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.extractVersionMissingMajorThrowsRuntimeError
+[       OK ] ApplicationDirectoriesTest.extractVersionMissingMajorThrowsRuntimeError (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.extractVersionMissingMinorThrowsRuntimeError
+[       OK ] ApplicationDirectoriesTest.extractVersionMissingMinorThrowsRuntimeError (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.extractVersionNonNumericThrowsRuntimeError
+[       OK ] ApplicationDirectoriesTest.extractVersionNonNumericThrowsRuntimeError (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.extractVersionOverflowThrowsRuntimeError
+[       OK ] ApplicationDirectoriesTest.extractVersionOverflowThrowsRuntimeError (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.extractVersionNegativeNumbersPassThrough
+[       OK ] ApplicationDirectoriesTest.extractVersionNegativeNumbersPassThrough (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.sanitizeRemovesNullCharacterAtEnd
+[       OK ] ApplicationDirectoriesTest.sanitizeRemovesNullCharacterAtEnd (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.sanitizeReturnsUnchangedIfNoNullCharacter
+[       OK ] ApplicationDirectoriesTest.sanitizeReturnsUnchangedIfNoNullCharacter (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendCreateBaseExistsAppendsCurrentWhenAlreadyPresent
+[       OK ] ApplicationDirectoriesTest.appendCreateBaseExistsAppendsCurrentWhenAlreadyPresent (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendCreateBaseExistsUsesCurrentEvenWhenOlderVersionPresent
+[       OK ] ApplicationDirectoriesTest.appendCreateBaseExistsUsesCurrentEvenWhenOlderVersionPresent (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendCreateBaseExistsNoVersionsAppendsAndCreatesDir
+[       OK ] ApplicationDirectoriesTest.appendCreateBaseExistsNoVersionsAppendsAndCreatesDir (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendDoNotAppendBaseExistsNoVersionsLeavesUnchanged
+[       OK ] ApplicationDirectoriesTest.appendDoNotAppendBaseExistsNoVersionsLeavesUnchanged (1 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendCreateBaseMissingAppendsCurrentSuffix
+[       OK ] ApplicationDirectoriesTest.appendCreateBaseMissingAppendsCurrentSuffix (0 ms)
+[ RUN      ] ApplicationDirectoriesTest.appendCreateAlreadyVersionedBails
+[       OK ] ApplicationDirectoriesTest.appendCreateAlreadyVersionedBails (0 ms)
+[----------] 58 tests from ApplicationDirectoriesTest (28 ms total)
+
+[----------] 24 tests from BackupPolicyTest
+[ RUN      ] BackupPolicyTest.StandardSourceDoesNotExist
+[       OK ] BackupPolicyTest.StandardSourceDoesNotExist (0 ms)
+[ RUN      ] BackupPolicyTest.StandardWithZeroFilesDeletesExisting
+/home/user/DiofanCAD/tests/src/App/BackupPolicy.cpp:142: Skipped
+
+
+[  SKIPPED ] BackupPolicyTest.StandardWithZeroFilesDeletesExisting (0 ms)
+[ RUN      ] BackupPolicyTest.StandardWithOneFileNoPreviousBackups
+[       OK ] BackupPolicyTest.StandardWithOneFileNoPreviousBackups (0 ms)
+[ RUN      ] BackupPolicyTest.StandardWithOneFileOnePreviousBackup
+[       OK ] BackupPolicyTest.StandardWithOneFileOnePreviousBackup (0 ms)
+[ RUN      ] BackupPolicyTest.StandardWithTwoFilesOnePreviousBackup
+[       OK ] BackupPolicyTest.StandardWithTwoFilesOnePreviousBackup (0 ms)
+[ RUN      ] BackupPolicyTest.StandardWithTwoFilesOnePreviousBackupUnexpectedSuffix
+[       OK ] BackupPolicyTest.StandardWithTwoFilesOnePreviousBackupUnexpectedSuffix (0 ms)
+[ RUN      ] BackupPolicyTest.StandardWithTwoFilesOnePreviousBackupOutOfSequenceNumber
+[       OK ] BackupPolicyTest.StandardWithTwoFilesOnePreviousBackupOutOfSequenceNumber (0 ms)
+[ RUN      ] BackupPolicyTest.StandardWithFCBakSet
+[       OK ] BackupPolicyTest.StandardWithFCBakSet (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampSourceDoesNotExist
+[       OK ] BackupPolicyTest.TimestampSourceDoesNotExist (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampNoSourceGiven
+[       OK ] BackupPolicyTest.TimestampNoSourceGiven (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampNoTargetGiven
+[       OK ] BackupPolicyTest.TimestampNoTargetGiven (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampWithZeroFilesDeletesExisting
+/home/user/DiofanCAD/tests/src/App/BackupPolicy.cpp:284: Skipped
+
+
+[  SKIPPED ] BackupPolicyTest.TimestampWithZeroFilesDeletesExisting (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampWithOneFileAndNoneExistingNotFCBakCreatesNumberedFile
+[       OK ] BackupPolicyTest.TimestampWithOneFileAndNoneExistingNotFCBakCreatesNumberedFile (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampSourceHasNoExtension
+[       OK ] BackupPolicyTest.TimestampSourceHasNoExtension (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampTargetHasNoExtension
+[       OK ] BackupPolicyTest.TimestampTargetHasNoExtension (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampWithOneFileAndNoneExistingFCBakCreatesDatedFile
+[       OK ] BackupPolicyTest.TimestampWithOneFileAndNoneExistingFCBakCreatesDatedFile (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampReplacesDotsWithDashes
+[       OK ] BackupPolicyTest.TimestampReplacesDotsWithDashes (0 ms)
+[ DISABLED ] BackupPolicyTest.DISABLED_TimestampWithInvalidFormatStringThrows
+[ DISABLED ] BackupPolicyTest.DISABLED_TimestampWithAbsurdlyLongFormatStringThrows
+[ RUN      ] BackupPolicyTest.TimestampDetectsOldBackupFormat
+[       OK ] BackupPolicyTest.TimestampDetectsOldBackupFormat (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampDetectsOldBackupFormatIgnoresOther
+[       OK ] BackupPolicyTest.TimestampDetectsOldBackupFormatIgnoresOther (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampDetectsAndRetainsOldBackupWhenAllowed
+[       OK ] BackupPolicyTest.TimestampDetectsAndRetainsOldBackupWhenAllowed (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampFormatStringEndsWithSpace
+[       OK ] BackupPolicyTest.TimestampFormatStringEndsWithSpace (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampFormatStringEndsWithDash
+[       OK ] BackupPolicyTest.TimestampFormatStringEndsWithDash (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampFormatFileAlreadyExists
+[       OK ] BackupPolicyTest.TimestampFormatFileAlreadyExists (0 ms)
+[ RUN      ] BackupPolicyTest.TimestampFormatFileAlreadyExistsMultipleTimes
+[       OK ] BackupPolicyTest.TimestampFormatFileAlreadyExistsMultipleTimes (0 ms)
+[----------] 24 tests from BackupPolicyTest (2 ms total)
+
+[----------] 1 test from Branding
+[ RUN      ] Branding.one
+[       OK ] Branding.one (0 ms)
+[----------] 1 test from Branding (0 ms total)
+
+[----------] 31 tests from ComplexGeoDataTest
+[ RUN      ] ComplexGeoDataTest.getIndexedNameNoName
+[       OK ] ComplexGeoDataTest.getIndexedNameNoName (0 ms)
+[ RUN      ] ComplexGeoDataTest.getIndexedNameNoElementMap
+[       OK ] ComplexGeoDataTest.getIndexedNameNoElementMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.getMappedNameNoElement
+[       OK ] ComplexGeoDataTest.getMappedNameNoElement (0 ms)
+[ RUN      ] ComplexGeoDataTest.getMappedNameDisallowUnmappedNoMap
+[       OK ] ComplexGeoDataTest.getMappedNameDisallowUnmappedNoMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.getMappedNameDisallowUnmappedWithMap
+[       OK ] ComplexGeoDataTest.getMappedNameDisallowUnmappedWithMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.getMappedNameDisallowUnmappedMissingFromMap
+[       OK ] ComplexGeoDataTest.getMappedNameDisallowUnmappedMissingFromMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.getMappedNameAllowUnmapped
+[       OK ] ComplexGeoDataTest.getMappedNameAllowUnmapped (0 ms)
+[ RUN      ] ComplexGeoDataTest.getElementNameGivenIndexedName
+[       OK ] ComplexGeoDataTest.getElementNameGivenIndexedName (0 ms)
+[ RUN      ] ComplexGeoDataTest.getElementNameGivenMappedName
+[       OK ] ComplexGeoDataTest.getElementNameGivenMappedName (0 ms)
+[ RUN      ] ComplexGeoDataTest.getElementMappedNamesNoMapNoUnmapped
+[       OK ] ComplexGeoDataTest.getElementMappedNamesNoMapNoUnmapped (0 ms)
+[ RUN      ] ComplexGeoDataTest.getElementMappedNamesWithMapNoUnmapped
+[       OK ] ComplexGeoDataTest.getElementMappedNamesWithMapNoUnmapped (0 ms)
+[ RUN      ] ComplexGeoDataTest.getElementMappedNamesNoMapWithUnmapped
+[       OK ] ComplexGeoDataTest.getElementMappedNamesNoMapWithUnmapped (0 ms)
+[ RUN      ] ComplexGeoDataTest.getElementMappedNamesWithMapWithUnmapped
+[       OK ] ComplexGeoDataTest.getElementMappedNamesWithMapWithUnmapped (0 ms)
+[ RUN      ] ComplexGeoDataTest.elementTypeValidIndexName
+[       OK ] ComplexGeoDataTest.elementTypeValidIndexName (0 ms)
+[ RUN      ] ComplexGeoDataTest.elementTypeInvalidIndexedName
+[       OK ] ComplexGeoDataTest.elementTypeInvalidIndexedName (0 ms)
+[ RUN      ] ComplexGeoDataTest.elementTypeCharEmptyName
+[       OK ] ComplexGeoDataTest.elementTypeCharEmptyName (0 ms)
+[ RUN      ] ComplexGeoDataTest.elementTypeCharIndexedName
+[       OK ] ComplexGeoDataTest.elementTypeCharIndexedName (0 ms)
+[ RUN      ] ComplexGeoDataTest.elementTypeCharMappedNameNoPrefix
+[       OK ] ComplexGeoDataTest.elementTypeCharMappedNameNoPrefix (0 ms)
+[ RUN      ] ComplexGeoDataTest.elementTypeCharMappedNameWithPrefix
+[       OK ] ComplexGeoDataTest.elementTypeCharMappedNameWithPrefix (0 ms)
+[ RUN      ] ComplexGeoDataTest.resetElementMapNoArgument
+[       OK ] ComplexGeoDataTest.resetElementMapNoArgument (0 ms)
+[ RUN      ] ComplexGeoDataTest.resetElementMapWithArgument
+[       OK ] ComplexGeoDataTest.resetElementMapWithArgument (0 ms)
+[ RUN      ] ComplexGeoDataTest.setAndGetElementMap
+[       OK ] ComplexGeoDataTest.setAndGetElementMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.getElementMapSize
+[       OK ] ComplexGeoDataTest.getElementMapSize (0 ms)
+[ RUN      ] ComplexGeoDataTest.flushElementMap
+[       OK ] ComplexGeoDataTest.flushElementMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.saveWithNoElementMap
+[       OK ] ComplexGeoDataTest.saveWithNoElementMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.saveWithElementMap
+[       OK ] ComplexGeoDataTest.saveWithElementMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.saveWithPersistenceFilename
+[       OK ] ComplexGeoDataTest.saveWithPersistenceFilename (0 ms)
+[ RUN      ] ComplexGeoDataTest.saveDocFileWithNoElementMap
+[       OK ] ComplexGeoDataTest.saveDocFileWithNoElementMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.saveDocFileWithElementMap
+[       OK ] ComplexGeoDataTest.saveDocFileWithElementMap (0 ms)
+[ RUN      ] ComplexGeoDataTest.restoreStream
+[       OK ] ComplexGeoDataTest.restoreStream (0 ms)
+[ RUN      ] ComplexGeoDataTest.traceElement
+[       OK ] ComplexGeoDataTest.traceElement (0 ms)
+[----------] 31 tests from ComplexGeoDataTest (7 ms total)
+
+[----------] 4 tests from DocumentTest
+[ RUN      ] DocumentTest.addStringHasherIndicatesUnwrittenWhenNew
+[       OK ] DocumentTest.addStringHasherIndicatesUnwrittenWhenNew (0 ms)
+[ RUN      ] DocumentTest.addStringHasherIndicatesAlreadyWritten
+[       OK ] DocumentTest.addStringHasherIndicatesAlreadyWritten (0 ms)
+[ RUN      ] DocumentTest.getStringHasherGivesExpectedHasher
+[       OK ] DocumentTest.getStringHasherGivesExpectedHasher (0 ms)
+[ RUN      ] DocumentTest.importObjectsRestoresSourceStringHasher
+[       OK ] DocumentTest.importObjectsRestoresSourceStringHasher (1 ms)
+[----------] 4 tests from DocumentTest (2 ms total)
+
+[----------] 1 test from DocumentObjectTest
+[ RUN      ] DocumentObjectTest.getSubObjectList
+unknown file: Failure
+Unknown C++ exception thrown in the test body.
+
+[  FAILED  ] DocumentObjectTest.getSubObjectList (0 ms)
+[----------] 1 test from DocumentObjectTest (0 ms total)
+
+[----------] 32 tests from Expression
+[ RUN      ] Expression.tokenize
+[       OK ] Expression.tokenize (0 ms)
+[ RUN      ] Expression.tokenizeCompletion
+[       OK ] Expression.tokenizeCompletion (0 ms)
+[ RUN      ] Expression.tokenizeQuantity
+[       OK ] Expression.tokenizeQuantity (0 ms)
+[ RUN      ] Expression.tokenizeFunc
+[       OK ] Expression.tokenizeFunc (0 ms)
+[ RUN      ] Expression.tokenizeOne
+[       OK ] Expression.tokenizeOne (0 ms)
+[ RUN      ] Expression.tokenizeNum
+[       OK ] Expression.tokenizeNum (0 ms)
+[ RUN      ] Expression.tokenizeID
+[       OK ] Expression.tokenizeID (0 ms)
+[ RUN      ] Expression.tokenizeUnit
+[       OK ] Expression.tokenizeUnit (0 ms)
+[ RUN      ] Expression.tokenizeUSUnit
+[       OK ] Expression.tokenizeUSUnit (0 ms)
+[ RUN      ] Expression.tokenizeInt
+[       OK ] Expression.tokenizeInt (0 ms)
+[ RUN      ] Expression.tokenizePi
+[       OK ] Expression.tokenizePi (0 ms)
+[ RUN      ] Expression.tokenizeE
+[       OK ] Expression.tokenizeE (0 ms)
+[ RUN      ] Expression.tokenizeConstant
+[       OK ] Expression.tokenizeConstant (0 ms)
+[ RUN      ] Expression.tokenizeEqual
+[       OK ] Expression.tokenizeEqual (0 ms)
+[ RUN      ] Expression.tokenizeNotEqual
+[       OK ] Expression.tokenizeNotEqual (0 ms)
+[ RUN      ] Expression.tokenizeLessThan
+[       OK ] Expression.tokenizeLessThan (0 ms)
+[ RUN      ] Expression.tokenizeLessThanEqual
+[       OK ] Expression.tokenizeLessThanEqual (0 ms)
+[ RUN      ] Expression.tokenizeGreaterThan
+[       OK ] Expression.tokenizeGreaterThan (0 ms)
+[ RUN      ] Expression.tokenizeGreaterThanEqual
+[       OK ] Expression.tokenizeGreaterThanEqual (0 ms)
+[ RUN      ] Expression.tokenizeMinus
+[       OK ] Expression.tokenizeMinus (0 ms)
+[ RUN      ] Expression.tokenizeCell1
+[       OK ] Expression.tokenizeCell1 (0 ms)
+[ RUN      ] Expression.tokenizeCell2
+[       OK ] Expression.tokenizeCell2 (0 ms)
+[ RUN      ] Expression.tokenizeCell3
+[       OK ] Expression.tokenizeCell3 (0 ms)
+[ RUN      ] Expression.tokenizeString
+[       OK ] Expression.tokenizeString (0 ms)
+[ RUN      ] Expression.tokenizeExponent
+[       OK ] Expression.tokenizeExponent (0 ms)
+[ RUN      ] Expression.tokenizeNumAndUnit
+[       OK ] Expression.tokenizeNumAndUnit (0 ms)
+[ RUN      ] Expression.tokenizePos
+[       OK ] Expression.tokenizePos (0 ms)
+[ RUN      ] Expression.tokenizeNeg
+[       OK ] Expression.tokenizeNeg (0 ms)
+[ RUN      ] Expression.tokenizePi_rad
+[       OK ] Expression.tokenizePi_rad (0 ms)
+[ RUN      ] Expression.toString
+[       OK ] Expression.toString (0 ms)
+[ RUN      ] Expression.test_pi_rad
+[       OK ] Expression.test_pi_rad (0 ms)
+[ RUN      ] Expression.test_e_rad
+[       OK ] Expression.test_e_rad (0 ms)
+[----------] 32 tests from Expression (0 ms total)
+
+[----------] 6 tests from Evaluate
+[ RUN      ] Evaluate.test_evaluate_simple
+[       OK ] Evaluate.test_evaluate_simple (0 ms)
+[ RUN      ] Evaluate.test_simplify_simple
+[       OK ] Evaluate.test_simplify_simple (0 ms)
+[ RUN      ] Evaluate.test_evaluate_function
+[       OK ] Evaluate.test_evaluate_function (0 ms)
+[ RUN      ] Evaluate.test_simplify_function
+[       OK ] Evaluate.test_simplify_function (0 ms)
+[ RUN      ] Evaluate.test_evaluate_refer_to_var
+[       OK ] Evaluate.test_evaluate_refer_to_var (0 ms)
+[ RUN      ] Evaluate.test_simplify_refer_to_var
+[       OK ] Evaluate.test_simplify_refer_to_var (0 ms)
+[----------] 6 tests from Evaluate (2 ms total)
+
+[----------] 19 tests from ExpressionParserTest
+[ RUN      ] ExpressionParserTest.functionPARSEQUANT
+[       OK ] ExpressionParserTest.functionPARSEQUANT (0 ms)
+[ RUN      ] ExpressionParserTest.isTokenAConstant
+[       OK ] ExpressionParserTest.isTokenAConstant (0 ms)
+[ RUN      ] ExpressionParserTest.simpleExpressionsParse
+[       OK ] ExpressionParserTest.simpleExpressionsParse (0 ms)
+[ RUN      ] ExpressionParserTest.expressionUserInputKeepsGroupingSeparateFromDecimals
+[       OK ] ExpressionParserTest.expressionUserInputKeepsGroupingSeparateFromDecimals (0 ms)
+[ RUN      ] ExpressionParserTest.groupedExpressionUsesLocaleGroupingPattern
+[       OK ] ExpressionParserTest.groupedExpressionUsesLocaleGroupingPattern (0 ms)
+[ RUN      ] ExpressionParserTest.localizedInputPreservesDigitsInsideIdentifiers
+[       OK ] ExpressionParserTest.localizedInputPreservesDigitsInsideIdentifiers (0 ms)
+[ RUN      ] ExpressionParserTest.functionArgumentsTakePrecedenceOverGrouping
+[       OK ] ExpressionParserTest.functionArgumentsTakePrecedenceOverGrouping (0 ms)
+[ RUN      ] ExpressionParserTest.commaDecimalLocalesUseSemicolonsForArguments
+[       OK ] ExpressionParserTest.commaDecimalLocalesUseSemicolonsForArguments (0 ms)
+[ RUN      ] ExpressionParserTest.groupedParenthesizedExpressionsUseTheLocalePattern
+[       OK ] ExpressionParserTest.groupedParenthesizedExpressionsUseTheLocalePattern (0 ms)
+[ RUN      ] ExpressionParserTest.spaceGroupingAndSemicolonArgumentsRemainDistinct
+[       OK ] ExpressionParserTest.spaceGroupingAndSemicolonArgumentsRemainDistinct (0 ms)
+[ RUN      ] ExpressionParserTest.commaFunctionArgumentsRemainArgumentsWithDecimalText
+[       OK ] ExpressionParserTest.commaFunctionArgumentsRemainArgumentsWithDecimalText (0 ms)
+[ RUN      ] ExpressionParserTest.userInputPreservesOpaqueStringLiterals
+[       OK ] ExpressionParserTest.userInputPreservesOpaqueStringLiterals (0 ms)
+[ RUN      ] ExpressionParserTest.badExpressionsDoNotParse
+[       OK ] ExpressionParserTest.badExpressionsDoNotParse (0 ms)
+[ RUN      ] ExpressionParserTest.expressionsWithMultiplyDivideParse
+[       OK ] ExpressionParserTest.expressionsWithMultiplyDivideParse (0 ms)
+[ RUN      ] ExpressionParserTest.expressionsWithUnitsMultipliedDontParse_LikelyBug
+[       OK ] ExpressionParserTest.expressionsWithUnitsMultipliedDontParse_LikelyBug (0 ms)
+[ RUN      ] ExpressionParserTest.dimensionlessExpressionsParseAsLongOrDouble
+[       OK ] ExpressionParserTest.dimensionlessExpressionsParseAsLongOrDouble (0 ms)
+[ RUN      ] ExpressionParserTest.expressionsWithFunctionsParse
+[       OK ] ExpressionParserTest.expressionsWithFunctionsParse (0 ms)
+[ DISABLED ] ExpressionParserTest.DISABLED_expressionsParseAsPyObjectWrapper
+[ RUN      ] ExpressionParserTest.expressionsThatLookValidButDoNotParse
+[       OK ] ExpressionParserTest.expressionsThatLookValidButDoNotParse (0 ms)
+[ RUN      ] ExpressionParserTest.canParseProperties
+[       OK ] ExpressionParserTest.canParseProperties (0 ms)
+[----------] 19 tests from ExpressionParserTest (8 ms total)
+
+[----------] 14 tests from QuantityInput
+[ RUN      ] QuantityInput.EditingAndCommitDistinguishIncompleteNumbers
+[       OK ] QuantityInput.EditingAndCommitDistinguishIncompleteNumbers (0 ms)
+[ RUN      ] QuantityInput.TrailingGroupingSeparatorFollowsTheInputPhase
+[       OK ] QuantityInput.TrailingGroupingSeparatorFollowsTheInputPhase (0 ms)
+[ RUN      ] QuantityInput.ReportsGroupingAndUnitDiagnostics
+[       OK ] QuantityInput.ReportsGroupingAndUnitDiagnostics (0 ms)
+[ RUN      ] QuantityInput.AcceptsGroupedQuantityAndNormalizesIt
+[       OK ] QuantityInput.AcceptsGroupedQuantityAndNormalizesIt (0 ms)
+[ RUN      ] QuantityInput.ReportsExpressionEvaluationAndRangeDiagnostics
+[       OK ] QuantityInput.ReportsExpressionEvaluationAndRangeDiagnostics (0 ms)
+[ RUN      ] QuantityInput.GrammarSelectionIsExplicit
+[       OK ] QuantityInput.GrammarSelectionIsExplicit (0 ms)
+[ RUN      ] QuantityInput.PositiveSignsAndCompactAdditionRemainExpressionSyntax
+[       OK ] QuantityInput.PositiveSignsAndCompactAdditionRemainExpressionSyntax (0 ms)
+[ RUN      ] QuantityInput.DefaultUnitAppliesToBareAdditiveTerms
+[       OK ] QuantityInput.DefaultUnitAppliesToBareAdditiveTerms (0 ms)
+[ RUN      ] QuantityInput.RejectsMalformedGroupingAfterExpressionOperand
+[       OK ] QuantityInput.RejectsMalformedGroupingAfterExpressionOperand (0 ms)
+[ RUN      ] QuantityInput.DefaultUnitPreservesExpressionDependencies
+[       OK ] QuantityInput.DefaultUnitPreservesExpressionDependencies (0 ms)
+[ RUN      ] QuantityInput.DefaultUnitDoesNotRewriteNestedMultiplicativeSubexpressions
+[       OK ] QuantityInput.DefaultUnitDoesNotRewriteNestedMultiplicativeSubexpressions (0 ms)
+[ RUN      ] QuantityInput.DefaultUnitExpressionsRoundTripThroughSerialization
+[       OK ] QuantityInput.DefaultUnitExpressionsRoundTripThroughSerialization (0 ms)
+[ RUN      ] QuantityInput.EditingAndCommitExposeTheSameInvalidGrouping
+[       OK ] QuantityInput.EditingAndCommitExposeTheSameInvalidGrouping (0 ms)
+[ RUN      ] QuantityInput.SharedLocalizedInputCorpus
+[       OK ] QuantityInput.SharedLocalizedInputCorpus (0 ms)
+[----------] 14 tests from QuantityInput (4 ms total)
+
+[----------] 16 tests from ElementMapTest
+[ RUN      ] ElementMapTest.defaultConstruction
+[       OK ] ElementMapTest.defaultConstruction (0 ms)
+[ RUN      ] ElementMapTest.setElementNameDefaults
+[       OK ] ElementMapTest.setElementNameDefaults (0 ms)
+[ RUN      ] ElementMapTest.setElementNameNoOverwrite
+[       OK ] ElementMapTest.setElementNameNoOverwrite (0 ms)
+[ RUN      ] ElementMapTest.setElementNameWithOverwrite
+[       OK ] ElementMapTest.setElementNameWithOverwrite (0 ms)
+[ RUN      ] ElementMapTest.setElementNameWithHashing
+[       OK ] ElementMapTest.setElementNameWithHashing (0 ms)
+[ RUN      ] ElementMapTest.eraseMappedName
+[       OK ] ElementMapTest.eraseMappedName (0 ms)
+[ RUN      ] ElementMapTest.eraseIndexedName
+[       OK ] ElementMapTest.eraseIndexedName (0 ms)
+[ RUN      ] ElementMapTest.findMappedName
+[       OK ] ElementMapTest.findMappedName (0 ms)
+[ RUN      ] ElementMapTest.findIndexedName
+[       OK ] ElementMapTest.findIndexedName (0 ms)
+[ RUN      ] ElementMapTest.findAll
+[       OK ] ElementMapTest.findAll (0 ms)
+[ RUN      ] ElementMapTest.mimicOnePart
+[       OK ] ElementMapTest.mimicOnePart (0 ms)
+[ RUN      ] ElementMapTest.mimicSimpleUnion
+[       OK ] ElementMapTest.mimicSimpleUnion (0 ms)
+[ RUN      ] ElementMapTest.mimicOperationAgainstSelf
+[       OK ] ElementMapTest.mimicOperationAgainstSelf (0 ms)
+[ RUN      ] ElementMapTest.hasChildElementMapTest
+[       OK ] ElementMapTest.hasChildElementMapTest (0 ms)
+[ RUN      ] ElementMapTest.hashChildMapsTest
+[       OK ] ElementMapTest.hashChildMapsTest (0 ms)
+[ RUN      ] ElementMapTest.addAndGetChildElementsTest
+[       OK ] ElementMapTest.addAndGetChildElementsTest (0 ms)
+[----------] 16 tests from ElementMapTest (4 ms total)
+
+[----------] 2 tests from ElementNamingUtilsTest
+[ RUN      ] ElementNamingUtilsTest.findElementName
+[       OK ] ElementNamingUtilsTest.findElementName (0 ms)
+[ RUN      ] ElementNamingUtilsTest.indexOfElement
+[       OK ] ElementNamingUtilsTest.indexOfElement (0 ms)
+[----------] 2 tests from ElementNamingUtilsTest (0 ms total)
+
+[----------] 30 tests from IndexedNameTest
+[ RUN      ] IndexedNameTest.defaultConstruction
+[       OK ] IndexedNameTest.defaultConstruction (0 ms)
+[ RUN      ] IndexedNameTest.nameOnlyConstruction
+[       OK ] IndexedNameTest.nameOnlyConstruction (0 ms)
+[ RUN      ] IndexedNameTest.nameAndIndexConstruction
+[       OK ] IndexedNameTest.nameAndIndexConstruction (0 ms)
+[ RUN      ] IndexedNameTest.nameAndIndexConstructionWithOverride
+[       OK ] IndexedNameTest.nameAndIndexConstructionWithOverride (0 ms)
+[ RUN      ] IndexedNameTest.constructionInvalidCharInName
+[       OK ] IndexedNameTest.constructionInvalidCharInName (0 ms)
+[ RUN      ] IndexedNameTest.constructionNumberInName
+[       OK ] IndexedNameTest.constructionNumberInName (0 ms)
+[ RUN      ] IndexedNameTest.nameAndTypeListConstructionWithoutAllowOthers
+[       OK ] IndexedNameTest.nameAndTypeListConstructionWithoutAllowOthers (0 ms)
+[ RUN      ] IndexedNameTest.nameAndTypeListConstructionWithAllowOthers
+[       OK ] IndexedNameTest.nameAndTypeListConstructionWithAllowOthers (0 ms)
+[ RUN      ] IndexedNameTest.nameAndTypeListConstructionReusedMemoryCheck
+[       OK ] IndexedNameTest.nameAndTypeListConstructionReusedMemoryCheck (0 ms)
+[ RUN      ] IndexedNameTest.byteArrayConstruction
+[       OK ] IndexedNameTest.byteArrayConstruction (0 ms)
+[ RUN      ] IndexedNameTest.copyConstruction
+[       OK ] IndexedNameTest.copyConstruction (0 ms)
+[ RUN      ] IndexedNameTest.streamInsertionOperator
+[       OK ] IndexedNameTest.streamInsertionOperator (0 ms)
+[ RUN      ] IndexedNameTest.compoundAssignmentOperator
+[       OK ] IndexedNameTest.compoundAssignmentOperator (0 ms)
+[ RUN      ] IndexedNameTest.preincrementOperator
+[       OK ] IndexedNameTest.preincrementOperator (0 ms)
+[ RUN      ] IndexedNameTest.predecrementOperator
+[       OK ] IndexedNameTest.predecrementOperator (0 ms)
+[ RUN      ] IndexedNameTest.comparisonOperators
+[       OK ] IndexedNameTest.comparisonOperators (0 ms)
+[ RUN      ] IndexedNameTest.subscriptOperator
+[       OK ] IndexedNameTest.subscriptOperator (0 ms)
+[ RUN      ] IndexedNameTest.getType
+[       OK ] IndexedNameTest.getType (0 ms)
+[ RUN      ] IndexedNameTest.setIndex
+[       OK ] IndexedNameTest.setIndex (0 ms)
+[ RUN      ] IndexedNameTest.isNullTrue
+[       OK ] IndexedNameTest.isNullTrue (0 ms)
+[ RUN      ] IndexedNameTest.isNullFalse
+[       OK ] IndexedNameTest.isNullFalse (0 ms)
+[ RUN      ] IndexedNameTest.booleanConversionFalse
+[       OK ] IndexedNameTest.booleanConversionFalse (0 ms)
+[ RUN      ] IndexedNameTest.booleanConversionTrue
+[       OK ] IndexedNameTest.booleanConversionTrue (0 ms)
+[ RUN      ] IndexedNameTest.fromConst
+[       OK ] IndexedNameTest.fromConst (0 ms)
+[ RUN      ] IndexedNameTest.appendToStringBufferEmptyBuffer
+[       OK ] IndexedNameTest.appendToStringBufferEmptyBuffer (0 ms)
+[ RUN      ] IndexedNameTest.appendToStringBufferNonEmptyBuffer
+[       OK ] IndexedNameTest.appendToStringBufferNonEmptyBuffer (0 ms)
+[ RUN      ] IndexedNameTest.appendToStringBufferZeroIndex
+[       OK ] IndexedNameTest.appendToStringBufferZeroIndex (0 ms)
+[ RUN      ] IndexedNameTest.toString
+[       OK ] IndexedNameTest.toString (0 ms)
+[ RUN      ] IndexedNameTest.toStringNoIndex
+[       OK ] IndexedNameTest.toStringNoIndex (0 ms)
+[ RUN      ] IndexedNameTest.assignmentOperator
+[       OK ] IndexedNameTest.assignmentOperator (0 ms)
+[----------] 30 tests from IndexedNameTest (0 ms total)
+
+[----------] 7 tests from ByteArrayTest
+[ RUN      ] ByteArrayTest.QByteArrayConstruction
+[       OK ] ByteArrayTest.QByteArrayConstruction (0 ms)
+[ RUN      ] ByteArrayTest.CopyConstruction
+[       OK ] ByteArrayTest.CopyConstruction (0 ms)
+[ RUN      ] ByteArrayTest.MoveConstruction
+[       OK ] ByteArrayTest.MoveConstruction (0 ms)
+[ RUN      ] ByteArrayTest.ensureUnshared
+[       OK ] ByteArrayTest.ensureUnshared (0 ms)
+[ RUN      ] ByteArrayTest.equalityOperator
+[       OK ] ByteArrayTest.equalityOperator (0 ms)
+[ RUN      ] ByteArrayTest.assignmentOperator
+[       OK ] ByteArrayTest.assignmentOperator (0 ms)
+[ RUN      ] ByteArrayTest.moveAssignmentOperator
+[       OK ] ByteArrayTest.moveAssignmentOperator (0 ms)
+[----------] 7 tests from ByteArrayTest (0 ms total)
+
+[----------] 6 tests from License
+[ RUN      ] License.isLicenseEmpty
+[       OK ] License.isLicenseEmpty (0 ms)
+[ RUN      ] License.isLicenseNull
+[       OK ] License.isLicenseNull (0 ms)
+[ RUN      ] License.isLicenseYesStr
+[       OK ] License.isLicenseYesStr (0 ms)
+[ RUN      ] License.UnknownIdentifier
+[       OK ] License.UnknownIdentifier (0 ms)
+[ RUN      ] License.direct
+[       OK ] License.direct (0 ms)
+[ RUN      ] License.findLicenseByIdent
+[       OK ] License.findLicenseByIdent (0 ms)
+[----------] 6 tests from License (0 ms total)
+
+[----------] 34 tests from LinkTest
+[ RUN      ] LinkTest.getArrayIndexSimpleInteger
+[       OK ] LinkTest.getArrayIndexSimpleInteger (0 ms)
+[ RUN      ] LinkTest.getArrayIndexZero
+[       OK ] LinkTest.getArrayIndexZero (0 ms)
+[ RUN      ] LinkTest.getArrayIndexWithDotSuffix
+[       OK ] LinkTest.getArrayIndexWithDotSuffix (0 ms)
+[ RUN      ] LinkTest.getArrayIndexMultiDigitWithDot
+[       OK ] LinkTest.getArrayIndexMultiDigitWithDot (0 ms)
+[ RUN      ] LinkTest.getArrayIndexTrailingDotOnly
+[       OK ] LinkTest.getArrayIndexTrailingDotOnly (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForNull
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForNull (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForEmptyString
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForEmptyString (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForLeadingDot
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForLeadingDot (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForAlpha
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForAlpha (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForMixedAlphaDigit
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForMixedAlphaDigit (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForAlphaThenDigit
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForAlphaThenDigit (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForMappedElement
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForMappedElement (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForMappedElementWithDigits
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForMappedElementWithDigits (0 ms)
+[ RUN      ] LinkTest.getArrayIndexPsubnamePointsPastDot
+[       OK ] LinkTest.getArrayIndexPsubnamePointsPastDot (0 ms)
+[ RUN      ] LinkTest.getArrayIndexPsubnameAtEndWhenNoDot
+[       OK ] LinkTest.getArrayIndexPsubnameAtEndWhenNoDot (0 ms)
+[ RUN      ] LinkTest.getArrayIndexPsubnameEmptyAfterTrailingDot
+[       OK ] LinkTest.getArrayIndexPsubnameEmptyAfterTrailingDot (0 ms)
+[ RUN      ] LinkTest.getArrayIndexPsubnameWithNestedDots
+[       OK ] LinkTest.getArrayIndexPsubnameWithNestedDots (0 ms)
+[ RUN      ] LinkTest.getArrayIndexPsubnameUntouchedOnFailure
+[       OK ] LinkTest.getArrayIndexPsubnameUntouchedOnFailure (0 ms)
+[ RUN      ] LinkTest.getArrayIndexPsubnameUntouchedOnNull
+[       OK ] LinkTest.getArrayIndexPsubnameUntouchedOnNull (0 ms)
+[ RUN      ] LinkTest.getArrayIndexLargeNumber
+[       OK ] LinkTest.getArrayIndexLargeNumber (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForNegative
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForNegative (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForSpace
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForSpace (0 ms)
+[ RUN      ] LinkTest.getArrayIndexReturnsMinusOneForDigitWithSpace
+[       OK ] LinkTest.getArrayIndexReturnsMinusOneForDigitWithSpace (0 ms)
+[ RUN      ] LinkTest.getScaleVectorDefaultIsUnity
+[       OK ] LinkTest.getScaleVectorDefaultIsUnity (0 ms)
+[ RUN      ] LinkTest.getScaleVectorReflectsUniformScale
+[       OK ] LinkTest.getScaleVectorReflectsUniformScale (0 ms)
+[ RUN      ] LinkTest.getScaleVectorReflectsNonUniformScale
+[       OK ] LinkTest.getScaleVectorReflectsNonUniformScale (0 ms)
+[ RUN      ] LinkTest.getTransformNoTransformDefaultIsIdentity
+[       OK ] LinkTest.getTransformNoTransformDefaultIsIdentity (0 ms)
+[ RUN      ] LinkTest.getTransformWithTransformDefaultIsIdentity
+[       OK ] LinkTest.getTransformWithTransformDefaultIsIdentity (0 ms)
+[ RUN      ] LinkTest.getTransformNoTransformAppliesScaleOnly
+[       OK ] LinkTest.getTransformNoTransformAppliesScaleOnly (0 ms)
+[ RUN      ] LinkTest.getTransformNoTransformIgnoresPlacement
+[       OK ] LinkTest.getTransformNoTransformIgnoresPlacement (0 ms)
+[ RUN      ] LinkTest.getTransformWithTransformIncludesLinkPlacement
+[       OK ] LinkTest.getTransformWithTransformIncludesLinkPlacement (0 ms)
+[ RUN      ] LinkTest.getTransformWithTransformAndScale
+[       OK ] LinkTest.getTransformWithTransformAndScale (0 ms)
+[ RUN      ] LinkTest.getTransformUsesLinkPlacementWhenPropertyExists
+[       OK ] LinkTest.getTransformUsesLinkPlacementWhenPropertyExists (0 ms)
+[ RUN      ] LinkTest.linkPlacementAndPlacementStayInSync
+[       OK ] LinkTest.linkPlacementAndPlacementStayInSync (0 ms)
+[----------] 34 tests from LinkTest (9 ms total)
+
+[----------] 18 tests from MappedElementTest
+[ RUN      ] MappedElementTest.constructFromNameAndIndex
+[       OK ] MappedElementTest.constructFromNameAndIndex (0 ms)
+[ RUN      ] MappedElementTest.moveConstructor
+[       OK ] MappedElementTest.moveConstructor (0 ms)
+[ RUN      ] MappedElementTest.assignmentOperator
+[       OK ] MappedElementTest.assignmentOperator (0 ms)
+[ RUN      ] MappedElementTest.moveAssignmentOperator
+[       OK ] MappedElementTest.moveAssignmentOperator (0 ms)
+[ RUN      ] MappedElementTest.equalityOperatorsWhenNotEqual
+[       OK ] MappedElementTest.equalityOperatorsWhenNotEqual (0 ms)
+[ RUN      ] MappedElementTest.equalityOperatorsWhenEqual
+[       OK ] MappedElementTest.equalityOperatorsWhenEqual (0 ms)
+[ RUN      ] MappedElementTest.lessThanOperator
+[       OK ] MappedElementTest.lessThanOperator (0 ms)
+[ RUN      ] MappedElementTest.comparatorBothAreZeroSize
+[       OK ] MappedElementTest.comparatorBothAreZeroSize (0 ms)
+[ RUN      ] MappedElementTest.comparatorOneIsZeroSize
+[       OK ] MappedElementTest.comparatorOneIsZeroSize (0 ms)
+[ RUN      ] MappedElementTest.comparatorBothStartWithHexDigitsThatDiffer
+[       OK ] MappedElementTest.comparatorBothStartWithHexDigitsThatDiffer (0 ms)
+[ RUN      ] MappedElementTest.comparatorBothStartWithTheSameHexDigits
+[       OK ] MappedElementTest.comparatorBothStartWithTheSameHexDigits (0 ms)
+[ RUN      ] MappedElementTest.comparatorHexWithoutTerminator
+[       OK ] MappedElementTest.comparatorHexWithoutTerminator (0 ms)
+[ RUN      ] MappedElementTest.comparatorHexWithoutTerminatorSameLength
+[       OK ] MappedElementTest.comparatorHexWithoutTerminatorSameLength (0 ms)
+[ RUN      ] MappedElementTest.comparatorNoHexDigitsLexicalCompare
+[       OK ] MappedElementTest.comparatorNoHexDigitsLexicalCompare (0 ms)
+[ RUN      ] MappedElementTest.comparatorNoHexDigitsSameStringNumericCompare
+[       OK ] MappedElementTest.comparatorNoHexDigitsSameStringNumericCompare (0 ms)
+[ RUN      ] MappedElementTest.comparatorIntegerWithoutTerminatorIsBroken
+[       OK ] MappedElementTest.comparatorIntegerWithoutTerminatorIsBroken (0 ms)
+[ RUN      ] MappedElementTest.comparatorThreeComplexHexNamesInMap
+[       OK ] MappedElementTest.comparatorThreeComplexHexNamesInMap (0 ms)
+[ RUN      ] MappedElementTest.comparatorLargerWorkedExampleWithMap
+[       OK ] MappedElementTest.comparatorLargerWorkedExampleWithMap (0 ms)
+[----------] 18 tests from MappedElementTest (0 ms total)
+
+[----------] 51 tests from MappedName
+[ RUN      ] MappedName.defaultConstruction
+[       OK ] MappedName.defaultConstruction (0 ms)
+[ RUN      ] MappedName.namedConstruction
+[       OK ] MappedName.namedConstruction (0 ms)
+[ RUN      ] MappedName.namedConstructionWithMaxSize
+[       OK ] MappedName.namedConstructionWithMaxSize (0 ms)
+[ RUN      ] MappedName.namedConstructionDiscardPrefix
+[       OK ] MappedName.namedConstructionDiscardPrefix (0 ms)
+[ RUN      ] MappedName.stringNamedConstruction
+[       OK ] MappedName.stringNamedConstruction (0 ms)
+[ RUN      ] MappedName.stringNamedConstructionDiscardPrefix
+[       OK ] MappedName.stringNamedConstructionDiscardPrefix (0 ms)
+[ RUN      ] MappedName.constructFromIndexedNameNoIndex
+[       OK ] MappedName.constructFromIndexedNameNoIndex (0 ms)
+[ RUN      ] MappedName.constructFromIndexedNameWithIndex
+[       OK ] MappedName.constructFromIndexedNameWithIndex (0 ms)
+[ RUN      ] MappedName.copyConstructor
+[       OK ] MappedName.copyConstructor (0 ms)
+[ RUN      ] MappedName.copyConstructorWithPostfix
+[       OK ] MappedName.copyConstructorWithPostfix (0 ms)
+[ RUN      ] MappedName.copyConstructorStartpos
+[       OK ] MappedName.copyConstructorStartpos (0 ms)
+[ RUN      ] MappedName.copyConstructorStartposAndSize
+[       OK ] MappedName.copyConstructorStartposAndSize (0 ms)
+[ RUN      ] MappedName.moveConstructor
+[       OK ] MappedName.moveConstructor (0 ms)
+[ RUN      ] MappedName.fromRawData
+[       OK ] MappedName.fromRawData (0 ms)
+[ RUN      ] MappedName.fromRawDataQByteArray
+[       OK ] MappedName.fromRawDataQByteArray (0 ms)
+[ RUN      ] MappedName.fromRawDataCopy
+[       OK ] MappedName.fromRawDataCopy (0 ms)
+[ RUN      ] MappedName.fromRawDataCopyStartposAndSize
+[       OK ] MappedName.fromRawDataCopyStartposAndSize (0 ms)
+[ RUN      ] MappedName.assignmentOperator
+[       OK ] MappedName.assignmentOperator (0 ms)
+[ RUN      ] MappedName.assignmentOperatorString
+[       OK ] MappedName.assignmentOperatorString (0 ms)
+[ RUN      ] MappedName.assignmentOperatorConstCharPtr
+[       OK ] MappedName.assignmentOperatorConstCharPtr (0 ms)
+[ RUN      ] MappedName.assignmentOperatorMove
+[       OK ] MappedName.assignmentOperatorMove (0 ms)
+[ RUN      ] MappedName.streamInsertionOperator
+[       OK ] MappedName.streamInsertionOperator (0 ms)
+[ RUN      ] MappedName.comparisonOperators
+[       OK ] MappedName.comparisonOperators (0 ms)
+[ RUN      ] MappedName.additionOperators
+[       OK ] MappedName.additionOperators (0 ms)
+[ RUN      ] MappedName.append
+[       OK ] MappedName.append (0 ms)
+[ RUN      ] MappedName.appendMappedNameObj
+[       OK ] MappedName.appendMappedNameObj (0 ms)
+[ RUN      ] MappedName.toString
+[       OK ] MappedName.toString (0 ms)
+[ RUN      ] MappedName.toConstString
+[       OK ] MappedName.toConstString (0 ms)
+[ RUN      ] MappedName.toRawBytes
+[       OK ] MappedName.toRawBytes (0 ms)
+[ RUN      ] MappedName.toIndexedNameASCIIOnly
+[       OK ] MappedName.toIndexedNameASCIIOnly (0 ms)
+[ RUN      ] MappedName.toIndexedNameInvalid
+[       OK ] MappedName.toIndexedNameInvalid (0 ms)
+[ RUN      ] MappedName.appendToBuffer
+[       OK ] MappedName.appendToBuffer (0 ms)
+[ RUN      ] MappedName.appendToBufferWithPrefix
+[       OK ] MappedName.appendToBufferWithPrefix (0 ms)
+[ RUN      ] MappedName.toPrefixedString
+[       OK ] MappedName.toPrefixedString (0 ms)
+[ RUN      ] MappedName.toBytes
+[       OK ] MappedName.toBytes (0 ms)
+[ RUN      ] MappedName.compare
+[       OK ] MappedName.compare (0 ms)
+[ RUN      ] MappedName.subscriptOperator
+[       OK ] MappedName.subscriptOperator (0 ms)
+[ RUN      ] MappedName.copy
+[       OK ] MappedName.copy (0 ms)
+[ RUN      ] MappedName.compact
+[       OK ] MappedName.compact (0 ms)
+[ RUN      ] MappedName.boolOperator
+[       OK ] MappedName.boolOperator (0 ms)
+[ RUN      ] MappedName.clear
+[       OK ] MappedName.clear (0 ms)
+[ RUN      ] MappedName.find
+[       OK ] MappedName.find (0 ms)
+[ RUN      ] MappedName.rfind
+[       OK ] MappedName.rfind (0 ms)
+[ RUN      ] MappedName.endswith
+[       OK ] MappedName.endswith (0 ms)
+[ RUN      ] MappedName.startsWith
+[       OK ] MappedName.startsWith (0 ms)
+[ RUN      ] MappedName.findTagInElementNameHexPositiveIndexNonrecursive
+[       OK ] MappedName.findTagInElementNameHexPositiveIndexNonrecursive (0 ms)
+[ RUN      ] MappedName.findTagInElementNameDecPositiveIndexNonrecursive
+[       OK ] MappedName.findTagInElementNameDecPositiveIndexNonrecursive (0 ms)
+[ RUN      ] MappedName.findTagInElementNameHexNegativeIndexNonrecursive
+[       OK ] MappedName.findTagInElementNameHexNegativeIndexNonrecursive (0 ms)
+[ RUN      ] MappedName.findTagInElementNameHexExpectedNegativeIndexNonrecursive
+[       OK ] MappedName.findTagInElementNameHexExpectedNegativeIndexNonrecursive (0 ms)
+[ RUN      ] MappedName.findTagInElementNameRecursive
+[       OK ] MappedName.findTagInElementNameRecursive (0 ms)
+[ RUN      ] MappedName.hash
+[       OK ] MappedName.hash (0 ms)
+[----------] 51 tests from MappedName (0 ms total)
+
+[----------] 4 tests from ContactTest
+[ RUN      ] ContactTest.ContactDefaultConstruction
+[       OK ] ContactTest.ContactDefaultConstruction (0 ms)
+[ RUN      ] ContactTest.ContactParameterConstruction
+[       OK ] ContactTest.ContactParameterConstruction (0 ms)
+[ RUN      ] ContactTest.ContactNullDomNodeConstruction
+[       OK ] ContactTest.ContactNullDomNodeConstruction (0 ms)
+[ RUN      ] ContactTest.ContactOperatorEquality
+[       OK ] ContactTest.ContactOperatorEquality (0 ms)
+[----------] 4 tests from ContactTest (0 ms total)
+
+[----------] 4 tests from LicenseTest
+[ RUN      ] LicenseTest.LicenseDefaultConstruction
+[       OK ] LicenseTest.LicenseDefaultConstruction (0 ms)
+[ RUN      ] LicenseTest.LicenseParameterConstruction
+[       OK ] LicenseTest.LicenseParameterConstruction (0 ms)
+[ RUN      ] LicenseTest.LicenseNullDomNodeConstruction
+[       OK ] LicenseTest.LicenseNullDomNodeConstruction (0 ms)
+[ RUN      ] LicenseTest.LicenseOperatorEquality
+[       OK ] LicenseTest.LicenseOperatorEquality (0 ms)
+[----------] 4 tests from LicenseTest (0 ms total)
+
+[----------] 4 tests from UrlTest
+[ RUN      ] UrlTest.UrlDefaultConstruction
+[       OK ] UrlTest.UrlDefaultConstruction (0 ms)
+[ RUN      ] UrlTest.UrlParameterConstruction
+[       OK ] UrlTest.UrlParameterConstruction (0 ms)
+[ RUN      ] UrlTest.UrlNullDomNodeConstruction
+[       OK ] UrlTest.UrlNullDomNodeConstruction (0 ms)
+[ RUN      ] UrlTest.UrlOperatorEquality
+[       OK ] UrlTest.UrlOperatorEquality (0 ms)
+[----------] 4 tests from UrlTest (0 ms total)
+
+[----------] 5 tests from VersionTest
+[ RUN      ] VersionTest.VersionDefaultConstruction
+[       OK ] VersionTest.VersionDefaultConstruction (0 ms)
+[ RUN      ] VersionTest.VersionParameterConstruction
+[       OK ] VersionTest.VersionParameterConstruction (0 ms)
+[ RUN      ] VersionTest.VersionStringConstruction
+[       OK ] VersionTest.VersionStringConstruction (0 ms)
+[ RUN      ] VersionTest.VersionOperatorEqual
+[       OK ] VersionTest.VersionOperatorEqual (0 ms)
+[ RUN      ] VersionTest.VersionOperatorComparison
+[       OK ] VersionTest.VersionOperatorComparison (0 ms)
+[----------] 5 tests from VersionTest (0 ms total)
+
+[----------] 1 test from MetadataTest
+[ RUN      ] MetadataTest.MetadataInMemoryConstruction
+[       OK ] MetadataTest.MetadataInMemoryConstruction (0 ms)
+[----------] 1 test from MetadataTest (0 ms total)
+
+[----------] 10 tests from ProjectFileTest
+[ RUN      ] ProjectFileTest.loadInvalid
+[       OK ] ProjectFileTest.loadInvalid (0 ms)
+[ RUN      ] ProjectFileTest.loadDocument
+[       OK ] ProjectFileTest.loadDocument (0 ms)
+[ RUN      ] ProjectFileTest.getObjects
+[       OK ] ProjectFileTest.getObjects (0 ms)
+[ RUN      ] ProjectFileTest.getPropertyFiles
+[       OK ] ProjectFileTest.getPropertyFiles (0 ms)
+[ RUN      ] ProjectFileTest.getMetadata
+[       OK ] ProjectFileTest.getMetadata (0 ms)
+[ RUN      ] ProjectFileTest.getObjectsOfType
+[       OK ] ProjectFileTest.getObjectsOfType (0 ms)
+[ RUN      ] ProjectFileTest.restoreObject
+[       OK ] ProjectFileTest.restoreObject (1 ms)
+[ RUN      ] ProjectFileTest.getTypeId
+[       OK ] ProjectFileTest.getTypeId (0 ms)
+[ RUN      ] ProjectFileTest.getThumbnailBuffer
+[       OK ] ProjectFileTest.getThumbnailBuffer (0 ms)
+[ RUN      ] ProjectFileTest.getThumbnailFile
+[       OK ] ProjectFileTest.getThumbnailFile (0 ms)
+[----------] 10 tests from ProjectFileTest (6 ms total)
+
+[----------] 7 tests from PropertyFileIncludedTest
+[ RUN      ] PropertyFileIncludedTest.rejectsParentTraversalInFileAttribute
+[       OK ] PropertyFileIncludedTest.rejectsParentTraversalInFileAttribute (0 ms)
+[ RUN      ] PropertyFileIncludedTest.rejectsBackslashTraversalInFileAttribute
+[       OK ] PropertyFileIncludedTest.rejectsBackslashTraversalInFileAttribute (0 ms)
+[ RUN      ] PropertyFileIncludedTest.rejectsAbsolutePathInFileAttribute
+[       OK ] PropertyFileIncludedTest.rejectsAbsolutePathInFileAttribute (0 ms)
+[ RUN      ] PropertyFileIncludedTest.rejectsSubdirectoryInFileAttribute
+[       OK ] PropertyFileIncludedTest.rejectsSubdirectoryInFileAttribute (0 ms)
+[ RUN      ] PropertyFileIncludedTest.rejectsDotDotInFileAttribute
+[       OK ] PropertyFileIncludedTest.rejectsDotDotInFileAttribute (0 ms)
+[ RUN      ] PropertyFileIncludedTest.rejectsParentTraversalInDataAttribute
+[       OK ] PropertyFileIncludedTest.rejectsParentTraversalInDataAttribute (0 ms)
+[ RUN      ] PropertyFileIncludedTest.acceptsPlainBasename
+[       OK ] PropertyFileIncludedTest.acceptsPlainBasename (0 ms)
+[----------] 7 tests from PropertyFileIncludedTest (2 ms total)
+
+[----------] 1 test from PropertyLink
+[ RUN      ] PropertyLink.TestSetValues
+[       OK ] PropertyLink.TestSetValues (0 ms)
+[----------] 1 test from PropertyLink (0 ms total)
+
+[----------] 1 test from PropertyFloatTest
+[ RUN      ] PropertyFloatTest.testWriteRead
+[       OK ] PropertyFloatTest.testWriteRead (0 ms)
+[----------] 1 test from PropertyFloatTest (0 ms total)
+
+[----------] 14 tests from RenameProperty
+[ RUN      ] RenameProperty.simple
+[       OK ] RenameProperty.simple (0 ms)
+[ RUN      ] RenameProperty.fromPython
+[       OK ] RenameProperty.fromPython (0 ms)
+[ RUN      ] RenameProperty.chain
+[       OK ] RenameProperty.chain (0 ms)
+[ RUN      ] RenameProperty.staticProperty
+[       OK ] RenameProperty.staticProperty (0 ms)
+[ RUN      ] RenameProperty.staticPropertyFromPython
+[       OK ] RenameProperty.staticPropertyFromPython (0 ms)
+[ RUN      ] RenameProperty.lockedProperty
+[       OK ] RenameProperty.lockedProperty (0 ms)
+[ RUN      ] RenameProperty.toExistingProperty
+[       OK ] RenameProperty.toExistingProperty (0 ms)
+[ RUN      ] RenameProperty.toInvalidProperty
+[       OK ] RenameProperty.toInvalidProperty (0 ms)
+[ RUN      ] RenameProperty.updateExpressionSameContainer
+[       OK ] RenameProperty.updateExpressionSameContainer (0 ms)
+[ RUN      ] RenameProperty.updateExpressionDifferentContainer
+[       OK ] RenameProperty.updateExpressionDifferentContainer (0 ms)
+[ RUN      ] RenameProperty.updateExpressionDifferentDocument
+[       OK ] RenameProperty.updateExpressionDifferentDocument (1 ms)
+[ RUN      ] RenameProperty.withExpression
+[       OK ] RenameProperty.withExpression (0 ms)
+[ RUN      ] RenameProperty.undo
+[       OK ] RenameProperty.undo (0 ms)
+[ RUN      ] RenameProperty.redo
+[       OK ] RenameProperty.redo (0 ms)
+[----------] 14 tests from RenameProperty (3 ms total)
+
+[----------] 22 tests from MoveProperty
+[ RUN      ] MoveProperty.simple
+[       OK ] MoveProperty.simple (0 ms)
+[ RUN      ] MoveProperty.otherDoc
+[       OK ] MoveProperty.otherDoc (0 ms)
+[ RUN      ] MoveProperty.staticProperty
+unknown file: Failure
+Unknown C++ exception thrown in the test body.
+
+[  FAILED  ] MoveProperty.staticProperty (1 ms)
+[ RUN      ] MoveProperty.lockedProperty
+[       OK ] MoveProperty.lockedProperty (0 ms)
+[ RUN      ] MoveProperty.toExistingProperty
+[       OK ] MoveProperty.toExistingProperty (0 ms)
+[ RUN      ] MoveProperty.updateExpressionOriginatingContainer
+[       OK ] MoveProperty.updateExpressionOriginatingContainer (1 ms)
+[ RUN      ] MoveProperty.updateExpressionTargetContainer
+[       OK ] MoveProperty.updateExpressionTargetContainer (1 ms)
+[ RUN      ] MoveProperty.updateExpressionOriginatingContainerOtherDoc
+[       OK ] MoveProperty.updateExpressionOriginatingContainerOtherDoc (1 ms)
+[ RUN      ] MoveProperty.updateExpressionTargetContainerOtherDoc
+[       OK ] MoveProperty.updateExpressionTargetContainerOtherDoc (1 ms)
+[ RUN      ] MoveProperty.updateExpressionMovedProp
+[       OK ] MoveProperty.updateExpressionMovedProp (0 ms)
+[ RUN      ] MoveProperty.undo
+[       OK ] MoveProperty.undo (0 ms)
+[ RUN      ] MoveProperty.undoOtherDoc
+[       OK ] MoveProperty.undoOtherDoc (0 ms)
+[ RUN      ] MoveProperty.undoExpressionOriginatingContainer
+[       OK ] MoveProperty.undoExpressionOriginatingContainer (1 ms)
+[ RUN      ] MoveProperty.undoExpressionTargetContainer
+[       OK ] MoveProperty.undoExpressionTargetContainer (1 ms)
+[ RUN      ] MoveProperty.undoExpressionOriginatingContainerOtherDoc
+[       OK ] MoveProperty.undoExpressionOriginatingContainerOtherDoc (1 ms)
+[ RUN      ] MoveProperty.undoExpressionTargetContainerOtherDoc
+[       OK ] MoveProperty.undoExpressionTargetContainerOtherDoc (1 ms)
+[ RUN      ] MoveProperty.redoSimple
+[       OK ] MoveProperty.redoSimple (0 ms)
+[ RUN      ] MoveProperty.redoOtherDoc
+[       OK ] MoveProperty.redoOtherDoc (0 ms)
+[ RUN      ] MoveProperty.redoExpressionOriginatingContainer
+[       OK ] MoveProperty.redoExpressionOriginatingContainer (1 ms)
+[ RUN      ] MoveProperty.redoExpressionTargetContainer
+[       OK ] MoveProperty.redoExpressionTargetContainer (1 ms)
+[ RUN      ] MoveProperty.redoExpressionOriginatingContainerOtherDoc
+[       OK ] MoveProperty.redoExpressionOriginatingContainerOtherDoc (1 ms)
+[ RUN      ] MoveProperty.redoExpressionTargetContainerOtherDoc
+[       OK ] MoveProperty.redoExpressionTargetContainerOtherDoc (1 ms)
+[----------] 22 tests from MoveProperty (27 ms total)
+
+[----------] 1 test from PropertyExpressionEngineTest
+[ RUN      ] PropertyExpressionEngineTest.executeCrossPropertyReference
+unknown file: Failure
+Unknown C++ exception thrown in SetUp().
+
+[  FAILED  ] PropertyExpressionEngineTest.executeCrossPropertyReference (0 ms)
+[----------] 1 test from PropertyExpressionEngineTest (0 ms total)
+
+[----------] 44 tests from StringIDTest
+[ RUN      ] StringIDTest.stringIDManualConstructionNoFlags
+[       OK ] StringIDTest.stringIDManualConstructionNoFlags (0 ms)
+[ RUN      ] StringIDTest.stringIDManualConstructionWithFlag
+[       OK ] StringIDTest.stringIDManualConstructionWithFlag (0 ms)
+[ RUN      ] StringIDTest.stringIDDefaultConstruction
+[       OK ] StringIDTest.stringIDDefaultConstruction (0 ms)
+[ RUN      ] StringIDTest.value
+[       OK ] StringIDTest.value (0 ms)
+[ RUN      ] StringIDTest.relatedIDs
+[       OK ] StringIDTest.relatedIDs (0 ms)
+[ RUN      ] StringIDTest.isBinary
+[       OK ] StringIDTest.isBinary (0 ms)
+[ RUN      ] StringIDTest.isHashed
+[       OK ] StringIDTest.isHashed (0 ms)
+[ RUN      ] StringIDTest.isPostfixed
+[       OK ] StringIDTest.isPostfixed (0 ms)
+[ RUN      ] StringIDTest.isPostfixEncoded
+[       OK ] StringIDTest.isPostfixEncoded (0 ms)
+[ RUN      ] StringIDTest.isIndexed
+[       OK ] StringIDTest.isIndexed (0 ms)
+[ RUN      ] StringIDTest.isPrefixID
+[       OK ] StringIDTest.isPrefixID (0 ms)
+[ RUN      ] StringIDTest.isPrefixIDIndex
+[       OK ] StringIDTest.isPrefixIDIndex (0 ms)
+[ RUN      ] StringIDTest.isMarked
+[       OK ] StringIDTest.isMarked (0 ms)
+[ RUN      ] StringIDTest.isPersistent
+[       OK ] StringIDTest.isPersistent (0 ms)
+[ RUN      ] StringIDTest.isFromSameHasher
+[       OK ] StringIDTest.isFromSameHasher (0 ms)
+[ RUN      ] StringIDTest.getHasher
+[       OK ] StringIDTest.getHasher (0 ms)
+[ RUN      ] StringIDTest.data
+[       OK ] StringIDTest.data (0 ms)
+[ RUN      ] StringIDTest.postfix
+[       OK ] StringIDTest.postfix (0 ms)
+[ RUN      ] StringIDTest.getPyObject
+[       OK ] StringIDTest.getPyObject (0 ms)
+[ RUN      ] StringIDTest.getPyObjectWithIndex
+[       OK ] StringIDTest.getPyObjectWithIndex (0 ms)
+[ RUN      ] StringIDTest.toStringWithoutIndex
+[       OK ] StringIDTest.toStringWithoutIndex (0 ms)
+[ RUN      ] StringIDTest.toStringWithIndex
+[       OK ] StringIDTest.toStringWithIndex (0 ms)
+[ RUN      ] StringIDTest.fromStringWithEOFAndLengthGood
+[       OK ] StringIDTest.fromStringWithEOFAndLengthGood (0 ms)
+[ RUN      ] StringIDTest.fromStringExtraData
+[       OK ] StringIDTest.fromStringExtraData (0 ms)
+[ RUN      ] StringIDTest.fromStringLengthUnspecified
+[       OK ] StringIDTest.fromStringLengthUnspecified (0 ms)
+[ RUN      ] StringIDTest.fromStringShorterLength
+[       OK ] StringIDTest.fromStringShorterLength (0 ms)
+[ RUN      ] StringIDTest.fromStringNoHashtag
+[       OK ] StringIDTest.fromStringNoHashtag (0 ms)
+[ RUN      ] StringIDTest.fromStringNotHex
+[       OK ] StringIDTest.fromStringNotHex (0 ms)
+[ RUN      ] StringIDTest.fromStringQByteArray
+[       OK ] StringIDTest.fromStringQByteArray (0 ms)
+[ RUN      ] StringIDTest.dataToTextHashed
+[       OK ] StringIDTest.dataToTextHashed (0 ms)
+[ RUN      ] StringIDTest.dataToTextBinary
+[       OK ] StringIDTest.dataToTextBinary (0 ms)
+[ RUN      ] StringIDTest.dataToTextNoIndex
+[       OK ] StringIDTest.dataToTextNoIndex (0 ms)
+[ RUN      ] StringIDTest.dataToTextWithIndex
+[       OK ] StringIDTest.dataToTextWithIndex (0 ms)
+[ RUN      ] StringIDTest.dataToTextWithPostfix
+[       OK ] StringIDTest.dataToTextWithPostfix (0 ms)
+[ RUN      ] StringIDTest.dataToBytesNoIndex
+[       OK ] StringIDTest.dataToBytesNoIndex (0 ms)
+[ RUN      ] StringIDTest.dataToBytesWithIndex
+[       OK ] StringIDTest.dataToBytesWithIndex (0 ms)
+[ RUN      ] StringIDTest.dataToBytesWithPostfix
+[       OK ] StringIDTest.dataToBytesWithPostfix (0 ms)
+[ RUN      ] StringIDTest.dataToBytesWithIndexAndPostfix
+[       OK ] StringIDTest.dataToBytesWithIndexAndPostfix (0 ms)
+[ RUN      ] StringIDTest.mark
+[       OK ] StringIDTest.mark (0 ms)
+[ RUN      ] StringIDTest.setPersistent
+[       OK ] StringIDTest.setPersistent (0 ms)
+[ RUN      ] StringIDTest.operatorLessThan
+[       OK ] StringIDTest.operatorLessThan (0 ms)
+[ RUN      ] StringIDTest.compare
+[       OK ] StringIDTest.compare (0 ms)
+[ RUN      ] StringIDTest.IndexIDBooleanConversion
+[       OK ] StringIDTest.IndexIDBooleanConversion (0 ms)
+[ RUN      ] StringIDTest.IndexIDStreamInsertionOperator
+[       OK ] StringIDTest.IndexIDStreamInsertionOperator (0 ms)
+[----------] 44 tests from StringIDTest (0 ms total)
+
+[----------] 35 tests from StringIDRefTest
+[ RUN      ] StringIDRefTest.defaultConstructor
+[       OK ] StringIDRefTest.defaultConstructor (0 ms)
+[ RUN      ] StringIDRefTest.constructFromNewStringID
+[       OK ] StringIDRefTest.constructFromNewStringID (0 ms)
+[ RUN      ] StringIDRefTest.constructFromStringIDAndIndex
+[       OK ] StringIDRefTest.constructFromStringIDAndIndex (0 ms)
+[ RUN      ] StringIDRefTest.copyConstructor
+[       OK ] StringIDRefTest.copyConstructor (0 ms)
+[ RUN      ] StringIDRefTest.copyConstructorWithIndex
+[       OK ] StringIDRefTest.copyConstructorWithIndex (0 ms)
+[ RUN      ] StringIDRefTest.moveConstructor
+[       OK ] StringIDRefTest.moveConstructor (0 ms)
+[ RUN      ] StringIDRefTest.destructor
+[       OK ] StringIDRefTest.destructor (0 ms)
+[ RUN      ] StringIDRefTest.reset
+[       OK ] StringIDRefTest.reset (0 ms)
+[ RUN      ] StringIDRefTest.resetWithStringID
+[       OK ] StringIDRefTest.resetWithStringID (0 ms)
+[ RUN      ] StringIDRefTest.resetWithStringIDAndIndex
+[       OK ] StringIDRefTest.resetWithStringIDAndIndex (0 ms)
+[ RUN      ] StringIDRefTest.swap
+[       OK ] StringIDRefTest.swap (0 ms)
+[ RUN      ] StringIDRefTest.assignmentFromSelf
+[       OK ] StringIDRefTest.assignmentFromSelf (0 ms)
+[ RUN      ] StringIDRefTest.assignmentToEmptyFromStringID
+[       OK ] StringIDRefTest.assignmentToEmptyFromStringID (0 ms)
+[ RUN      ] StringIDRefTest.assignmentFromStringIDRef
+[       OK ] StringIDRefTest.assignmentFromStringIDRef (0 ms)
+[ RUN      ] StringIDRefTest.moveAssignmentFromStringIDRef
+[       OK ] StringIDRefTest.moveAssignmentFromStringIDRef (0 ms)
+[ RUN      ] StringIDRefTest.operatorLess
+[       OK ] StringIDRefTest.operatorLess (0 ms)
+[ RUN      ] StringIDRefTest.operatorEquality
+[       OK ] StringIDRefTest.operatorEquality (0 ms)
+[ RUN      ] StringIDRefTest.operatorInequality
+[       OK ] StringIDRefTest.operatorInequality (0 ms)
+[ RUN      ] StringIDRefTest.booleanConversion
+[       OK ] StringIDRefTest.booleanConversion (0 ms)
+[ RUN      ] StringIDRefTest.getRefCount
+[       OK ] StringIDRefTest.getRefCount (0 ms)
+[ RUN      ] StringIDRefTest.toString
+[       OK ] StringIDRefTest.toString (0 ms)
+[ RUN      ] StringIDRefTest.dataToText
+[       OK ] StringIDRefTest.dataToText (0 ms)
+[ RUN      ] StringIDRefTest.constData
+[       OK ] StringIDRefTest.constData (0 ms)
+[ RUN      ] StringIDRefTest.deref
+[       OK ] StringIDRefTest.deref (0 ms)
+[ RUN      ] StringIDRefTest.value
+[       OK ] StringIDRefTest.value (0 ms)
+[ RUN      ] StringIDRefTest.relatedIDs
+[       OK ] StringIDRefTest.relatedIDs (0 ms)
+[ RUN      ] StringIDRefTest.isBinary
+[       OK ] StringIDRefTest.isBinary (0 ms)
+[ RUN      ] StringIDRefTest.isHashed
+[       OK ] StringIDRefTest.isHashed (0 ms)
+[ RUN      ] StringIDRefTest.toBytes
+[       OK ] StringIDRefTest.toBytes (0 ms)
+[ RUN      ] StringIDRefTest.getPyObject
+[       OK ] StringIDRefTest.getPyObject (0 ms)
+[ RUN      ] StringIDRefTest.mark
+[       OK ] StringIDRefTest.mark (0 ms)
+[ RUN      ] StringIDRefTest.isMarked
+[       OK ] StringIDRefTest.isMarked (0 ms)
+[ RUN      ] StringIDRefTest.isFromSameHasher
+[       OK ] StringIDRefTest.isFromSameHasher (0 ms)
+[ RUN      ] StringIDRefTest.getHasher
+[       OK ] StringIDRefTest.getHasher (0 ms)
+[ RUN      ] StringIDRefTest.setPersistent
+[       OK ] StringIDRefTest.setPersistent (0 ms)
+[----------] 35 tests from StringIDRefTest (0 ms total)
+
+[----------] 35 tests from StringHasherTest
+[ RUN      ] StringHasherTest.defaultConstructor
+[       OK ] StringHasherTest.defaultConstructor (0 ms)
+[ RUN      ] StringHasherTest.getMemSize
+[       OK ] StringHasherTest.getMemSize (0 ms)
+[ RUN      ] StringHasherTest.Save
+[       OK ] StringHasherTest.Save (0 ms)
+[ RUN      ] StringHasherTest.Restore
+[       OK ] StringHasherTest.Restore (0 ms)
+[ RUN      ] StringHasherTest.SaveDocFile
+[       OK ] StringHasherTest.SaveDocFile (0 ms)
+[ RUN      ] StringHasherTest.RestoreDocFile
+[       OK ] StringHasherTest.RestoreDocFile (0 ms)
+[ RUN      ] StringHasherTest.setPersistenceFileName
+[       OK ] StringHasherTest.setPersistenceFileName (0 ms)
+[ RUN      ] StringHasherTest.getPersistenceFileName
+[       OK ] StringHasherTest.getPersistenceFileName (0 ms)
+[ RUN      ] StringHasherTest.getIDFromQByteArrayShort
+[       OK ] StringHasherTest.getIDFromQByteArrayShort (0 ms)
+[ RUN      ] StringHasherTest.getIDFromQByteArrayLongHashable
+[       OK ] StringHasherTest.getIDFromQByteArrayLongHashable (0 ms)
+[ RUN      ] StringHasherTest.getIDFromQByteArrayLongUnhashable
+[       OK ] StringHasherTest.getIDFromQByteArrayLongUnhashable (0 ms)
+[ RUN      ] StringHasherTest.getIDFromQByteArrayNoCopy
+[       OK ] StringHasherTest.getIDFromQByteArrayNoCopy (0 ms)
+[ RUN      ] StringHasherTest.getIDFromQByteArrayTwoDifferentStrings
+[       OK ] StringHasherTest.getIDFromQByteArrayTwoDifferentStrings (0 ms)
+[ RUN      ] StringHasherTest.getIDFromQByteArrayTwoIdenticalStrings
+[       OK ] StringHasherTest.getIDFromQByteArrayTwoIdenticalStrings (0 ms)
+[ RUN      ] StringHasherTest.getIDFromQByteArrayBinaryFlag
+[       OK ] StringHasherTest.getIDFromQByteArrayBinaryFlag (0 ms)
+[ RUN      ] StringHasherTest.getIDFromCString
+[       OK ] StringHasherTest.getIDFromCString (0 ms)
+[ RUN      ] StringHasherTest.getIDFromMappedNameWithoutPostfixWithoutIndex
+[       OK ] StringHasherTest.getIDFromMappedNameWithoutPostfixWithoutIndex (0 ms)
+[ RUN      ] StringHasherTest.getIDFromMappedNameWithoutPostfixWithIndex
+[       OK ] StringHasherTest.getIDFromMappedNameWithoutPostfixWithIndex (0 ms)
+[ RUN      ] StringHasherTest.getIDFromMappedNameWithoutIndexWithPostfix
+[       OK ] StringHasherTest.getIDFromMappedNameWithoutIndexWithPostfix (0 ms)
+[ RUN      ] StringHasherTest.getIDFromMappedNameWithIndexWithPostfix
+[       OK ] StringHasherTest.getIDFromMappedNameWithIndexWithPostfix (0 ms)
+[ RUN      ] StringHasherTest.getIDFromMappedNameExistingNameNoIndex
+[       OK ] StringHasherTest.getIDFromMappedNameExistingNameNoIndex (0 ms)
+[ RUN      ] StringHasherTest.getIDFromMappedNameExistingNameWithIndex
+[       OK ] StringHasherTest.getIDFromMappedNameExistingNameWithIndex (0 ms)
+[ RUN      ] StringHasherTest.getIDFromMappedNameExistingNameWithIndexAndPostfix
+[       OK ] StringHasherTest.getIDFromMappedNameExistingNameWithIndexAndPostfix (0 ms)
+[ RUN      ] StringHasherTest.getIDFromMappedNameDuplicateWithEncodedPostfix
+[       OK ] StringHasherTest.getIDFromMappedNameDuplicateWithEncodedPostfix (0 ms)
+[ RUN      ] StringHasherTest.getIDFromIntegerIDNoSuchID
+[       OK ] StringHasherTest.getIDFromIntegerIDNoSuchID (0 ms)
+[ RUN      ] StringHasherTest.getIDFromIntegerIDBadID
+[       OK ] StringHasherTest.getIDFromIntegerIDBadID (0 ms)
+[ RUN      ] StringHasherTest.getIDMap
+[       OK ] StringHasherTest.getIDMap (0 ms)
+[ RUN      ] StringHasherTest.clear
+[       OK ] StringHasherTest.clear (0 ms)
+[ RUN      ] StringHasherTest.size
+[       OK ] StringHasherTest.size (0 ms)
+[ RUN      ] StringHasherTest.count
+[       OK ] StringHasherTest.count (0 ms)
+[ RUN      ] StringHasherTest.getPyObject
+[       OK ] StringHasherTest.getPyObject (0 ms)
+[ RUN      ] StringHasherTest.setGetSaveAll
+[       OK ] StringHasherTest.setGetSaveAll (0 ms)
+[ RUN      ] StringHasherTest.setGetThreshold
+[       OK ] StringHasherTest.setGetThreshold (0 ms)
+[ RUN      ] StringHasherTest.clearMarks
+[       OK ] StringHasherTest.clearMarks (0 ms)
+[ RUN      ] StringHasherTest.compact
+[       OK ] StringHasherTest.compact (0 ms)
+[----------] 35 tests from StringHasherTest (0 ms total)
+
+[----------] 2 tests from VarSet
+[ RUN      ] VarSet.createVarSet
+[       OK ] VarSet.createVarSet (0 ms)
+[ RUN      ] VarSet.addProperty
+[       OK ] VarSet.addProperty (0 ms)
+[----------] 2 tests from VarSet (0 ms total)
+
+[----------] 1 test from VRMLObjectTest
+[ RUN      ] VRMLObjectTest.loadVRMLWithTextures
+[       OK ] VRMLObjectTest.loadVRMLWithTextures (1 ms)
+[----------] 1 test from VRMLObjectTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 553 tests from 37 test suites ran. (242 ms total)
+[  PASSED  ] 548 tests.
+[  SKIPPED ] 2 tests, listed below:
+[  SKIPPED ] BackupPolicyTest.StandardWithZeroFilesDeletesExisting
+[  SKIPPED ] BackupPolicyTest.TimestampWithZeroFilesDeletesExisting
+[  FAILED  ] 3 tests, listed below:
+[  FAILED  ] DocumentObjectTest.getSubObjectList
+[  FAILED  ] MoveProperty.staticProperty
+[  FAILED  ] PropertyExpressionEngineTest.executeCrossPropertyReference
+
+ 3 FAILED TESTS
+  YOU HAVE 7 DISABLED TESTS
+

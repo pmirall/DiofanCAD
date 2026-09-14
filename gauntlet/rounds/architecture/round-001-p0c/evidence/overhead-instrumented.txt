@@ -1,0 +1,8 @@
+objects=2000 repetitions=7
+trace_disabled_median_s=0.0265206
+trace_enabled_median_s=0.0286097
+overhead_enabled_pct=7.87746
+overhead_enabled_ns_per_object=1044.57
+attributed_fraction=0.840406
+objects_traced=2000 edges=1999
+

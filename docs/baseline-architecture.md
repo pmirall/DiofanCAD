@@ -42,7 +42,7 @@ The `Location` column is the result of repository inspection at the fork baselin
 | Document / model object layer | `src/App` (`Document`, `DocumentObject`, `Property*`) | UNKNOWN | read + instrument | TBD |
 | Transactions / undo | `src/App/Transactions.*`, `AutoTransaction.*`, `TransactionalObject.*` | UNKNOWN | read + P0-B/P0-D | TBD |
 | Topological naming / element identity | `src/App/ElementMap.*`, `MappedName.*`, `MappedElement.*`, `ElementNamingUtils.*` | UNKNOWN | read + P0-A | TBD |
-| Dependency / recompute | `src/App/Document.cpp` (boost adjacency_list + topological sort) | UNKNOWN | read + P0-C instrumentation | TBD |
+| Dependency / recompute | `src/App/Document.cpp` (boost adjacency_list + topological sort) | **MEASURED** (P0-C) | done: per-object time + causality, 84.5% attributed | LOW — 36 added lines, all guarded |
 | Persistence | `src/Base/Persistence.*`, `Reader.*`, `Writer.*`, `XMLParser.*`; zipios++ container | UNKNOWN | read + P0-D round-trip | TBD |
 | Sketcher / constraint solving | `src/Mod/Sketcher` (planegcs solver) | UNKNOWN | read + solver benchmark | TBD |
 | Part Design | `src/Mod/PartDesign` | UNKNOWN | read + change challenge | TBD |
@@ -57,6 +57,20 @@ The `Location` column is the result of repository inspection at the fork baselin
 | GUI / command routing | `src/Gui` (`Command*`, workbench registration) | UNKNOWN | read + Context Engine study | TBD |
 | Testing / CI | `tests/` (C++ gtest), `src/Mod/Test` (Python), `.github/workflows/CI_primary.yml` | UNKNOWN | `docs/baseline-test-health.md` | TBD |
 | Packaging / release | `CMakeLists.txt`, `CMakePresets.json`, `pixi.toml`, `package/`, `.github/workflows/build_release.yml` | UNKNOWN | build reproduction | TBD |
+
+### What P0-C established about the recompute layer
+
+The engine is sound and already carries more than expected: a boost dependency
+graph, two-pass recompute with dependency inversion, property-level
+(fine-grained) propagation via `DepEdge`/`touchedProps`, and per-object error
+capture in `_RecomputeLog`. What it lacked was observation — no per-object
+timing and no record of *why* an object recomputed. That gap is now closed by
+`src/App/RecomputeTrace.*` without altering any recompute semantics. See
+`gauntlet/rounds/architecture/round-001-p0c/verdict.md`.
+
+The practical consequence for the roadmap: **recompute does not need a
+rewrite to become diagnosable.** AR-003 ("recompute redesign becomes too
+invasive") is materially reduced — 36 guarded lines were enough.
 
 ### How to use this table
 

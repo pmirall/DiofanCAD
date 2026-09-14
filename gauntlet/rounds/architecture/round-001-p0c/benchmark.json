@@ -1,0 +1,58 @@
+{
+  "round": "architecture/round-001-p0c",
+  "proof": "P0-C",
+  "date": "2026-09-14",
+  "environment": {
+    "note": "Shared cloud container. Absolute times are NOT comparable across sessions; only within-process comparisons are treated as signal.",
+    "cpu": "Intel(R) Xeon(R) @ 2.10GHz, 4 cores",
+    "ram_gb": 15,
+    "kernel": "6.18.44-fc-v24",
+    "compiler": "gcc 13.3.0",
+    "build_type": "Release",
+    "qt": "6.4.2",
+    "occt": "7.6.3 (present for configure; not linked by FreeCADApp)",
+    "configuration": "BUILD_GUI=OFF, all workbenches OFF, ENABLE_DEVELOPER_TESTS=ON"
+  },
+  "fixture": {
+    "objects": 2000,
+    "type": "App::FeatureTest",
+    "topology": "linear chain via PropertyLink",
+    "trigger": "touch root, recompute whole document",
+    "repetitions_per_measurement": 7,
+    "statistic": "median of 7, best of 2 interleaved blocks"
+  },
+  "enabled_overhead": {
+    "method": "within-process, interleaved trace-off / trace-on blocks in the same binary",
+    "samples_ns_per_object": [1044.57, 1053.15, 1087.20, 1277.63, 1368.84],
+    "median_ns_per_object": 1087.2,
+    "relative_pct_on_this_fixture": [7.88, 10.53, 12.26],
+    "note": "App::FeatureTest executes in roughly 7-11 microseconds, so the relative figure here is close to a worst case. A feature taking 1 ms would see roughly 0.1 percent."
+  },
+  "disabled_overhead": {
+    "method": "cross-build: instrumented binary with trace off vs binary rebuilt with the Document.cpp hooks reverted",
+    "instrumented_trace_off_ms": [22.33, 22.61, 23.13, 24.01, 26.52],
+    "uninstrumented_baseline_ms": [22.78, 23.01, 23.01, 23.03],
+    "verdict": "not measurable",
+    "note": "Cross-run variance within a single configuration reaches ~18 percent on this container, which exceeds the difference between configurations. The honest claim is 'below the noise floor', not 'zero'."
+  },
+  "attribution": {
+    "attributed_fraction_samples": [0.8404, 0.8431, 0.8450, 0.8456, 0.8485],
+    "median": 0.845,
+    "unattributed": "Topological sort, propagation bookkeeping, signal emission and teardown. Identified but not broken down; see largest-gap.md."
+  },
+  "causality": {
+    "edges_observed": 1999,
+    "objects_with_unknown_cause": 0,
+    "property_level_attribution": true
+  },
+  "tests": {
+    "baseline": {"ran": 553, "passed": 548, "failed": 3, "skipped": 2},
+    "instrumented": {"ran": 558, "passed": 553, "failed": 3, "skipped": 2},
+    "pre_existing_failures": [
+      "DocumentObjectTest.getSubObjectList",
+      "MoveProperty.staticProperty",
+      "PropertyExpressionEngineTest.executeCrossPropertyReference"
+    ],
+    "new_failures": []
+  }
+}

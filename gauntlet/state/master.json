@@ -4,34 +4,64 @@
   "spec": "docs/spec/diofancad-fusion-killer-spec-v7.md",
   "state_version": 1,
   "phase": "PHASE_0_REALITY_MAP",
-  "status": "UNKNOWN",
+  "status": "IN_PROGRESS",
   "rule": "PROVE -> MEASURE -> DECIDE -> SCALE",
   "wedge": "change_resilience_through_engineering_semantics",
   "baseline_commit": "6608bfc249f460efd5f99765304d0ee9b5d06658",
-  "last_verified_commit": null,
-  "active_workstream": null,
+  "last_verified_commit": "bdda49d5",
+  "active_workstream": "architecture/P0-C",
   "architecture_proofs": [
-    {"id": "P0-A", "name": "persistent-reference prototype", "status": "NOT_STARTED"},
-    {"id": "P0-B", "name": "semantic-object prototype", "status": "NOT_STARTED"},
-    {"id": "P0-C", "name": "recompute instrumentation prototype", "status": "NOT_STARTED"},
-    {"id": "P0-D", "name": "save/reload prototype", "status": "NOT_STARTED"},
-    {"id": "P0-E", "name": "realistic change-challenge prototype", "status": "NOT_STARTED"}
+    {
+      "id": "P0-A",
+      "name": "persistent-reference prototype",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "P0-B",
+      "name": "semantic-object prototype",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "P0-C",
+      "name": "recompute instrumentation prototype",
+      "status": "PASS",
+      "round": "gauntlet/rounds/architecture/round-001-p0c",
+      "verdict": "PASS with named gaps",
+      "evidence": "E-0004, E-0005, E-0006"
+    },
+    {
+      "id": "P0-D",
+      "name": "save/reload prototype",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "P0-E",
+      "name": "realistic change-challenge prototype",
+      "status": "NOT_STARTED"
+    }
   ],
   "baselines": {
     "architecture": "LOCATED_NOT_MEASURED",
     "performance": "UNKNOWN",
-    "test_health": "UNKNOWN",
+    "test_health": "MEASURED_APP_ONLY",
     "compatibility": "UNKNOWN",
     "dependencies_license": "UNKNOWN",
     "feature_matrix": "UNKNOWN",
     "divergence": "BASELINE_CUT"
   },
-  "critical_risks_open": ["AR-001", "AR-002", "AR-003", "AR-005", "AR-006", "AR-009"],
+  "critical_risks_open": [
+    "AR-001",
+    "AR-002",
+    "AR-003",
+    "AR-005",
+    "AR-006",
+    "AR-009"
+  ],
   "workflows": [],
   "competitive_claims": [],
   "critical_failures": [],
-  "largest_gap": null,
+  "largest_gap": "15.5% of recompute wall-clock is not attributed to any named object, so a slow recompute can still end in \"the framework did it\".",
   "last_decision": "D-005",
   "evidence_status": "UNKNOWN",
-  "notes": "Terrain prepared. No baseline measured, no proof run, no superiority claim established."
+  "notes": "P0-C PASS. Recompute is now observable per object with causality. P0-A, P0-B, P0-D, P0-E remain unproven. No superiority claim established."
 }

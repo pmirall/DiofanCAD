@@ -71,6 +71,7 @@
 #include <Base/UnitsApi.h>
 
 #include "Document.h"
+#include "RecomputeTrace.h"
 #include "private/DocumentP.h"
 #include "Application.h"
 #include "AutoTransaction.h"
@@ -2928,6 +2929,15 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
     auto topoSortedObjects =
         getDependencyList(objs.empty() ? d->objectArray : objs, DepSort | options);
 
+    // DiofanCAD P0-C: observe the run. Disabled by default; never alters semantics.
+    const bool traced = RecomputeTrace::isEnabled();
+    RecomputeTrace::Clock::time_point traceStart;
+    if (traced) {
+        traceStart = RecomputeTrace::Clock::now();
+        RecomputeTrace::beginRun(*this, force, options);
+        RecomputeTrace::recordPlan(topoSortedObjects);
+    }
+
     for (auto obj : topoSortedObjects) {
         obj->setStatus(ObjectStatus::PendingRecompute, true);
     }
@@ -2959,7 +2969,19 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
                 if (obj->mustRecompute()) {
                     doRecompute = true;
                     ++objectCount;
-                    int res = _recomputeFeature(obj);
+                    int res = 0;
+                    if (traced) {
+                        const auto objectStart = RecomputeTrace::Clock::now();
+                        res = _recomputeFeature(obj);
+                        RecomputeTrace::recordObject(*obj,
+                                                     static_cast<int>(idx),
+                                                     true,
+                                                     RecomputeTrace::secondsSince(objectStart),
+                                                     res);
+                    }
+                    else {
+                        res = _recomputeFeature(obj);
+                    }
                     if (res != 0) {
                         if (hasError) {
                             *hasError = true;
@@ -2983,6 +3005,11 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
                         for (auto& [objFrom, propFrom, objTo, propTo] : inList) {
                             if (obj->touchedProps.contains(propTo) || propTo.empty()) {
                                 objFrom->enforceRecompute(propFrom);
+                                if (traced) {
+                                    RecomputeTrace::recordPropagation(*obj,
+                                                                      *objFrom,
+                                                                      propFrom.c_str());
+                                }
                             }
                         }
                         obj->purgeTouched();
@@ -2992,6 +3019,9 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
                         // set all dependent objects touched to force recompute
                         for (auto inObjIt : obj->getInList()) {
                             inObjIt->enforceRecompute();
+                            if (traced) {
+                                RecomputeTrace::recordPropagation(*obj, *inObjIt, nullptr);
+                            }
                         }
                     }
                 }
@@ -3074,6 +3104,11 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
             }
         }
     }
+
+    if (traced) {
+        RecomputeTrace::endRun(objectCount, RecomputeTrace::secondsSince(traceStart));
+    }
+
     return objectCount;
 }
 
