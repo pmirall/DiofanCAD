@@ -40,6 +40,7 @@ REGRESSED
 | E-0019 | element identity survives the save/restore boundary unchanged | 10 faces, box with pocket | n/a — first measurement | real `ElementMap::save`/`restore` path | `gauntlet/rounds/architecture/round-005-p0d/` | NOT YET | PASS | 2026-09-14 |
 | E-0020 | downstream naming is deterministic across a reload | same change applied to reloaded vs never-saved shape | never-saved shape | byte comparison of 14 mapped names | same round | NOT YET | PASS | 2026-09-14 |
 | E-0021 | behaviour when the string table is lost | partial restore | — | attempted twice; the construction path creates no StringIDs | same round, M4/M5 | — | **UNKNOWN — not exercised** | 2026-09-14 |
+| E-0022 | the Part test suite passes completely; the 125 failures were a resource layout | `Part_tests_run`, 331 tests | the same suite before the fix, 206/331 | two symlinks under the build root; each removed individually to confirm | `gauntlet/rounds/architecture/round-006-unblock/` | reproducible by anyone from a clean checkout | PASS | 2026-09-14 |
 
 ## Verification status
 

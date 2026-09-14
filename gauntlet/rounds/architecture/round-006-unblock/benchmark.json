@@ -1,0 +1,22 @@
+{
+  "round": "architecture/round-006-unblock",
+  "question": "Is the 125-test Part failure really an environment limitation, and can it be cleared?",
+  "date": "2026-09-14",
+  "before": {"ran": 331, "passed": 206, "failed": 125},
+  "after": {"ran": 331, "passed": 331, "failed": 0},
+  "root_cause": {
+    "mechanism": "Test binaries resolve data through App::Application::getHomePath(), which for a build-tree binary is the build root. cmake --build creates neither directory the tests expect there.",
+    "missing_paths": [
+      {"path": "<build>/share/Mod/Material/Resources", "needed_by": "MaterialManagerLocal", "tests_affected": 121, "symptom": "Part::Box construction throws 'Material not found'"},
+      {"path": "<build>/tests/brepfiles", "needed_by": "FuzzyBooleanTest", "tests_affected": 4, "symptom": "brep fixtures load as empty shapes, volume 0"}
+    ],
+    "red_herring": "RESOURCEDIR is set to 'share' during configuration and overrides any value passed on the command line, so the lookup is always <AppHomePath>/share/..."
+  },
+  "verification": "Each link was removed individually and the corresponding failures returned, then restored and the suite went green again.",
+  "corrections_to_the_record": [
+    "Rounds 002-005 recorded '125 environment failures' as a fact about the Part suite. The true baseline is 331 of 331 passing.",
+    "docs/baseline-test-health.md updated accordingly."
+  ],
+  "unblocks": ["P0-E change challenge at document level", "round 005's UNCLASSIFIED string-table case", "V7 52.5 round-trip matrix", "any document-level recompute measurement"],
+  "app_suite_unchanged": {"ran": 556, "passed": 553, "failed": 3, "note": "the three pre-existing App failures recorded in round 001 are unaffected and remain unexplained"}
+}

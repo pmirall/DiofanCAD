@@ -38,48 +38,34 @@ named, so any future failure list can be diffed against them.
 Not yet investigated, and deliberately not fixed in the same round that
 measured them. Candidates for the upstream backlog once root-caused.
 
-### Measured: `Part_tests_run` (round 002)
+### Measured: `Part_tests_run` (corrected in round 006)
 
 | Metric | Value |
 |---|---:|
-| Tests run | 312 |
-| Passed | 182 |
-| **Failed** | **130** |
+| Tests run | 331 |
+| **Passed** | **331** |
+| Failed | 0 |
 
-The 130 failures are an **environment limitation, not defects**: constructing
-a `Part::Box` throws `Material not found` because the material library's
-resources are only present after an install step, and a build-tree-only setup
-has none. Everything that avoids document objects passes — all 90
-`TopoShapeExpansionTest` tests, for instance.
+**The Part suite is fully green.** Rounds 002 to 005 recorded "125 of 312
+failing, an environment limitation". That description was accurate and never
+investigated. Round 006 cleared every one of them with two symlinks.
 
-This is worth knowing before anyone reads a red Part suite as a code problem.
-It also means a large fraction of the Part suite is silently untestable
-without installing, and nothing tells you so. Confirming that an installed
-build passes those 125 has not been done.
+The test binaries resolve data through `App::Application::getHomePath()`, which
+for a build-tree binary is the **build root**, and `cmake --build` creates
+neither directory the tests expect there:
 
-**Promoted to the programme's largest gap on 2026-09-14 (round 005).** What
-looked like an aside now gates everything left: document-level persistence
-(round 005's `UNCLASSIFIED` string-table case), P0-E's change challenge, the
-§52.5 round-trip matrix, and the health of 125 tests. It is also the cheapest
-item on the list — an install step, not a design problem.
+| Path | Needed by | Tests affected |
+|---|---|---:|
+| `<build>/share/Mod/Material/Resources` | the material library; without it any `Part::Box` throws `Material not found` | 121 |
+| `<build>/tests/brepfiles` | `FuzzyBooleanTest` fixtures | 4 |
 
-## Inventory
+`RESOURCEDIR` is a red herring: the project sets it to `share` during
+configuration, overriding any command-line value.
 
-Populate from the actual repository:
-
-| Area | Test inventory | Pass | Fail | Skipped | Flaky | Coverage signal | Status |
-|---|---:|---:|---:|---:|---:|---|---|
-| Core | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| Document model | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| Sketcher | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| Part Design | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| Assembly | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| TechDraw | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| CAM | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| FEM | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| Import/export | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| Python/API | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
-| Addon/workbench compatibility | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | TO VALIDATE |
+Run `tools/diofancad/setup-test-resources.sh <build-dir>` before the suite.
+Queued upstream as `U-002`, because a build tree that cannot run its own tests
+— and says nothing about why — affects every FreeCAD developer, not just this
+fork.
 
 ## Health dimensions
 
