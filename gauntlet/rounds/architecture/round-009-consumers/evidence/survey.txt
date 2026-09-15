@@ -1,0 +1,27 @@
+# Round 009 raw survey output (regenerated; these are deterministic source queries)
+
+## scan scope
+headers under src/*/App: 614
+
+## class uses
+PropertyLinkSub          35 files
+PropertyLinkSubList      19 files
+PropertyXLinkSub         0 files
+PropertyXLinkSubList     1 files
+PropertyFilletEdges      1 files
+
+## mapped-name family by workbench
+  Part         12
+  PartDesign   11
+  Sketcher      1
+  TechDraw      4
+  Fem           6
+  Measure       8
+  Surface       6
+
+## behaviour axis
+cpp files touching subnames: 51
+
+## FilletBase derivatives (must be 2)
+src/Mod/Part/App/FeatureChamfer.h
+src/Mod/Part/App/FeatureFillet.h

@@ -20,7 +20,7 @@ FORK_REF=${2:-HEAD}
 
 # Paths that are DiofanCAD-native by design. Changes here are program overhead,
 # not divergence from upstream code, and are reported separately.
-NATIVE='docs/ gauntlet/ tools/diofancad/ DIOFANCAD.md CLAUDE.md'
+NATIVE='docs/ gauntlet/ tools/diofancad/ DIOFANCAD.md CLAUDE.md HANDOFF.md'
 
 if ! git rev-parse --verify --quiet "$UPSTREAM_REF" >/dev/null; then
     echo "error: cannot resolve '$UPSTREAM_REF'." >&2

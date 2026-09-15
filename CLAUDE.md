@@ -1,5 +1,24 @@
 # DiofanCAD — working agreement
 
+## 0. If you read nothing else
+
+New here? Read [`HANDOFF.md`](HANDOFF.md) first. It is shorter than this file
+and tells you what to do.
+
+Six rules, in order of how much trouble breaking them has caused:
+
+1. **Two independent routes before any headline claim.** The test harness is one route. The second must differ in kind — read the source, compute the number by hand, or measure something else that must move with it.
+2. **"Absent / zero / none / empty" needs a positive control** — proof the probe sees the thing when it *is* present. Skipping this caused a retraction.
+3. **Write the verdict in a separate step from the measurement.** Re-read the raw numbers first and ask if they are physically possible.
+4. **The more a result flatters this project, the more evidence it needs.** All four past errors pointed at a more dramatic conclusion than the truth. None pointed the boring way.
+5. **Use `Shape.getShape()`, never `Shape.getValue()`**, when you care about element maps. `getValue()` silently drops them.
+6. **Run `tools/diofancad/check-round.sh <round-dir>` before committing a round.** Non-zero exit means it is not ready.
+
+Everything below is the reasoning behind those. Sections 1 and 2 are the ones
+worth reading in full.
+
+---
+
 This repository is a FreeCAD fork run as an evidence-driven engineering
 programme. The charter is `docs/spec/diofancad-fusion-killer-spec-v7.md`; the
 control system is `docs/`, `gauntlet/` and `tools/diofancad/`. Start at

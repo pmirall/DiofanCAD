@@ -56,7 +56,7 @@ Status:
 
 ### D-006 — DiofanCAD content is confined to native paths
 
-**Decision:** DiofanCAD-native content lives only in `docs/`, `gauntlet/`, `tools/diofancad/`, `DIOFANCAD.md` and `CLAUDE.md`. Upstream files are left untouched at the fork baseline, including the root `README.md`, which keeps FreeCAD's content.
+**Decision:** DiofanCAD-native content lives only in `docs/`, `gauntlet/`, `tools/diofancad/`, `DIOFANCAD.md`, `CLAUDE.md` and `HANDOFF.md`. Upstream files are left untouched at the fork baseline, including the root `README.md`, which keeps FreeCAD's content.
 
 **Status:** ACTIVE
 

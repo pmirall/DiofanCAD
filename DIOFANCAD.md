@@ -21,6 +21,7 @@ Its purpose is to explore how far an open-source engineering CAD platform can go
 
 | Path | What it is |
 |---|---|
+| [`HANDOFF.md`](HANDOFF.md) | Start here: how to build it, what is established, what to do next |
 | [`docs/`](docs/README.md) | The engineering document set: baselines, architecture records, evidence ledger, upstream strategy |
 | [`docs/spec/`](docs/spec/diofancad-fusion-killer-spec-v7.md) | The V7 charter that governs the program |
 | [`gauntlet/`](gauntlet/README.md) | The reproducible evaluation system: protocols, state, rounds, evidence |

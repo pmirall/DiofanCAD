@@ -59,6 +59,17 @@ If `--ff-only` fails, `main` has drifted: the drift is a defect to be explained 
 
 ## Divergence report
 
+**Run it after `git add`, and re-read the row you just wrote.** `git diff main
+HEAD` cannot see untracked files, so a report taken before staging undercounts —
+the round 010 row read 13 instead of 14 for exactly that reason.
+
+Worse, the shell one-liner used to fill these rows from rounds 004 to 010
+grepped for `in upstream code`, which matches **two** lines of the report: the
+count and the `line delta in upstream code` heading. That put a stray word into
+the row and split five of them in half. The table was malformed for six rounds
+because the numbers were copied from the tool and the resulting table was never
+read back. Repaired 2026-09-15.
+
 Generate with:
 
 ```bash
@@ -75,16 +86,11 @@ Record each milestone's output here. Do not summarize it from memory.
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-C @ `5f34f0f1` | 0 | 2 | 55 total — 48 native, **7 in upstream code** (+752/−3) | `src/App`, `tests/src/App`, `cMake/FreeCAD_Helpers` | clean | 1 (U-001) | FIRST UPSTREAM-CODE DIVERGENCE |
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-A @ `b5f87409` | 0 | 4 | 65 total — 56 native, **9 in upstream code** (+1156/−4) | `src/App`, `tests/src/App`, `tests/src/Mod/Part`, `cMake/FreeCAD_Helpers` | clean | 1 (U-001) | P0-A ADDED TESTS ONLY |
 | 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 003 @ `a95bb784` | 0 | 6 | 74 total — 64 native, **10 in upstream code** (+1867/−3) | unchanged set | clean | 1 (U-001) | ROUND 003 ADDED TESTS ONLY |
-| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 004 @ `03830bdc` | 0 | 8 | 83 total — 72 native, **11
-| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-D @ `bda3217a` | 0 | 10 | 91 total — 79 native, **12
-| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 006 @ `5379356b` | 0 | 12 | 96 total — 84 native, **12
-| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-E @ `dd8dbe49` | 0 | 14 | 105 total — 92 native, **13
-| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 010 @ pending | 0 | 18 | 115 total — 102 native, **13
-line in upstream code** (+3372/-3) | unchanged set | clean | 2 (U-001, U-003) | ROUNDS 009-010 ADDED ONE TEST FILE |
-line in upstream code** (+3309/-3) | unchanged set | clean | 2 (U-001, U-003) | P0-E ADDED TESTS ONLY |
-line in upstream code** (+2922/-3) | unchanged set | clean | 2 (U-001, U-003) | ROUND 006 ADDED NO CODE |
-line in upstream code** (+2922/-3) | unchanged set | clean | 1 (U-001) | P0-D ADDED TESTS ONLY |
-line in upstream code** (+2518/-3) | unchanged set | clean | 1 (U-001) | ROUND 004 ADDED TESTS ONLY |
+| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 004 @ `03830bdc` | 0 | 8 | 83 total — 72 native, **11 in upstream code** (+2518/-3) | unchanged set | clean | 1 (U-001) | ROUND 004 ADDED TESTS ONLY |
+| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-D @ `bda3217a` | 0 | 10 | 91 total — 79 native, **12 in upstream code** (+2922/-3) | unchanged set | clean | 1 (U-001) | P0-D ADDED TESTS ONLY |
+| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | round 006 @ `5379356b` | 0 | 12 | 96 total — 84 native, **12 in upstream code** (+2922/-3) | unchanged set | clean | 2 (U-001, U-003) | ROUND 006 ADDED NO CODE |
+| 2026-09-14 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | P0-E @ `dd8dbe49` | 0 | 14 | 105 total — 92 native, **13 in upstream code** (+3309/-3) | unchanged set | clean | 2 (U-001, U-003) | P0-E ADDED TESTS ONLY |
+| 2026-09-15 | `main` @ `6608bfc2` (local mirror, not verified against upstream) | handoff @ `00ee2bb6`+ | 0 | 19 | 123 total — 109 native, **14 in upstream code** (+3372/−3) | unchanged set | clean | 2 (U-001, U-003) | ROUNDS 009-010 + LOCAL HANDOFF |
 
 ### Reading the P0-C row
 

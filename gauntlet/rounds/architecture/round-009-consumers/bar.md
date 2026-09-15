@@ -45,6 +45,19 @@ wrong four times. So route 2 is mandatory and so is the answer below.
   item exists specifically to attack this, and if it finds a mechanism the class
   list missed, the counts are withdrawn rather than adjusted.
 
+## Omission, found afterwards by the checker
+
+`tools/diofancad/check-round.sh` flags this round for having **no recorded
+prediction**. That is correct: the pre-flight states the claim the round could
+make, but never commits to what the answer would be.
+
+No prediction is added here retroactively. Writing one after seeing the result
+would be worth less than nothing — it would make the record look disciplined
+where it was not. Round 010 records a real prediction; this one did not.
+
+The checker also found `evidence/` empty. That has been fixed with the raw
+survey output, which is regenerable because the queries are deterministic.
+
 ## Bar
 
 | # | Requirement |
